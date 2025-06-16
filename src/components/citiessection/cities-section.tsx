@@ -41,11 +41,12 @@ export function CitiesSection() {
         </div>
 
         {/* Cities Grid */}
-        <div className="flex gap-6 pb-4 overflow-x-auto scrollbar-hide">
+        <div className="flex justify-center gap-6 pb-4 overflow-x-auto scrollbar-hide">
           {cities.map((city) => (
             <CityCard key={city.name} {...city} />
           ))}
         </div>
+
       </div>
     </section>
   )
