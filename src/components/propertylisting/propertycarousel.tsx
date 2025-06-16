@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { PropertyCard } from "./property-card"
 import { CarouselDots } from "./carousel-dots"
+import Link from 'next/link';
 
 const featuredProperties = [
   {
@@ -104,7 +105,11 @@ export function FeaturedProperties() {
         <div className="mb-12 text-center">
           <h2 className="mb-4 font-bold text-gray-900 text-4xl">Featured Properties</h2>
           <p className="mb-6 text-gray-600 text-lg">Handpicked properties by our team.</p>
-          <button className="font-medium text-blue-600 hover:text-blue-700 underline">View all</button>
+          <Link href="/properties">
+            <button className="font-medium text-blue-600 hover:text-blue-700 underline">
+              View all
+            </button>
+          </Link>
         </div>
 
         {/* Properties Grid */}
