@@ -2,33 +2,33 @@ import { ArticleCard } from "./article-card"
 
 const articles = [
   {
-    image: "/placeholder.svg?height=300&width=400&text=Luxury+Villa+Article",
+    image: "@/public/images/why_1.jpg",
     title: "Trusted By Thousands",
     description:
       "We've earned the confidence of countless individuals and families on their journey to finding their ideal homes",
     author: {
       name: "Peter Mwangi",
-      avatar: "/placeholder.svg?height=40&width=40&text=PM",
+      avatar: "@/public/images/person_1.jpg",
     },
     date: "07 September 2023",
   },
   {
-    image: "/placeholder.svg?height=300&width=400&text=Waterfront+Property",
+    image: "@/public/images/why_2.jpg",
     title: "Wide Range Of Properties",
     description: "We showcases a diverse selection of properties that cater to every tenant's taste and preference.",
     author: {
       name: "Faith Mwende",
-      avatar: "/placeholder.svg?height=40&width=40&text=FM",
+      avatar: "@/public/images/person_2.jpg",
     },
     date: "09 August 2023",
   },
   {
-    image: "/placeholder.svg?height=300&width=400&text=Modern+Interior",
+    image: "@/public/images/why_3.jpg",
     title: "Financing Made Easy",
     description: "Securing the right financing for your property just got simpler with Alliance Realtors.",
     author: {
       name: "Phylis Nyokabi",
-      avatar: "/placeholder.svg?height=40&width=40&text=PN",
+      avatar: "@/public/images/person_3.jpg",
     },
     date: "19 August 2023",
   },

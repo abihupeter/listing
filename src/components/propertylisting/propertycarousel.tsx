@@ -9,6 +9,7 @@ const featuredProperties = [
   {
     id: "1",
     image: "/placeholder.svg?height=300&width=400&text=Cozy+Apartment+Aerial+View",
+    apiImage: "property.property_image[0].image",
     price: "Ksh. 15,000/ month",
     propertyType: "Villa",
     title: "Cozy Apartment",
@@ -21,6 +22,7 @@ const featuredProperties = [
   {
     id: "2",
     image: "/placeholder.svg?height=300&width=400&text=Garden+View+Apartments+Aerial",
+    apiImage: "property.property_image[1].image",
     price: "Ksh. 15,000/ month",
     propertyType: "Apartment",
     title: "Garden View Apartments",
@@ -33,6 +35,7 @@ const featuredProperties = [
   {
     id: "3",
     image: "/placeholder.svg?height=300&width=400&text=Downtown+Studio+Aerial+View",
+    apiImage: "property.property_image[2].image",
     price: "Ksh. 15,000/ month",
     propertyType: "Studio Apartments",
     title: "Downtown Studio",
@@ -45,6 +48,7 @@ const featuredProperties = [
   {
     id: "4",
     image: "/placeholder.svg?height=300&width=400&text=Luxury+Villa+Aerial+View",
+    apiImage: "property.property_image[3].image",
     price: "Ksh. 25,000/ month",
     propertyType: "Villa",
     title: "Luxury Villa",
@@ -57,6 +61,7 @@ const featuredProperties = [
   {
     id: "5",
     image: "/placeholder.svg?height=300&width=400&text=Modern+Penthouse+View",
+    apiImage: "property.property_image[4].image",
     price: "Ksh. 35,000/ month",
     propertyType: "Penthouse",
     title: "Modern Penthouse",
@@ -69,6 +74,7 @@ const featuredProperties = [
   {
     id: "6",
     image: "/placeholder.svg?height=300&width=400&text=Beachfront+Condo+Aerial",
+    apiImage: "property.property_image[5].image",
     price: "Ksh. 20,000/ month",
     propertyType: "Condo",
     title: "Beachfront Condo",
