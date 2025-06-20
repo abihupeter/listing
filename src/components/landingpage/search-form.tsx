@@ -11,11 +11,11 @@ export default function SearchForm({ activeTab }: { activeTab: string }) {
       <div className="bg-white shadow-2xl p-6 rounded-2xl w-full max-w-6xl">
         <div className="items-end gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-1">
-            <Input placeholder="Enter Location..." className="border-gray-200 focus:border-blue-500 h-12" />
+            <Input placeholder="Enter Location..." className="border-gray-200 focus:border-blue-500 h-14" />
           </div>
           <div className="lg:col-span-1">
             <Select>
-              <SelectTrigger className="border-gray-200 focus:border-blue-500 h-12">
+              <SelectTrigger className="border-gray-200 focus:border-blue-500 h-14">
                 <SelectValue placeholder="Property Type" />
               </SelectTrigger>
               <SelectContent>
@@ -43,7 +43,7 @@ export default function SearchForm({ activeTab }: { activeTab: string }) {
           </div>
           <div className="flex gap-2 lg:col-span-1">
             <Select>
-              <SelectTrigger className="border-gray-200 focus:border-blue-500 h-12">
+              <SelectTrigger className="border-gray-200 focus:border-blue-500 h-14">
                 <SelectValue placeholder="Bedrooms" />
               </SelectTrigger>
               <SelectContent>
@@ -56,14 +56,14 @@ export default function SearchForm({ activeTab }: { activeTab: string }) {
             <Button
               variant="outline"
               size="lg"
-              className="bg-slate-800 hover:bg-slate-700 px-4 border-slate-800 h-12 text-white"
+              className="bg-slate-800 hover:bg-slate-700 px-4 border-slate-800 h-14 text-white"
             >
               <span className="hidden sm:inline">Advanced</span>
               <ChevronDown className="sm:ml-2 w-4 h-4" />
             </Button>
           </div>
           <div className="lg:col-span-1">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 w-full h-12 font-semibold text-lg">
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 w-full h-14 font-semibold text-lg">
               Find Properties
             </Button>
           </div>
@@ -77,11 +77,11 @@ export default function SearchForm({ activeTab }: { activeTab: string }) {
     <div className="bg-white shadow-2xl p-6 rounded-2xl w-full max-w-6xl">
       <div className="items-end gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
         <div className="lg:col-span-1">
-          <Input placeholder="Enter Keyword..." className="border-gray-200 focus:border-blue-500 h-12" />
+          <Input placeholder="Enter Keyword..." className="border-gray-200 focus:border-blue-500 h-14" />
         </div>
         <div className="lg:col-span-1">
           <Select>
-            <SelectTrigger className="border-gray-200 focus:border-blue-500 h-12">
+            <SelectTrigger className="border-gray-200 focus:border-blue-500 h-14">
               <SelectValue placeholder="Property Type" />
             </SelectTrigger>
             <SelectContent>
@@ -94,7 +94,7 @@ export default function SearchForm({ activeTab }: { activeTab: string }) {
         </div>
         <div className="lg:col-span-1">
           <Select>
-            <SelectTrigger className="border-gray-200 focus:border-blue-500 h-12">
+            <SelectTrigger className="border-gray-200 focus:border-blue-500 h-14">
               <SelectValue placeholder="Location" />
             </SelectTrigger>
             <SelectContent>
@@ -107,7 +107,7 @@ export default function SearchForm({ activeTab }: { activeTab: string }) {
         </div>
         <div className="flex gap-2 lg:col-span-1">
           <Select>
-            <SelectTrigger className="border-gray-200 focus:border-blue-500 h-12">
+            <SelectTrigger className="border-gray-200 focus:border-blue-500 h-14">
               <SelectValue placeholder="Price" />
             </SelectTrigger>
             <SelectContent>
@@ -120,14 +120,14 @@ export default function SearchForm({ activeTab }: { activeTab: string }) {
           <Button
             variant="outline"
             size="lg"
-            className="bg-slate-800 hover:bg-slate-700 px-4 border-slate-800 h-12 text-white"
+            className="bg-slate-800 hover:bg-slate-700 px-4 border-slate-800 h-14 text-white"
           >
             <span className="hidden sm:inline">Advanced</span>
             <ChevronDown className="sm:ml-2 w-4 h-4" />
           </Button>
         </div>
         <div className="lg:col-span-1">
-          <Button size="lg" className="bg-blue-600 hover:bg-blue-700 w-full h-12 font-semibold text-lg">
+          <Button size="lg" className="bg-blue-600 hover:bg-blue-700 w-full h-14 font-semibold text-lg">
             Search
           </Button>
         </div>

@@ -3,17 +3,17 @@ import { ServiceCard } from "./service-card"
 const services = [
   {
     id: "1",
-    image: "@/public/images/why_1.jpg",
+    image: "/images/why_1.jpg",
     title: "PROPERTY & SERVICE CHARGE MANAGEMENT",
   },
   {
     id: "2",
-    image: "@/public/images/why_2.jpg",
+    image: "/images/why_2.jpg",
     title: "PROPERTY & ASSET VALUATION",
   },
   {
     id: "3",
-    image: "@/public/images/why_3.jpg",
+    image: "/images/why_3.jpg",
     title: "GENERAL REAL ESTATE CONSULTANCY",
   },
 ]

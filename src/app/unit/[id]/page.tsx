@@ -30,11 +30,11 @@ export default function UnitDetailPage() {
     listingType: "FOR RENT",
     pastTenants: 2,
     images: [
-      "/placeholder.svg?height=400&width=600&text=Modern+Living+Room",
-      "/placeholder.svg?height=300&width=400&text=Luxury+Kitchen",
-      "/placeholder.svg?height=300&width=400&text=Outdoor+Bathroom",
-      "/placeholder.svg?height=300&width=400&text=Modern+Bedroom",
-      "/placeholder.svg?height=300&width=400&text=Dining+Area",
+      "https://kodinyumba.app/media/Stock/House/house${0}.jpg",
+      "https://kodinyumba.app/media/Stock/House/house${1}.jpg",
+      "https://kodinyumba.app/media/Stock/House/house${2}.jpg",
+      "https://kodinyumba.app/media/Stock/House/house${3}.jpg",
+      "https://kodinyumba.app/media/Stock/House/house${4}.jpg",
     ],
     description:
       "Nestled in the heart of the enchanting coastal town of Ukunda in Mombasa, Kenya...",
