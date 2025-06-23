@@ -4,27 +4,27 @@ const cities = [
   {
     name: "Nairobi",
     propertyCount: 102,
-    image: "@/public/images/miami.jpg",
+    image: "/images/miami.jpg",
   },
   {
     name: "Kisumu",
     propertyCount: 50,
-    image:"@/public/images/LA.jpg",
+    image:"/images/LA.jpg",
   },
   {
     name: "Narok",
     propertyCount: 17,
-    image:"@/public/images/NY.jpeg",
+    image:"/images/NY.jpeg",
   },
   {
     name: "Nakuru",
     propertyCount: 60,
-    image: "@/public/images/Florida.jpg",
+    image: "/images/Florida.jpg",
   },
   {
     name: "Kakamega",
     propertyCount: 8,
-    image: "@/public/images/kakamega.jpg",
+    image: "/images/kakamega.jpg",
   },
 ]
 
