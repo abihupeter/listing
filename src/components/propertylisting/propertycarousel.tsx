@@ -86,6 +86,9 @@ const featuredProperties = [
   },
 ]
 
+// const imageUrl = `https://kodinyumba.app/media/Stock/hd/Property/apartment${randomNumber}.jpg`;
+
+
 export function FeaturedProperties() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const itemsPerSlide = 3

@@ -56,7 +56,7 @@ export default function HeroSection({
         </p>
 
         {/* Action Buttons */}
-        <div className="flex sm:flex-row flex-col gap-4 mb-12">
+        <div className="flex sm:flex-row flex-col gap-4 mb-8">
           <Button
             size="lg"
             variant={activeTab === "buy" ? "default" : "secondary"}
