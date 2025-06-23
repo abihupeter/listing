@@ -9,7 +9,7 @@ export function ServiceCard({ image, title, className = "" }: ServiceCardProps) 
     <div className={`relative overflow-hidden rounded-2xl group cursor-pointer ${className}`}>
       <div className="relative h-full">
         <img
-          src={image || "/placeholder.svg"}
+          src={image || "https://kodinyumba.app/media/Stock/hd/LandingPage/19.jpg?text=Modern+Villa+1"}
           alt={title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />

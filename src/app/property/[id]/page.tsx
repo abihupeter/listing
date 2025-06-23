@@ -33,7 +33,7 @@ export default function PropertiesPage() {
       {/* Hero Section */}
       <div className="relative mb-8 h-64">
         <img
-          src="https://kodinyumba.app/media/Stock/hd/Property/apartment${5}.jpg"
+          src="https://kodinyumba.app/media/Stock/hd/Property/apartment${6}.jpg"
           alt="Ruaraka Johari Apartments"
           className="w-full h-full object-cover"
         />

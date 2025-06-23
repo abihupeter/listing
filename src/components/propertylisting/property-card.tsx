@@ -43,7 +43,7 @@ export function PropertyCard({
       {/* Property Image */}
       <div className="relative h-64 overflow-hidden">
         <img
-          src={image || "/placeholder.svg"}
+          src={image || "https://kodinyumba.app/media/Stock/hd/LandingPage/19.jpg?text=Modern+Villa+1"}
           alt={title}
           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
         />

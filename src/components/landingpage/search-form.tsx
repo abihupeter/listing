@@ -29,7 +29,7 @@ export default function SearchForm({ activeTab }: { activeTab: string }) {
           </div>
           <div className="lg:col-span-1">
             <Select>
-              <SelectTrigger className="border-gray-200 focus:border-blue-500 h-12">
+              <SelectTrigger className="border-gray-200 focus:border-blue-500 h-14">
                 <SelectValue placeholder="Budget Range" />
               </SelectTrigger>
               <SelectContent>
