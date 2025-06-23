@@ -2,33 +2,33 @@ import { ArticleCard } from "./article-card"
 
 const articles = [
   {
-    image: "@/public/images/why_1.jpg",
+    image: "/images/why_1.jpg",
     title: "Trusted By Thousands",
     description:
       "We've earned the confidence of countless individuals and families on their journey to finding their ideal homes",
     author: {
       name: "Peter Mwangi",
-      avatar: "@/public/images/person_1.jpg",
+      avatar: "/images/person_1.jpg",
     },
     date: "07 September 2023",
   },
   {
-    image: "@/public/images/why_2.jpg",
+    image: "/images/why_2.jpg",
     title: "Wide Range Of Properties",
     description: "We showcases a diverse selection of properties that cater to every tenant's taste and preference.",
     author: {
       name: "Faith Mwende",
-      avatar: "@/public/images/person_2.jpg",
+      avatar: "/images/person_2.jpg",
     },
     date: "09 August 2023",
   },
   {
-    image: "@/public/images/why_3.jpg",
+    image: "/images/why_3.jpg",
     title: "Financing Made Easy",
     description: "Securing the right financing for your property just got simpler with Alliance Realtors.",
     author: {
       name: "Phylis Nyokabi",
-      avatar: "@/public/images/person_3.jpg",
+      avatar: "/images/person_3.jpg",
     },
     date: "19 August 2023",
   },
