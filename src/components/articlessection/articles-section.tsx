@@ -1,5 +1,6 @@
 import { ArticleCard } from "./article-card"
 
+
 const articles = [
   {
     image: "/images/why_1.jpg",

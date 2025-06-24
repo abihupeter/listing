@@ -7,7 +7,7 @@ export function Footer() {
         <div className="gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
           {/* Kodi Logo */}
           <div className="lg:col-span-1">
-            <div className="font-bold text-white text-4xl">Kodi</div>
+            <div className="font-poppins text-white text-[30px] font-bold">Kodi</div>
           </div>
 
           {/* Head Offices - Nairobi */}
@@ -16,7 +16,7 @@ export function Footer() {
               title="Head Offices - Nairobi"
               address="Salama House, Mama Ngina Street, Wabeera Street Junction"
               poBox="P.O. Box 17100 - 00100 Nairobi"
-              phone="0715 37 55 70"
+              phone="0715 375 570"
             />
           </div>
 
@@ -26,7 +26,7 @@ export function Footer() {
               title="Embakasi Area Branch"
               address="Fedha Service Station Plaza, Ground Flr"
               poBox="P.O. Box 17100 - 00100 Nairobi"
-              phone="0701 40 44 40"
+              phone="0701 404 440"
               supportCenter={true}
             />
           </div>
@@ -37,7 +37,7 @@ export function Footer() {
               title="Kiambu Area Branch"
               address="Feruzi Towers, 2nd Flr"
               poBox="P.O. Box 17100 - 00100 Nairobi"
-              phone="0757 35 55 57"
+              phone="0757 355 557"
               additionalPhone="+254712345678"
             />
           </div>
@@ -57,7 +57,7 @@ export function Footer() {
         <div className="mt-12 pt-8 border-slate-700 border-t">
           <div className="flex md:flex-row flex-col justify-between items-center gap-4">
             <div className="text-white text-sm">KSH</div>
-            <div className="text-white text-sm">© 2023 powered by Kodi. All rights reserved.</div>
+            <div className="text-white text-sm">© 2025 powered by Kodi. All rights reserved.</div>
           </div>
         </div>
       </div>
