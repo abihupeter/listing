@@ -5,7 +5,7 @@ import { Star, ChevronLeft, ChevronRight } from "lucide-react"
 
 interface PropertyListingCardProps {
   id: string
-  image: string
+  index: number // 👈 Add this
   type: string
   price: string
   propertyType: string
@@ -17,7 +17,7 @@ interface PropertyListingCardProps {
 
 export function PropertyListingCard({
   id,
-  image,
+  index,
   type,
   price,
   propertyType,
@@ -31,6 +31,8 @@ export function PropertyListingCard({
   const handleCardClick = () => {
     router.push(`/unit/${id}`)
   }
+
+  const imageUrl = `https://kodinyumba.app/media/Stock/hd/Property/apartment${index + 1}.jpg`
 
   const getActionTypeColor = (action: string) => {
     switch (action) {
@@ -52,7 +54,7 @@ export function PropertyListingCard({
     >
       {/* Property Image */}
       <div className="group relative h-48 overflow-hidden">
-        <img src={image || "/placeholder.svg"} alt={propertyType} className="w-full h-full object-cover" />
+        <img src={imageUrl} alt={propertyType} className="w-full h-full object-cover" />
 
         {/* Navigation arrows */}
         <button className="top-1/2 left-2 absolute bg-white/80 opacity-0 group-hover:opacity-100 p-1 rounded-full transition-opacity -translate-y-1/2 transform">

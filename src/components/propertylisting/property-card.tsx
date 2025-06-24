@@ -6,7 +6,7 @@ import { PropertyBadge } from "./property-badge"
 
 interface PropertyCardProps {
   id: string
-  index: number // 👈 Add index to generate image URL
+  image: string
   price: string
   propertyType: string
   title: string
@@ -19,7 +19,7 @@ interface PropertyCardProps {
 
 export function PropertyCard({
   id,
-  index,
+  image,
   price,
   propertyType,
   title,
@@ -31,10 +31,8 @@ export function PropertyCard({
 }: PropertyCardProps) {
   const router = useRouter()
 
-  const imageUrl = `https://kodinyumba.app/media/Stock/hd/Property/apartment${index + 1}.jpg`
-
   const handleCardClick = () => {
-    router.push(`/property/${id}`)
+    router.push("/property/1")
   }
 
   return (
@@ -45,7 +43,7 @@ export function PropertyCard({
       {/* Property Image */}
       <div className="relative h-64 overflow-hidden">
         <img
-          src={imageUrl}
+          src={image || "https://kodinyumba.app/media/Stock/hd/LandingPage/19.jpg?text=Modern+Villa+1"}
           alt={title}
           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
         />
