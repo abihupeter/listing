@@ -1,28 +1,53 @@
 "use client";
 
-export function PropertyRules() {
-  const rules = [
-    "No smoking",
-    "No pets allowed",
-    "No parties or events",
-    "Check-in after 2:00 PM",
-    "Check-out before 11:00 AM",
-    "Quiet hours from 10:00 PM to 7:00 AM"
+export function ThingsToKnow() {
+  const sections = [
+    {
+      title: "Property Rules",
+      items: [
+        "No pets allowed",
+        "No Ownership transfer",
+        "No students allowed",
+        "No loud music past 10:00pm"
+      ]
+    },
+    {
+      title: "Safety",
+      items: [
+        "Gate closes at Midnight",
+        "Visitors should be registered at the gate",
+        "None residents are not allowed in the Laundry area"
+      ]
+    },
+    {
+      title: "Rental Policy",
+      items: [
+        "Deposits to be paid before occupying the house",
+        "Deposits are returned only if the unit is still in good condition as it was before user occupied",
+        "Payments to be done through paybill only, no cash allowed"
+      ]
+    }
   ];
 
   return (
-    <div>
-      <h3 className="mb-4 font-bold text-xl">Property Rules</h3>
-      <ul className="space-y-2">
-        {rules.map((rule, index) => (
-          <li key={index} className="flex items-start gap-2">
-            <div className="flex justify-center items-center bg-gray-100 mt-0.5 rounded-full w-5 h-5">
-              <div className="bg-blue-600 rounded-full w-2 h-2"></div>
+    <div className="my-8 text-sm">
+      <hr className="border-gray-300 mb-6" />
+      <div className="px-4">
+        <h3 className="text-lg font-semibold mb-4">Things To Know</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {sections.map((section, idx) => (
+            <div key={idx}>
+              <h4 className="font-semibold mb-2">{section.title}</h4>
+              <ul className="list-disc list-inside text-gray-600 space-y-1">
+                {section.items.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
             </div>
-            <span className="text-gray-700">{rule}</span>
-          </li>
-        ))}
-      </ul>
+          ))}
+        </div>
+      </div>
+      <hr className="border-gray-300 mt-6" />
     </div>
   );
 }
