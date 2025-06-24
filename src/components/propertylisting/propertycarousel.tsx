@@ -3,101 +3,35 @@
 import { useState, useEffect } from "react"
 import { PropertyCard } from "./property-card"
 import { CarouselDots } from "./carousel-dots"
-import Link from 'next/link';
-
-const featuredProperties = [
-  {
-    id: "1",
-    image: "/placeholder.svg?height=300&width=400&text=Cozy+Apartment+Aerial+View",
-    apiImage: "property.property_image[0].image",
-    price: "Ksh. 15,000/ month",
-    propertyType: "Villa",
-    title: "Cozy Apartment",
-    location: "10 Riverside Road, Nairobi, Kenya",
-    bedrooms: 1,
-    bathrooms: 4,
-    isFeatured: true,
-    isForRent: true,
-  },
-  {
-    id: "2",
-    image: "/placeholder.svg?height=300&width=400&text=Garden+View+Apartments+Aerial",
-    apiImage: "property.property_image[1].image",
-    price: "Ksh. 15,000/ month",
-    propertyType: "Apartment",
-    title: "Garden View Apartments",
-    location: "20 Palm Street, Mombasa, Kenya",
-    bedrooms: 1,
-    bathrooms: 4,
-    isFeatured: true,
-    isForRent: true,
-  },
-  {
-    id: "3",
-    image: "/placeholder.svg?height=300&width=400&text=Downtown+Studio+Aerial+View",
-    apiImage: "property.property_image[2].image",
-    price: "Ksh. 15,000/ month",
-    propertyType: "Studio Apartments",
-    title: "Downtown Studio",
-    location: "30 Beach Road, Nakuru, Kenya",
-    bedrooms: 1,
-    bathrooms: 4,
-    isFeatured: true,
-    isForRent: true,
-  },
-  {
-    id: "4",
-    image: "/placeholder.svg?height=300&width=400&text=Luxury+Villa+Aerial+View",
-    apiImage: "property.property_image[3].image",
-    price: "Ksh. 25,000/ month",
-    propertyType: "Villa",
-    title: "Luxury Villa",
-    location: "15 Hill View, Kisumu, Kenya",
-    bedrooms: 3,
-    bathrooms: 2,
-    isFeatured: true,
-    isForRent: true,
-  },
-  {
-    id: "5",
-    image: "/placeholder.svg?height=300&width=400&text=Modern+Penthouse+View",
-    apiImage: "property.property_image[4].image",
-    price: "Ksh. 35,000/ month",
-    propertyType: "Penthouse",
-    title: "Modern Penthouse",
-    location: "5 City Center, Nairobi, Kenya",
-    bedrooms: 2,
-    bathrooms: 3,
-    isFeatured: true,
-    isForRent: true,
-  },
-  {
-    id: "6",
-    image: "/placeholder.svg?height=300&width=400&text=Beachfront+Condo+Aerial",
-    apiImage: "property.property_image[5].image",
-    price: "Ksh. 20,000/ month",
-    propertyType: "Condo",
-    title: "Beachfront Condo",
-    location: "40 Ocean Drive, Mombasa, Kenya",
-    bedrooms: 2,
-    bathrooms: 2,
-    isFeatured: true,
-    isForRent: true,
-  },
-]
-
-// const imageUrl = `https://kodinyumba.app/media/Stock/hd/Property/apartment${randomNumber}.jpg`;
-
+import Link from 'next/link'
 
 export function FeaturedProperties() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const itemsPerSlide = 3
-  const totalSlides = Math.ceil(featuredProperties.length / itemsPerSlide)
+  const totalSlides = Math.ceil(6 / itemsPerSlide)
+
+  // generate properties with image URLs
+  const featuredProperties = Array.from({ length: 6 }, (_, index) => {
+    const imageUrl = `https://kodinyumba.app/media/Stock/hd/Property/apartment${index + 1}.jpg`
+
+    return {
+      id: `${index + 1}`,
+      image: imageUrl,
+      price: "Ksh. 15,000/ month",
+      propertyType: ["Villa", "Apartment", "Studio", "Penthouse", "Condo", "Bungalow"][index % 6],
+      title: ["Cozy Apartment", "Garden View", "Downtown Studio", "Luxury Villa", "Modern Penthouse", "Beach Condo"][index % 6],
+      location: ["Nairobi", "Mombasa", "Nakuru", "Kisumu", "Eldoret", "Naivasha"][index % 6],
+      bedrooms: 1 + (index % 3),
+      bathrooms: 2 + (index % 2),
+      isFeatured: true,
+      isForRent: true,
+    }
+  })
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prevSlide) => (prevSlide === totalSlides - 1 ? 0 : prevSlide + 1))
-    }, 5000) // Auto-advance every 5 seconds
+    }, 5000)
 
     return () => clearInterval(interval)
   }, [totalSlides])
