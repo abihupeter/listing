@@ -14,41 +14,9 @@ export function Footer() {
           <div className="lg:col-span-1">
             <ContactInfo
               title="Head Offices - Nairobi"
-              address="Salama House, Mama Ngina Street, Wabeera Street Junction"
+              address="Milimani Business Park,Milimani Rd"
               poBox="P.O. Box 17100 - 00100 Nairobi"
-              phone="0715 375 570"
-            />
-          </div>
-
-          {/* Embakasi Area Branch */}
-          <div className="lg:col-span-1">
-            <ContactInfo
-              title="Embakasi Area Branch"
-              address="Fedha Service Station Plaza, Ground Flr"
-              poBox="P.O. Box 17100 - 00100 Nairobi"
-              phone="0701 404 440"
-              supportCenter={true}
-            />
-          </div>
-
-          {/* Kiambu Area Branch */}
-          <div className="lg:col-span-1">
-            <ContactInfo
-              title="Kiambu Area Branch"
-              address="Feruzi Towers, 2nd Flr"
-              poBox="P.O. Box 17100 - 00100 Nairobi"
-              phone="0757 355 557"
-              additionalPhone="+254712345678"
-            />
-          </div>
-
-          {/* Diaspora Liason */}
-          <div className="lg:col-span-1">
-            <ContactInfo
-              title="Diaspora Liason"
-              phone="+1 84-995-7841"
-              location="Philadelphia, USA"
-              additionalPhone="+254712345678"
+              phone="0740 313 529"
             />
           </div>
         </div>
@@ -57,7 +25,7 @@ export function Footer() {
         <div className="mt-12 pt-8 border-slate-700 border-t">
           <div className="flex md:flex-row flex-col justify-between items-center gap-4">
             <div className="text-white text-sm">KSH</div>
-            <div className="text-white text-sm">© 2025 powered by Kodi. All rights reserved.</div>
+            <div className="text-white text-sm">©2025 powered by Kodi. All rights reserved.</div>
           </div>
         </div>
       </div>
