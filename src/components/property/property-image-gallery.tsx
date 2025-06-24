@@ -1,12 +1,19 @@
 "use client"
+import { useMemo } from "react"
 import { Button } from "@/components/ui/button"
 import { Grid3X3 } from "lucide-react"
 
 interface PropertyImageGalleryProps {
-  images: string[]
+  count?: number // Optional number of images
 }
 
-export function PropertyImageGallery({ images }: PropertyImageGalleryProps) {
+export function PropertyImageGallery({ count = 5 }: PropertyImageGalleryProps) {
+  const images = useMemo(() => {
+    return Array.from({ length: count }, (_, i) =>
+      `https://kodinyumba.app/media/Stock/House/house${i + 1}.jpg`
+    )
+  }, [count])
+
   return (
     <div className="relative">
       <div className="gap-2 grid grid-cols-4 h-96">
@@ -24,9 +31,9 @@ export function PropertyImageGallery({ images }: PropertyImageGalleryProps) {
           {images.slice(1, 5).map((image, index) => (
             <div key={index} className="relative">
               <img
-                src={image || "/placeholder.svg"}
+                src={image}
                 alt={`Property view ${index + 2}`}
-                className={`w-full h-full object-cover bg-black/50  ${
+                className={`w-full h-full object-cover bg-black/50 ${
                   index === 1 ? "rounded-tr-xl" : index === 3 ? "rounded-br-xl" : "rounded-md"
                 }`}
               />
