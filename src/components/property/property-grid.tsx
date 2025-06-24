@@ -5,7 +5,7 @@ import { PropertyListingCard } from "./property-listing-card"
 const properties = [
   {
     id: "A01",
-    image: "https://kodinyumba.app/media/Stock/House/house${1}.jpg",
+    image: `https://kodinyumba.app/media/Stock/House/house1.jpg`,
     type: "Residential",
     price: "Ksh 15,500/month",
     propertyType: "Studio",
@@ -16,7 +16,7 @@ const properties = [
   },
   {
     id: "A02",
-    image: "https://kodinyumba.app/media/Stock/House/house${2}.jpg",
+    image: `https://kodinyumba.app/media/Stock/House/house2.jpg`,
     type: "Commercial",
     price: "Ksh 16,000/month",
     propertyType: "Stall",
@@ -27,7 +27,7 @@ const properties = [
   },
   {
     id: "A03",
-    image: "https://kodinyumba.app/media/Stock/House/house${3}.jpg",
+    image: `https://kodinyumba.app/media/Stock/House/house3.jpg`,
     type: "Residential",
     price: "Ksh 16,500/month",
     propertyType: "Bungalow",
@@ -38,7 +38,7 @@ const properties = [
   },
   {
     id: "A04",
-    image: "https://kodinyumba.app/media/Stock/House/house${4}.jpg",
+    image: `https://kodinyumba.app/media/Stock/House/house4.jpg`,
     type: "Residential",
     price: "Ksh 17,000/month",
     propertyType: "Servant Quarters(Sq)",
@@ -49,7 +49,7 @@ const properties = [
   },
   {
     id: "A05",
-    image: "https://kodinyumba.app/media/Stock/House/house${5}.jpg",
+    image: `https://kodinyumba.app/media/Stock/House/house5.jpg`,
     type: "Commercial",
     price: "Ksh 25,000/month",
     propertyType: "Office",
@@ -60,7 +60,7 @@ const properties = [
   },
   {
     id: "A06",
-    image: "https://kodinyumba.app/media/Stock/House/house${6}.jpg",
+    image: `https://kodinyumba.app/media/Stock/House/house6.jpg`,
     price: "Ksh 35,000/month",
     propertyType: "Mansionette",
     bedrooms: 4,
@@ -70,7 +70,7 @@ const properties = [
   },
   {
     id: "A07",
-    image: "https://kodinyumba.app/media/Stock/House/house${7}.jpg",
+    image: `https://kodinyumba.app/media/Stock/House/house7.jpg`,
     type: "Commercial",
     price: "Ksh 18,000/month",
     propertyType: "Shop",
@@ -81,7 +81,7 @@ const properties = [
   },
   {
     id: "A08",
-    image: "https://kodinyumba.app/media/Stock/House/house${8}.jpg",
+    image: `https://kodinyumba.app/media/Stock/House/house8.jpg`,
     type: "Residential",
     price: "Ksh 12,000/month",
     propertyType: "Studio",
@@ -92,7 +92,7 @@ const properties = [
   },
   {
     id: "A09",
-    image: "https://kodinyumba.app/media/Stock/House/house${9}.jpg",
+    image: `https://kodinyumba.app/media/Stock/House/house9.jpg`,
     type: "Residential",
     price: "Ksh 28,000/month",
     propertyType: "Bungalow",
@@ -103,7 +103,7 @@ const properties = [
   },
   {
     id: "A10",
-    image: "https://kodinyumba.app/media/Stock/House/house${10}.jpg",
+    image: `https://kodinyumba.app/media/Stock/House/house10.jpg`,
     type: "Residential",
     price: "Ksh 8,500/month",
     propertyType: "Bedsitter",
@@ -114,7 +114,7 @@ const properties = [
   },
   {
     id: "A11",
-    image: "https://kodinyumba.app/media/Stock/House/house${11}.jpg",
+    image: `https://kodinyumba.app/media/Stock/House/house11.jpg`,
     type: "Commercial",
     price: "Ksh 22,000/month",
     propertyType: "Stall",
@@ -125,7 +125,7 @@ const properties = [
   },
   {
     id: "A12",
-    image: "https://kodinyumba.app/media/Stock/House/house${12}.jpg",
+    image: `https://kodinyumba.app/media/Stock/House/house12.jpg`,
     type: "Residential",
     price: "Ksh 19,500/month",
     propertyType: "Apartment Units",
