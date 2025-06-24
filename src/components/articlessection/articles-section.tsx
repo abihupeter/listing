@@ -8,7 +8,7 @@ const articles = [
       "We've earned the confidence of countless individuals and families on their journey to finding their ideal homes",
     author: {
       name: "Peter Mwangi",
-      avatar: "/images/person_1.jpg",
+      avatar: "/images/person_1.png",
     },
     date: "07 September 2023",
   },
@@ -18,7 +18,7 @@ const articles = [
     description: "We showcases a diverse selection of properties that cater to every tenant's taste and preference.",
     author: {
       name: "Faith Mwende",
-      avatar: "/images/person_2.jpg",
+      avatar: "/images/person_2.png",
     },
     date: "09 August 2023",
   },
@@ -28,7 +28,7 @@ const articles = [
     description: "Securing the right financing for your property just got simpler with Alliance Realtors.",
     author: {
       name: "Phylis Nyokabi",
-      avatar: "/images/person_3.jpg",
+      avatar: "/images/person_3.png",
     },
     date: "19 August 2023",
   },

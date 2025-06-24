@@ -86,7 +86,8 @@ const featuredProperties = [
   },
 ]
 
-// const imageUrl = `https://kodinyumba.app/media/Stock/hd/Property/apartment${randomNumber}.jpg`;
+// const propertyImages = `https://kodinyumba.app/media/Stock/hd/Property/apartment${randomNumber}.jpg`;
+//  conts unitImages =`https://kodinyumba.app/media/Stock/House/house${imageNumber}.jpg`
 
 
 export function FeaturedProperties() {
