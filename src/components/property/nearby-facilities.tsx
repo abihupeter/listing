@@ -2,12 +2,12 @@
 
 export function NearbyFacilities() {
   const facilities = [
-    { name: "Supermarket", distance: "0.5 km", icon: "/assets/shopping-center.png" },
-    { name: "Restaurant", distance: "0.3 km", icon: "/assets/villa.png" },
-    { name: "School", distance: "1.2 km", icon: "/assets/school.png" },
-    { name: "Hospital", distance: "2.5 km", icon: "/assets/hospital.png" },
-    { name: "church", distance: "0.8 km", icon: "/assets/church.png" },
-    { name: "police station", distance: "0.2 km", icon: "/assets/police-station.png" },
+    { name: "Supermarket", distance: "0.5 km", icon: "/images/shopping-center.png" },
+    { name: "Restaurant", distance: "0.3 km", icon: "/images/villa.png" },
+    { name: "School", distance: "1.2 km", icon: "/images/school.png" },
+    { name: "Hospital", distance: "2.5 km", icon: "/images/hospital.png" },
+    { name: "church", distance: "0.8 km", icon: "/images/church.png" },
+    { name: "police station", distance: "0.2 km", icon: "/images/police-station.png" },
   ];
 
   return (
@@ -19,7 +19,7 @@ export function NearbyFacilities() {
             <img
               src={facility.icon}
               alt={facility.name}
-              className="w-10 h-10 object-contain rounded-full"
+              className="w-13 h-13 object-contain rounded-lg"
             />
             <div>
               <h4 className="font-medium">{facility.name}</h4>

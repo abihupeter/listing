@@ -10,8 +10,8 @@ export function FeaturedProperties() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const itemsPerSlide = 3
   const totalSlides = Math.ceil(6 / itemsPerSlide)
-
-  // generate properties with image URLs
+// removes hard codes images 
+  //generate properties with image URLs
   const featuredProperties = Array.from({ length: 6 }, (_, index) => {
     const imageUrl = `https://kodinyumba.app/media/Stock/hd/Property/apartment${index + 1}.jpg`
 
