@@ -24,8 +24,8 @@ export function Footer() {
         {/* Footer Bottom */}
         <div className="mt-12 pt-8 border-slate-700 border-t">
           <div className="flex md:flex-row flex-col justify-between items-center gap-4">
-            <div className="text-white text-sm">KSH</div>
-            <div className="text-white text-sm">©2025 powered by Kodi. All rights reserved.</div>
+            <div className="text-white text-sm"></div>
+            <div className="text-white text-sm">KSH ©2025 powered by Kodi. All rights reserved.</div>
           </div>
         </div>
       </div>

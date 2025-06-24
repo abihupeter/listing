@@ -7,6 +7,7 @@ import { PropertyTypeFilter } from "@/components/property/property-type-filter"
 import { PropertyGrid } from "@/components/property/property-grid"
 import { FiltersModal } from "@/components/property/filters-modal"
 import { MapPin, Grid3X3 } from "lucide-react"
+import { Footer } from "@/components/footer"
 
 export default function PropertiesPage() {
   const [isFiltersOpen, setIsFiltersOpen] = useState(false)
@@ -33,7 +34,7 @@ export default function PropertiesPage() {
       {/* Hero Section */}
       <div className="relative mb-8 h-64">
         <img
-          src="https://kodinyumba.app/media/Stock/hd/Property/apartment${6}.jpg"
+          src='https://kodinyumba.app/media/Stock/hd/Property/apartment${6}.jpg'
           alt="Ruaraka Johari Apartments"
           className="w-full h-full object-cover"
         />
@@ -76,9 +77,10 @@ export default function PropertiesPage() {
 
       {/* Property Grid */}
       <PropertyGrid />
-
+      <Footer />
       {/* Filters Modal */}
       <FiltersModal isOpen={isFiltersOpen} onClose={() => setIsFiltersOpen(false)} />
+     
     </div>
   )
 }

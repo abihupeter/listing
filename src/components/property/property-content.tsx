@@ -9,7 +9,7 @@ import { PropertyAmenities } from "./property-amenities";
 import { PropertyReviews } from "./property-reviews";
 import { PropertyLocation } from "./property-location";
 import { NearbyFacilities } from "./nearby-facilities";
-import { PropertyRules } from "./property-rules";
+import { ThingsToKnow } from "./property-rules";
 
 export function PropertyContent({ property }: { property: any }) {
   return (
@@ -26,7 +26,7 @@ export function PropertyContent({ property }: { property: any }) {
       <PropertyReviews />
       <PropertyLocation />
       <NearbyFacilities />
-      <PropertyRules />
+      <ThingsToKnow />
     </div>
   );
 }

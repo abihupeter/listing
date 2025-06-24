@@ -34,20 +34,23 @@ export function CitiesSection() {
       <div className="mx-auto px-4 container">
         {/* Section Header */}
         <div className="mb-12 text-center">
-          <h2 className="mb-4 font-bold text-gray-900 text-4xl">Find properties in these cities</h2>
-          <p className="text-gray-600 text-lg">
+          <h2 className="mb-4 font-bold text-gray-900 text-3xl md:text-4xl">
+            Find properties in these cities
+          </h2>
+          <p className="text-gray-600 text-base md:text-lg">
             Unlocking Your <span className="font-semibold">Perfect Place</span>, City by City.
           </p>
         </div>
 
         {/* Cities Grid */}
-        <div className="flex justify-center gap-6 pb-4 overflow-x-auto scrollbar-hide">
+        <div className="flex gap-4 justify-center overflow-x-auto scrollbar-hide pb-2 px-1">
           {cities.map((city) => (
-            <CityCard key={city.name} {...city} />
+            <div key={city.name} className="w-[160px] md:w-[180px] lg:w-[200px] shrink-0">
+              <CityCard {...city} />
+            </div>
           ))}
         </div>
-
       </div>
     </section>
-  )
+  );
 }
