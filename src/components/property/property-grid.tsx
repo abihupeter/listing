@@ -61,6 +61,7 @@ const properties = [
   {
     id: "A06",
     image: "https://kodinyumba.app/media/Stock/House/house${6}.jpg",
+    type: "Residential",
     price: "Ksh 35,000/month",
     propertyType: "Mansionette",
     bedrooms: 4,
