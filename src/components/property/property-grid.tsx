@@ -1,11 +1,13 @@
 "use client"
 
+import { useState } from "react"
 import { PropertyListingCard } from "./property-listing-card"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 const properties = [
   {
     id: "A01",
-    image: `https://kodinyumba.app/media/Stock/House/house1.jpg`,
+    image: `https://kodinyumba.app/media/Stock/House/house18.jpg`,
     type: "Residential",
     price: "Ksh 15,500/month",
     propertyType: "Studio",
@@ -16,7 +18,7 @@ const properties = [
   },
   {
     id: "A02",
-    image: `https://kodinyumba.app/media/Stock/House/house2.jpg`,
+    image: `https://kodinyumba.app/media/Stock/House/house20.jpg`,
     type: "Commercial",
     price: "Ksh 16,000/month",
     propertyType: "Stall",
@@ -134,15 +136,250 @@ const properties = [
     rating: 3.5,
     actionType: "Rent",
   },
+  {
+    id: "A13",
+    image: `https://kodinyumba.app/media/Stock/House/house1.jpg`,
+    type: "Residential",
+    price: "Ksh 19,500/month",
+    propertyType: "Apartment Units",
+    bedrooms: 2,
+    bathrooms: 2,
+    rating: 3.5,
+    actionType: "Rent",
+  },
+  { 
+    id: "A14",
+    image: `https://kodinyumba.app/media/Stock/House/house2.jpg`,
+    type: "Residential",
+    price: "Ksh 21,000/month",
+    propertyType: "Studio",
+    bedrooms: 1,
+    bathrooms: 1,
+    rating: 4.0,
+    actionType: "Rent",
+  },
+  { 
+    id: "A15",
+    image: `https://kodinyumba.app/media/Stock/House/house3.jpg`,
+    type: "Commercial",
+    price: "Ksh 40,000/month",
+    propertyType: "Office",
+    bedrooms: 3,
+    bathrooms: 2,
+    rating: 4.2,
+    actionType: "Purchase",
+  },
+  { 
+    id: "A16",
+    image: `https://kodinyumba.app/media/Stock/House/house4.jpg`,
+    type: "Residential",
+    price: "Ksh 10,500/month",
+    propertyType: "Bedsitter",
+    bedrooms: 1,
+    bathrooms: 1,
+    rating: 3.0,
+    actionType: "Rent",
+  },
+  { 
+    id: "A17",
+    image: `https://kodinyumba.app/media/Stock/House/house5.jpg`,
+    type: "Commercial",
+    price: "Ksh 35,000/month",
+    propertyType: "Stall",
+    bedrooms: 2,
+    bathrooms: 1,
+    rating: 2.5,
+    actionType: "Purchase",
+  },
+  { 
+    id: "A18",
+    image: `https://kodinyumba.app/media/Stock/House/house6.jpg`,
+    type: "Residential",
+    price: "Ksh 18,000/month",
+    propertyType: "Bungalow",
+    bedrooms: 3,
+    bathrooms: 2,
+    rating: 3.5,
+    actionType: "Rent",
+  },
+  { 
+    id: "A19",
+    image: `https://kodinyumba.app/media/Stock/House/house7.jpg`,
+    type: "Commercial",
+    price: "Ksh 22,000/month",
+    propertyType: "Shop",
+    bedrooms: 1,
+    bathrooms: 1,
+    rating: 4.7,
+    actionType: "Rent To Own",
+  },
+  { 
+    id: "A20",
+    image: `https://kodinyumba.app/media/Stock/House/house8.jpg`,
+    type: "Residential",
+    price: "Ksh 30,000/month",
+    propertyType: "Mansionette",
+    bedrooms: 4,
+    bathrooms: 3,
+    rating: 4.9,
+    actionType: "Purchase",
+  },
+  { 
+    id: "A21",
+    image: `https://kodinyumba.app/media/Stock/House/house9.jpg`,
+    type: "Commercial",
+    price: "Ksh 15,000/month",
+    propertyType: "Office",
+    bedrooms: 2,
+    bathrooms: 2,
+    rating: 2.8,
+    actionType: "Rent",
+  },
+  { 
+    id: "A22",
+    image: `https://kodinyumba.app/media/Stock/House/house10.jpg`,
+    type: "Residential",
+    price: "Ksh 17,500/month",
+    propertyType: "Servant Quarters(SQ)",
+    bedrooms: 2,
+    bathrooms: 1,
+    rating: 3.3,
+    actionType: "Rent",
+  },
+  { 
+    id: "A23",
+    image: `https://kodinyumba.app/media/Stock/House/house11.jpg`,
+    type: "Commercial",
+    price: "Ksh 45,000/month",
+    propertyType: "Stall",
+    bedrooms: 1,
+    bathrooms: 1,
+    rating: 3.9,
+    actionType: "Rent To Own",
+  },
+  { 
+    id: "A24",
+    image: `https://kodinyumba.app/media/Stock/House/house12.jpg`,
+    type: "Residential",
+    price: "Ksh 23,000/month",
+    propertyType: "Apartment Units",
+    bedrooms: 2,
+    bathrooms: 2,
+    rating: 3.7,
+    actionType: "Rent",
+  },
+  { 
+    id: "A25",
+    image: `https://kodinyumba.app/media/Stock/House/house13.jpg`,
+    type: "Commercial",
+    price: "Ksh 26,000/month",
+    propertyType: "Shop",
+    bedrooms: 2,
+    bathrooms: 1,
+    rating: 4.1,
+    actionType: "Purchase",
+  },
+  { 
+    id: "A26",
+    image: `https://kodinyumba.app/media/Stock/House/house14.jpg`,
+    type: "Residential",
+    price: "Ksh 13,000/month",
+    propertyType: "Studio",
+    bedrooms: 1,
+    bathrooms: 1,
+    rating: 3.4,
+    actionType: "Rent",
+  },
+  { 
+    id: "A27",
+    image: `https://kodinyumba.app/media/Stock/House/house15.jpg`,
+    type: "Commercial",
+    price: "Ksh 28,000/month",
+    propertyType: "Office",
+    bedrooms: 3,
+    bathrooms: 2,
+    rating: 4.3,
+    actionType: "Rent To Own",
+  },
+  { 
+    id: "A28",
+    image: `https://kodinyumba.app/media/Stock/House/house16.jpg`,
+    type: "Residential",
+    price: "Ksh 14,000/month",
+    propertyType: "Bedsitter",
+    bedrooms: 1,
+    bathrooms: 1,
+    rating: 2.9,
+    actionType: "Rent",
+  },
+  { 
+    id: "A29",
+    image: `https://kodinyumba.app/media/Stock/House/house17.jpg`,
+    type: "Commercial",
+    price: "Ksh 31,000/month",
+    propertyType: "Stall",
+    bedrooms: 2,
+    bathrooms: 1,
+    rating: 4.0,
+    actionType: "Purchase",
+  },
+  { 
+    id: "A30",
+    image: `https://kodinyumba.app/media/Stock/House/house18.jpg`,
+    type: "Residential",
+    price: "Ksh 24,000/month",
+    propertyType: "Bungalow",
+    bedrooms: 3,
+    bathrooms: 2,
+    rating: 4.5,
+    actionType: "Rent",
+  },  
 ]
 
 export function PropertyGrid() {
+  const [page, setPage] = useState(1)
+  const pageSize = 12
+  const total = properties.length
+  const totalPages = Math.ceil(total / pageSize)
+
+  const paginatedProperties = properties.slice(
+    (page - 1) * pageSize,
+    page * pageSize
+  )
+
+  const getPageLabel = () => {
+    const start = (page - 1) * pageSize + 1
+    const end = Math.min(page * pageSize, total)
+    return `${start}-${end} of ${total}`
+  }
+
   return (
     <div className="mx-auto px-4 pb-12 container">
       <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {properties.map((property) => (
+        {paginatedProperties.map((property) => (
           <PropertyListingCard key={property.id} {...property} />
         ))}
+      </div>
+
+      {/* Pagination Navigator */}
+      <div className="flex items-center justify-center gap-4 mt-8">
+        <button
+          onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+          disabled={page === 1}
+          className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-50"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+
+        <span className="font-medium text-sm text-gray-700">{getPageLabel()}</span>
+
+        <button
+          onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
+          disabled={page === totalPages}
+          className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-50"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
       </div>
     </div>
   )

@@ -2,22 +2,51 @@
 
 export function NearbyFacilities() {
   const facilities = [
-    { name: "Supermarket", distance: "0.5 km", icon: "/images/shopping-center.png" },
-    { name: "Restaurant", distance: "0.3 km", icon: "/images/villa.png" },
-    { name: "School", distance: "1.2 km", icon: "/images/school.png" },
-    { name: "Hospital", distance: "2.5 km", icon: "/images/hospital.png" },
-    { name: "church", distance: "0.8 km", icon: "/images/church.png" },
-    { name: "police station", distance: "0.2 km", icon: "/images/police-station.png" },
+    {
+      name: "Church",
+      distance: "120m",
+      image: "https://kodinyumba.app/media/church.png"
+  },
+  {
+      name: "Hospital",
+      distance: "500m",
+      image: "https://kodinyumba.app/media/hospital.png"
+  },
+  {
+      name: "Mall",
+      distance: "640m",
+      image: "https://kodinyumba.app/media/shopping-center.png"
+  },
+  {
+      name: "School",
+      distance: "20m",
+      image: "https://kodinyumba.app/media/school.png"
+  },
+  {
+      name: "Mosque",
+      distance: "120m",
+      image: "https://kodinyumba.app/media/mosque.png"
+  },
+  {
+      name: "Tarmac Road",
+      distance: "50m",
+      image: "https://kodinyumba.app/media/road.png"
+  },
+  {
+      name: "Police Station",
+      distance: "400m",
+      image: "https://kodinyumba.app/media/police-station.png"
+  }
   ];
 
   return (
-    <div>
+    <div className="border-t border-gray-300 py-6 relative">
       <h3 className="mb-4 font-bold text-xl">Nearby Facilities</h3>
       <div className="gap-4 grid grid-cols-2 md:grid-cols-3">
         {facilities.map((facility, index) => (
           <div key={index} className="flex items-center gap-3 p-3 border rounded-lg">
             <img
-              src={facility.icon}
+              src={facility.image}
               alt={facility.name}
               className="w-13 h-13 object-contain rounded-lg"
             />

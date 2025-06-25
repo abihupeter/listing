@@ -1,6 +1,9 @@
 "use client"
 import { useRouter } from "next/navigation"
 import { Star, ChevronLeft, ChevronRight } from "lucide-react"
+import { useState } from "react";
+
+
 interface PropertyListingCardProps {
   id: string
   image: string
@@ -39,6 +42,7 @@ export function PropertyListingCard({
         return "bg-gray-600"
     }
   }
+  const [liked, setLiked] = useState(false);
   return (
     <div
       className="bg-white shadow-lg hover:shadow-xl rounded-2xl overflow-hidden transition-shadow duration-300 cursor-pointer"
@@ -65,9 +69,19 @@ export function PropertyListingCard({
           </span>
         </div>
         {/* Favorite Button */}
-        <button className="top-4 right-4 absolute bg-white/80 p-2 rounded-full">
-          <div className="border border-gray-400 rounded-full w-4 h-4" />
-        </button>
+        <button
+  onClick={(e) => {
+    e.stopPropagation(); // prevent card click
+    setLiked((prev) => !prev);
+  }}
+  className="top-4 right-4 absolute bg-white/80 p-2 rounded-full"
+>
+  <img
+    src={liked ? "/images/heart__1_.png" : "/images/heart.jpeg"}
+    alt="Favorite"
+    className="w-5 h-5 object-contain"
+  />
+</button>
       </div>
       {/* Property Details */}
       <div className="p-4">

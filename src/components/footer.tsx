@@ -7,7 +7,7 @@ export function Footer() {
         <div className="gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
           {/* Kodi Logo */}
           <div className="lg:col-span-1">
-            <div className="font-poppins text-white text-[30px] font-bold">Kodi</div>
+            <div className="font-[fonarto] text-white text-[40px] font-bold text-3xl">Kodi</div>
           </div>
 
           {/* Head Offices - Nairobi */}
