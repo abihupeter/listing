@@ -32,9 +32,9 @@ export function ThingsToKnow() {
   return (
     <div className="my-8 text-sm">
       <hr className="border-gray-300 mb-6" />
-      <div className="px-4">
+      <div className="px-1">
         <h3 className="text-lg font-semibold mb-4">Things To Know</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {sections.map((section, idx) => (
             <div key={idx}>
               <h4 className="font-semibold mb-2">{section.title}</h4>

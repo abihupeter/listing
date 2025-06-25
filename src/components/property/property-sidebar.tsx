@@ -12,14 +12,18 @@ export function PropertySidebar({ property }: { property: any }) {
           <div>
             <div className="font-bold text-2xl">
               {property.price}
-              <span className="font-normal text-gray-600 text-lg">{property.period}</span>
+              <span className="font-normal text-gray-600 text-lg">
+                {property.period}
+              </span>
             </div>
           </div>
           <div className="flex items-center gap-1">
             <Star className="fill-yellow-400 w-4 h-4 text-yellow-400" />
             <span className="font-medium">{property.rating}</span>
             <span>•</span>
-            <button className="text-sm underline">{property.reviewCount} reviews</button>
+            <button className="text-sm underline">
+              {property.reviewCount} reviews
+            </button>
           </div>
         </div>
 
@@ -35,14 +39,23 @@ export function PropertySidebar({ property }: { property: any }) {
             </div>
             <div className="col-span-2 pt-2 border-t">
               <div className="font-medium">Past Tenants</div>
-              <div className="text-gray-600">{property.pastTenants} Tenants</div>
+              <div className="text-gray-600">
+                {property.pastTenants} Tenants
+              </div>
             </div>
           </div>
         </div>
 
-        <Button className="bg-blue-600 hover:bg-blue-700 py-3 rounded-xl w-full font-medium text-white text-lg">
-          Book Viewing
-        </Button>
+        <a
+          href="https://www.kodinyumba.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block"
+        >
+          <Button className="bg-blue-600 hover:bg-blue-700 py-3 rounded-xl w-full font-medium text-white text-lg">
+            Book Viewing
+          </Button>
+        </a>
       </div>
     </div>
   );
