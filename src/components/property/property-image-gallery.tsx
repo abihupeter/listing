@@ -25,7 +25,7 @@ export function PropertyImageGallery({ count = 5 }: PropertyImageGalleryProps) {
           <img
             src={images[0] || "/placeholder.svg"}
             alt="Property main view"
-            className="bg-black/50 rounded-l-xl w-full h-full object-cover"
+            className="bg-black/50 rounded-l-xl w-full h-96 object-cover"
           />
         </div>
 
@@ -59,7 +59,7 @@ export function PropertyImageGallery({ count = 5 }: PropertyImageGalleryProps) {
 
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 z-50 bg-grey bg-opacity-0.5 flex flex-col items-center justify-center px-4 py-8">
+        <div className="fixed inset-0 z-50 bg-grey bg-opacity-0.5 flex flex-col items-center justify-center px-4 py-8 bg-black/80">
           <div className="relative max-w-5xl w-full bg-white rounded-lg p-6 overflow-y-auto max-h-[90vh]">
             {/* Close Button */}
             <button
