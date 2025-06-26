@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { PropertyCard } from "./property-card"
 import { CarouselDots } from "./carousel-dots"
 import Link from 'next/link'
-//  conts unitImages =`https://kodinyumba.app/media/Stock/House/house${imageNumber}.jpg`
+
 
 export function FeaturedProperties() {
   const [currentSlide, setCurrentSlide] = useState(0)

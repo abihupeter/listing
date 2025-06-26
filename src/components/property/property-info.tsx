@@ -20,9 +20,9 @@ export function PropertyInfo({
       
       {/*image */}
       <img 
-        src="/images/logo_1.png" 
+        src="/images/kodi-logo.png" 
         alt="House Icon" 
-        className="w-10 h-10 object-contain" 
+        className="w-15 h-15 object-contain" 
       />
     </div>
   );

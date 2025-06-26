@@ -13,7 +13,7 @@ export function PropertyHeader({ router }: { router: any }) {
             <ArrowLeft className="mr-2 w-4 h-4" />
             Back
           </Button>
-          <div className="font-bold text-blue-600 text-2xl">Kodi</div>
+          <div className="font-[fonarto] font-bold text-blue-600 text-3xl">Kodi</div>
         </div>
       </div>
     </header>
