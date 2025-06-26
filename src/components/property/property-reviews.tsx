@@ -27,11 +27,11 @@ export function PropertyReviews() {
     },
     {
       id: 4,
-      Name: "Jane Mwangi",
+      name: "Joan Mwangi",
       rating: 4.5,
       date: "June 2025",
-      comment: "The house was exactly as listed—clean, spacious, and in a quiet neighborhood. The WiFi and hot shower worked perfectly. The host was responsive and check-in was smooth. Only minor issue was the lack of extra towels, but overall a great stay!"
-    }    
+      comment: "The house was exactly as listed—clean, spacious, and in a quiet neighborhood."
+     }
   ];
 
   return (
@@ -42,7 +42,7 @@ export function PropertyReviews() {
         {reviews.map((review) => (
           <div
             key={review.id}
-            className="min-w-[280px] flex-shrink-0 border rounded-lg p-4 shadow-sm bg-white"
+            className="min-w-[280px] h-[100px] flex-shrink-0 border rounded-lg p-4 shadow-sm bg-white flex flex-col justify-between"
           >
             <div className="flex justify-between items-start mb-2">
               <div>
@@ -54,7 +54,7 @@ export function PropertyReviews() {
               </div>
               <span className="text-gray-500 text-sm">{review.date}</span>
             </div>
-            <p className="text-gray-700 text-sm">{review.comment}</p>
+            <p className="text-gray-700 text-sm mt-2 whitespace-normal break-words">{review.comment}</p>
           </div>
         ))}
       </div>
