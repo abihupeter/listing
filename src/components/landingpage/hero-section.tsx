@@ -56,32 +56,31 @@ export default function HeroSection({
         </p>
 
         {/* Action Buttons */}
-        <div className="flex sm:flex-row flex-col gap-4 mb-8">
-          <Button
-            size="lg"
-            variant={activeTab === "buy" ? "default" : "secondary"}
-            className={`px-8 py-3 text-lg font-semibold rounded-full transition-all duration-300 ${
-              activeTab === "buy"
-                ? "bg-blue-600 text-white hover:bg-blue-700"
-                : "bg-white text-gray-900 hover:bg-gray-100"
-            }`}
-            onClick={() => setActiveTab("buy")}
-          >
-            Buy
-          </Button>
-          <Button
-            size="lg"
-            variant={activeTab === "rent" ? "default" : "secondary"}
-            className={`px-8 py-3 text-lg font-semibold rounded-full transition-all duration-300 ${
-              activeTab === "rent"
-                ? "bg-blue-600 text-white hover:bg-blue-700"
-                : "bg-white text-gray-900 hover:bg-gray-100"
-            }`}
-            onClick={() => setActiveTab("rent")}
-          >
-            Rent
-          </Button>
+        <div className="flex sm:flex-row flex-col gap-4 mb-8 relative">
+  {["buy", "rent"].map((tab) => (
+    <div key={tab} className="relative">
+      <Button
+        size="lg"
+        onClick={() => setActiveTab(tab)}
+        className={`px-8 py-3 text-lg font-semibold rounded-full transition-all duration-300 ${
+          activeTab === tab
+            ? "bg-blue-600 text-white hover:bg-blue-700"
+            : "bg-white text-gray-900 hover:bg-gray-100"
+        }`}
+      >
+        {tab.charAt(0).toUpperCase() + tab.slice(1)}
+      </Button>
+
+      {/* arrow 4 active tab */}
+      {activeTab === tab && (
+        <div className="absolute left-1/2 transform -translate-x-1/2">
+          <div className="w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-blue-600"></div>
         </div>
+      )}
+    </div>
+  ))}
+</div>
+
 
         <SearchForm activeTab={activeTab} />
       </div>
