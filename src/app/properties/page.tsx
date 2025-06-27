@@ -8,14 +8,16 @@ import { FiltersModal } from "@/components/property/filters-modal";
 import { AmenitiesModal } from "@/components/amenities-modal";
 import { FacilitiesModal } from "@/components/facilities-modal";
 import { MapPin, Grid3X3, ChevronLeft, ChevronRight } from "lucide-react";
+import { PhotoGalleryModal } from "@/components/photo-gallery-modal";
 import { Footer } from "@/components/footer";
 
 export default function PropertiesPage() {
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const [isAmenitiesOpen, setIsAmenitiesOpen] = useState(false);
   const [isFacilitiesOpen, setIsFacilitiesOpen] = useState(false);
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [showMap, setShowMap] = useState(false); 
+  const [showMap, setShowMap] = useState(false);
 
   const images = Array.from(
     { length: 10 },
@@ -59,8 +61,7 @@ export default function PropertiesPage() {
             </Button>
           </div>
         </div>
-        {/* Property Type Filter */}
-      <PropertyTypeFilter />
+        <PropertyTypeFilter />
       </header>
 
       {/* Hero Section */}
@@ -79,7 +80,7 @@ export default function PropertiesPage() {
             JOHARI APARTMENTS
           </h1>
 
-          {/* Centered Show/Hide Map Button */}
+          {/* Show/Hide Map Button */}
           <Button
             onClick={() => setShowMap((prev) => !prev)}
             className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 mb-4"
@@ -103,7 +104,10 @@ export default function PropertiesPage() {
 
         {/* Show all photos button - bottom right */}
         <div className="absolute bottom-4 right-4">
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+          <Button
+            onClick={() => setIsGalleryOpen(true)}
+            className="bg-blue-600 hover:bg-blue-700 text-white"
+          >
             <Grid3X3 className="mr-2 w-4 h-4" />
             Show all photos
           </Button>
@@ -124,7 +128,7 @@ export default function PropertiesPage() {
         </button>
       </div>
 
-      {/* Embedded Google Map  */}
+      {/* Embedded Google Map */}
       {showMap && (
         <div className="mx-4 mb-8 rounded-2xl overflow-hidden shadow-lg relative">
           <iframe
@@ -179,6 +183,11 @@ export default function PropertiesPage() {
       <FacilitiesModal
         isOpen={isFacilitiesOpen}
         onClose={() => setIsFacilitiesOpen(false)}
+      />
+      <PhotoGalleryModal
+        isOpen={isGalleryOpen}
+        onClose={() => setIsGalleryOpen(false)}
+        images={images}
       />
 
       <Footer />

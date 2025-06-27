@@ -20,71 +20,72 @@ export default function SearchForm({ activeTab }: { activeTab: string }) {
 
   if (activeTab === "buy") {
     return (
-      <div className="bg-white shadow-2xl p-6 rounded-2xl w-fullmax-w-[90rem] mx-auto">
-        <div className="items-end gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
-          <div className="lg:col-span-1">
-            <Input
-              placeholder="Enter Location..."
-              className={commonInputClass}
-            />
-          </div>
-          <div className="lg:col-span-1">
-            <Select>
-              <SelectTrigger className={commonSelectTriggerClass}>
-                <SelectValue placeholder="Property Type" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="apartment">Apartment</SelectItem>
-                <SelectItem value="house">House</SelectItem>
-                <SelectItem value="villa">Villa</SelectItem>
-                <SelectItem value="condo">Condo</SelectItem>
-                <SelectItem value="land">Land</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="lg:col-span-1">
-            <Select>
-              <SelectTrigger className={commonSelectTriggerClass}>
-                <SelectValue placeholder="Budget Range" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="0-1m">Ksh 0 - 1M</SelectItem>
-                <SelectItem value="1m-5m">Ksh 1M - 5M</SelectItem>
-                <SelectItem value="5m-10m">Ksh 5M - 10M</SelectItem>
-                <SelectItem value="10m-20m">Ksh 10M - 20M</SelectItem>
-                <SelectItem value="20m+">Ksh 20M+</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="flex gap-2 lg:col-span-1">
-            <Select>
-              <SelectTrigger className={commonSelectTriggerClass}>
-                <SelectValue placeholder="Bedrooms" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="1">1 Bedroom</SelectItem>
-                <SelectItem value="2">2 Bedrooms</SelectItem>
-                <SelectItem value="3">3 Bedrooms</SelectItem>
-                <SelectItem value="4">4+ Bedrooms</SelectItem>
-              </SelectContent>
-            </Select>
-            <Button
-              variant="outline"
-              className={`bg-slate-800 hover:bg-slate-700 border-slate-800 ${commonButtonClass}`}
-            >
-              <span className="hidden sm:inline">Advanced</span>
-              <ChevronDown className="sm:ml-2 w-4 h-4" />
-            </Button>
-          </div>
-          <div className="lg:col-span-1">
-            <Button className="bg-blue-600 hover:bg-blue-700 w-full h-14 font-semibold text-lg">
-              Find Properties
-            </Button>
-          </div>
+      <div className="bg-white shadow-2xl p-6 rounded-2xl w-full max-w-[90rem] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-4">
+          {/* Location Input */}
+          <Input
+            placeholder="Enter Location..."
+            className={`${commonInputClass} w-full h-10`}
+          />
+    
+          {/* Property Type */}
+          <Select>
+            <SelectTrigger className={`${commonSelectTriggerClass} w-full h-12`}>
+              <SelectValue placeholder="Property Type" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="apartment">Apartment</SelectItem>
+              <SelectItem value="house">House</SelectItem>
+              <SelectItem value="villa">Villa</SelectItem>
+              <SelectItem value="condo">Condo</SelectItem>
+              <SelectItem value="land">Land</SelectItem>
+            </SelectContent>
+          </Select>
+    
+          {/* Budget Range */}
+          <Select>
+            <SelectTrigger className={`${commonSelectTriggerClass} w-full h-12`}>
+              <SelectValue placeholder="Budget Range" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="0-1m">Ksh 0 - 1M</SelectItem>
+              <SelectItem value="1m-5m">Ksh 1M - 5M</SelectItem>
+              <SelectItem value="5m-10m">Ksh 5M - 10M</SelectItem>
+              <SelectItem value="10m-20m">Ksh 10M - 20M</SelectItem>
+              <SelectItem value="20m+">Ksh 20M+</SelectItem>
+            </SelectContent>
+          </Select>
+    
+          {/* Bedrooms */}
+          <Select>
+            <SelectTrigger className={`${commonSelectTriggerClass} w-full h-16`}>
+              <SelectValue placeholder="Bedrooms" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="1">1 Bedroom</SelectItem>
+              <SelectItem value="2">2 Bedrooms</SelectItem>
+              <SelectItem value="3">3 Bedrooms</SelectItem>
+              <SelectItem value="4">4+ Bedrooms</SelectItem>
+            </SelectContent>
+          </Select>
+    
+          {/* Advanced Button */}
+          <Button
+            variant="outline"
+            className={`w-full h-8 bg-slate-800 hover:bg-slate-700 text-white border-slate-800 ${commonButtonClass}`}
+          >
+            <span className="hidden sm:inline">Advanced</span>
+            <ChevronDown className="sm:ml-2 w-4 h-4" />
+          </Button>
+    
+          {/* Search Button */}
+          <Button className="w-full h-14 bg-blue-600 hover:bg-blue-700 font-semibold text-white text-base">
+            Find Properties
+          </Button>
         </div>
       </div>
     );
-  }
+  } 
 
   // Rent search form
   return (
