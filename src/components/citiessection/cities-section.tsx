@@ -26,6 +26,11 @@ const cities = [
     propertyCount: 8,
     image: "/images/kakamega.jpg",
   },
+  {
+    name: "Bungoma",
+    propertyCount: 20,
+    image: "/images/bungoma.jpg",
+  },
 ]
 
 export function CitiesSection() {
@@ -43,9 +48,9 @@ export function CitiesSection() {
         </div>
 
         {/* Cities Grid */}
-        <div className="flex gap-4 justify-center overflow-x-auto scrollbar-hide pb-2 px-1">
+        <div className="h- 30 flex gap-4 justify-center overflow-x-auto scrollbar-hide pb-2 px-1">
           {cities.map((city) => (
-            <div key={city.name} className="w-[160px] md:w-[180px] lg:w-[200px] shrink-0">
+            <div key={city.name} className=" w-[180px] md:w-[180px] lg:w-[200px] shrink-0">
               <CityCard {...city} />
             </div>
           ))}
