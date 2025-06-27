@@ -49,7 +49,7 @@ export function FeaturedProperties() {
         <div className="mb-12 text-center">
           <h2 className="mb-4 font-bold text-gray-900 text-4xl">Featured Properties</h2>
           <p className="mb-6 text-gray-600 text-lg">Handpicked properties by our team.</p>
-          <Link href="/properties">
+          <Link href="/property">
             <button className="font-medium text-blue-600 hover:text-blue-700 underline">
               View all
             </button>

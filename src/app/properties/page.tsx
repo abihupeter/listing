@@ -15,7 +15,7 @@ export default function PropertiesPage() {
   const [isAmenitiesOpen, setIsAmenitiesOpen] = useState(false);
   const [isFacilitiesOpen, setIsFacilitiesOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [showMap, setShowMap] = useState(false); // ✅ NEW STATE
+  const [showMap, setShowMap] = useState(false); 
 
   const images = Array.from(
     { length: 10 },
@@ -140,7 +140,7 @@ export default function PropertiesPage() {
           {/* Close Map Button */}
           <button
             onClick={() => setShowMap(false)}
-            className="absolute top-4 right-4 bg-blue-600 hover:blue-700 text-sm text-white px-3 py-1 rounded-full shadow"
+            className="absolute top-4 right-4 bg-blue-600 hover:bg-blue-700 text-sm text-white px-3 py-1 rounded-full shadow"
           >
             X
           </button>
