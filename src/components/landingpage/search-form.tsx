@@ -20,7 +20,7 @@ export default function SearchForm({ activeTab }: { activeTab: string }) {
 
   if (activeTab === "buy") {
     return (
-      <div className="bg-white shadow-2xl p-6 rounded-2xl w-full max-w-6xl">
+      <div className="bg-white shadow-2xl p-6 rounded-2xl w-fullmax-w-[90rem] mx-auto">
         <div className="items-end gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-1">
             <Input
@@ -88,7 +88,7 @@ export default function SearchForm({ activeTab }: { activeTab: string }) {
 
   // Rent search form
   return (
-    <div className="bg-white shadow-2xl p-6 rounded-2xl w-full max-w-6xl">
+    <div className="bg-white shadow-2xl p-6 rounded-2xl w-full max-w-[90rem] mx-auto">
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 items-end">
         {/* Keyword input */}
         <Input
