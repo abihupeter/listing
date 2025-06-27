@@ -31,15 +31,15 @@ export function WhatWeOffer() {
         {/* Services Grid */}
         <div className="gap-6 grid grid-cols-1 lg:grid-cols-2 mb-6">
           {/* Property Management */}
-          <ServiceCard image={services[0].image} title={services[0].title} className="h-64 md:h-80" />
+          <ServiceCard image={services[0].image} title={services[0].title} className="h-64 md:h-90" />
 
           {/* Property Valuation */}
-          <ServiceCard image={services[1].image} title={services[1].title} className="h-64 md:h-80" />
+          <ServiceCard image={services[1].image} title={services[1].title} className="h-64 md:h-90" />
         </div>
 
         {/* Full Width Consultancy */}
         <div className="w-full">
-          <ServiceCard image={services[2].image} title={services[2].title} className="h-48 md:h-64" />
+          <ServiceCard image={services[2].image} title={services[2].title} className="h-64 md:h-110" />
         </div>
       </div>
     </section>
