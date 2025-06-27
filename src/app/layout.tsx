@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kodinyumba Listing",
+  title: "Kodi Nyumba Listing",
   description: "Listing properties by Kodinyumba",
 };
 
