@@ -59,10 +59,9 @@ export default function PropertiesPage() {
             </Button>
           </div>
         </div>
-      </header>
-
-      {/* Property Type Filter */}
+        {/* Property Type Filter */}
       <PropertyTypeFilter />
+      </header>
 
       {/* Hero Section */}
       <div className="relative mb-8 h-80 overflow-hidden rounded-2xl mx-4 shadow-lg">
