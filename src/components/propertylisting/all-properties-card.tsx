@@ -5,10 +5,10 @@ import { useState } from "react"
 
 interface AllPropertyListingCardProps {
   id: string
-  image: string
-  type?: string // "10 Units"
+  image: string // comma-separated or single image
+  type?: string
   price: string
-  propertyType: string // title e.g. Grey Heights Apartments
+  propertyType: string
   balcony: number
   stairs: string
   rating: number
@@ -29,6 +29,20 @@ export function AllPropertyListingCard({
   const router = useRouter()
   const [liked, setLiked] = useState(false)
 
+  // Convert image prop to array (assumes comma-separated or single)
+  const images = image.includes(",") ? image.split(",") : [image]
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))
+  }
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))
+  }
+
   const handleCardClick = () => {
     router.push(`/properties`)
   }
@@ -40,9 +54,9 @@ export function AllPropertyListingCard({
     >
       <div className="relative h-48 w-full group overflow-hidden">
         <img
-          src={image || "/placeholder.svg"}
+          src={images[currentIndex] || "/placeholder.svg"}
           alt={propertyType}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-all duration-300"
         />
 
         {/* Unit badge */}
@@ -67,28 +81,33 @@ export function AllPropertyListingCard({
           />
         </button>
 
-        {/* Arrows (optional logic not implemented) */}
-        <button className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 p-1 rounded-full opacity-0 group-hover:opacity-100 transition">
-          <ChevronLeft className="w-4 h-4" />
-        </button>
-        <button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 p-1 rounded-full opacity-0 group-hover:opacity-100 transition">
-          <ChevronRight className="w-4 h-4" />
-        </button>
+        {/* Carousel arrows */}
+        {images.length > 1 && (
+          <>
+            <button
+              onClick={handlePrev}
+              className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 p-1 rounded-full opacity-0 group-hover:opacity-100 transition"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={handleNext}
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 p-1 rounded-full opacity-0 group-hover:opacity-100 transition"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </>
+        )}
       </div>
 
       <div className="px-4 pt-2 pb-4">
-        {/* Location */}
-        <p className="text-xs text-gray-500 mb-1">Umoja II, Nairobi</p>
-
-        {/* Title */}
+        <p className="text-xs text-gray-500 mb-1">Umoja III, Nairobi</p>
         <h3 className="font-semibold text-lg text-gray-900 mb-1">{propertyType}</h3>
-
-        {/* Price */}
         <p className="text-sm text-gray-700 mb-2">{price}</p>
-
-        {/* Rating */}
         <div className="flex items-center justify-between">
-          <div className="text-sm text-gray-500">{balcony} Balcony • {stairs} </div>
+          <div className="text-sm text-gray-500">
+            {balcony} Balcony • {stairs}
+          </div>
           <div className="flex items-center gap-1 text-sm text-gray-600">
             <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
             <span>{rating}</span>

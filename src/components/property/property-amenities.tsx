@@ -86,7 +86,7 @@ export function PropertyAmenities() {
 
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-opacity-100 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 bg-opacity-100 z-50 flex items-center justify-center bg-black/80">
           <div className="bg-white rounded-lg shadow-lg w-full max-w-2xl max-h-[90vh] overflow-y-auto relative p-6">
             {/* Close X */}
             <button
@@ -111,16 +111,7 @@ export function PropertyAmenities() {
                 </div>
               ))}
             </div>
-
-            {/* Bottom close button */}
-            <div className="mt-6 flex justify-center">
-              <button
-                onClick={() => setShowModal(false)}
-                className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
-              >
-                Close
-              </button>
-            </div>
+          
           </div>
         </div>
       )}

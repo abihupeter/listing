@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button"
 import { Grid3X3, X } from "lucide-react"
 
 interface PropertyImageGalleryProps {
-  count?: number // Optional number of images
+  images: string[];
+  count?: number // Optional 
 }
 
 export function PropertyImageGallery({ count = 5 }: PropertyImageGalleryProps) {

@@ -7,9 +7,10 @@ import { PropertyGrid } from "@/components/property/property-grid";
 import { FiltersModal } from "@/components/property/filters-modal";
 import { AmenitiesModal } from "@/components/amenities-modal";
 import { FacilitiesModal } from "@/components/facilities-modal";
-import { MapPin, Grid3X3, ChevronLeft, ChevronRight } from "lucide-react";
+import { Grid3X3, ChevronLeft, ChevronRight } from "lucide-react";
 import { PhotoGalleryModal } from "@/components/photo-gallery-modal";
 import { Footer } from "@/components/footer";
+import router from "next/router";
 
 export default function PropertiesPage() {
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
@@ -45,27 +46,45 @@ export default function PropertiesPage() {
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="mx-auto px-4 py-4 container">
-          <div className="flex justify-between items-center">
-            <div className="font-[fonarto] font-bold text-blue-700 text-3xl">
-              Kodi
-            </div>
-            <Button
-              variant="outline"
-              onClick={() => setIsFiltersOpen(true)}
-              className="flex items-center gap-2"
+          <header className="sticky top-0 z-50 bg-white shadow-sm">
+      <div className="container mx-auto px-4 py-4">
+        <div className="flex justify-between items-center">
+          {/* Left side: Back button and Kodi logo */}
+          <div className="flex items-center gap-6">
+            <button
+              onClick={() => router.back()}
+              className="flex items-center text-black hover:text-blue-700 font-medium"
             >
-              <Grid3X3 className="w-4 h-4" />
-              Filter
-            </Button>
+              <ChevronLeft className="w-5 h-5 mr-1" />
+              Back
+            </button>
+
+            <button
+              onClick={() => router.push("/")}
+              className="text-blue-600 text-3xl font-bold font-[fonarto] hover:opacity-90"
+            >
+              Kodi
+            </button>
           </div>
+
+          {/* Right side: Filter Button */}
+          <Button
+            variant="outline"
+            onClick={() => setIsFiltersOpen(true)}
+            className="flex items-center gap-2"
+          >
+            <Grid3X3 className="w-4 h-4" />
+            Filter
+          </Button>
         </div>
-        <PropertyTypeFilter />
-      </header>
+      </div>
+      <PropertyTypeFilter />
+    </header>
 
       {/* Hero Section */}
-      <div className="relative mb-8 h-80 overflow-hidden rounded-2xl mx-4 shadow-lg">
+      <div className="container mx-auto px-4 mt-10 mb-9">
+  <div className="relative h-80 rounded-2xl overflow-hidden shadow-md">
+
         <img
           src={imageUrl}
           alt="Ruaraka Johari Apartments"
@@ -126,6 +145,7 @@ export default function PropertiesPage() {
         >
           <ChevronRight className="w-6 h-6" />
         </button>
+      </div>
       </div>
 
       {/* Embedded Google Map */}
