@@ -47,7 +47,7 @@ export function PropertyImageGallery({ count = 5 }: PropertyImageGalleryProps) {
       </div>
 
       {/* Show All Photos Button */}
-      <div className="absolute bottom-0 right-0 z-10">
+      <div className="absolute bottom-3 right-3 z-10">
         <Button
           onClick={() => setShowModal(true)}
           variant="outline"
