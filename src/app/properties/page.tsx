@@ -183,7 +183,7 @@ export default function PropertiesPage() {
             onClick={() => setIsFacilitiesOpen(true)}
             className="bg-blue-600 hover:bg-blue-700 text-white"
           >
-            Nearby Facilities
+            Nearby Facilitiess
           </Button>
         </div>
       </div>
