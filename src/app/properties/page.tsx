@@ -177,7 +177,7 @@ export default function PropertiesPage() {
             onClick={() => setIsAmenitiesOpen(true)}
             className="bg-blue-600 hover:bg-blue-700 text-white"
           >
-            Amenities
+            Amenitiess
           </Button>
           <Button
             onClick={() => setIsFacilitiesOpen(true)}
