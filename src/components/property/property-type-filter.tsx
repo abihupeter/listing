@@ -54,8 +54,8 @@ export function PropertyTypeFilter() {
   const [selectedType, setSelectedType] = useState<string | null>(null);
 
   return (
-    <div className="bg-white border-b">
-      <div className="mx-auto px-4 py-4 container">
+    <div className="bg-white border-">
+      <div className="mx-auto px-4 py-1 container">
         <div className="flex gap-1 overflow-x-auto scrollbar-hide">
           {propertyTypes.map((type) => {
             const isSelected = selectedType === type.id;

@@ -35,7 +35,7 @@ export default function UnitDetailPage() {
       "https://kodinyumba.app/media/Stock/House/house${2}.jpg",
       "https://kodinyumba.app/media/Stock/House/house${3}.jpg",
       "https://kodinyumba.app/media/Stock/House/house${4}.jpg",
-      "ttps://kodinyumba.app/media/Stock/House/house${5}.jpg",
+      "https://kodinyumba.app/media/Stock/House/house${5}.jpg",
     ],
     description:
       "Nestled in the heart of the enchanting coastal town of Ukunda in Mombasa, Kenya...",
