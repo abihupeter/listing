@@ -1,12 +1,12 @@
 "use client"
+
 import { useRouter } from "next/navigation"
 import { Star, ChevronLeft, ChevronRight } from "lucide-react"
-import { useState } from "react";
-
+import { useState } from "react"
 
 interface PropertyListingCardProps {
   id: string
-  image: string
+  images: string[]
   type?: string
   price: string
   propertyType: string
@@ -15,9 +15,10 @@ interface PropertyListingCardProps {
   rating: number
   actionType: string
 }
+
 export function PropertyListingCard({
   id,
-  image,
+  images,
   type,
   price,
   propertyType,
@@ -27,9 +28,27 @@ export function PropertyListingCard({
   actionType,
 }: PropertyListingCardProps) {
   const router = useRouter()
+  const [liked, setLiked] = useState(false)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
   const handleCardClick = () => {
     router.push(`/unit/${id}`)
   }
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    setCurrentImageIndex((prev) =>
+      prev === 0 ? images.length - 1 : prev - 1
+    )
+  }
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    setCurrentImageIndex((prev) =>
+      prev === images.length - 1 ? 0 : prev + 1
+    )
+  }
+
   const getActionTypeColor = (action: string) => {
     switch (action) {
       case "Rent":
@@ -42,47 +61,72 @@ export function PropertyListingCard({
         return "bg-gray-600"
     }
   }
-  const [liked, setLiked] = useState(false);
+
   return (
     <div
       className="bg-white shadow-lg hover:shadow-xl rounded-2xl overflow-hidden transition-shadow duration-300 cursor-pointer"
       onClick={handleCardClick}
     >
-      {/* Property Image */}
+      {/* Property Image Carousel */}
       <div className="group relative h-48 overflow-hidden">
-        <img src={image || "/placeholder.svg"} alt={propertyType} className="w-full h-full object-cover" />
-        {/* Navigation arrows */}
-        <button className="top-1/2 left-2 absolute bg-white/80 opacity-0 group-hover:opacity-100 p-1 rounded-full transition-opacity -translate-y-1/2 transform">
+        <img
+          src={images[currentImageIndex] || "/placeholder.svg"}
+          alt={propertyType}
+          className="w-full h-full object-cover transition-all duration-500"
+        />
+
+        {/* Left Arrow */}
+        <button
+          onClick={handlePrev}
+          className="top-1/2 left-2 absolute bg-white/80 opacity-0 group-hover:opacity-100 p-1 rounded-full transition-opacity -translate-y-1/2 transform"
+        >
           <ChevronLeft className="w-4 h-4" />
         </button>
-        <button className="top-1/2 right-2 absolute bg-white/80 opacity-0 group-hover:opacity-100 p-1 rounded-full transition-opacity -translate-y-1/2 transform">
+
+        {/* Right Arrow */}
+        <button
+          onClick={handleNext}
+          className="top-1/2 right-2 absolute bg-white/80 opacity-0 group-hover:opacity-100 p-1 rounded-full transition-opacity -translate-y-1/2 transform"
+        >
           <ChevronRight className="w-4 h-4" />
         </button>
+
         {/* Property Type Badge */}
-        <div className="top-4 left-4 absolute">
-          <span className="bg-white/90 px-3 py-1 rounded-full font-medium text-gray-800 text-sm">{type}</span>
-        </div>
+        {type && (
+          <div className="top-4 left-4 absolute">
+            <span className="bg-white/90 px-3 py-1 rounded-full font-medium text-gray-800 text-sm">
+              {type}
+            </span>
+          </div>
+        )}
+
         {/* Action Type Badge */}
         <div className="bottom-4 left-4 absolute">
-          <span className={`${getActionTypeColor(actionType)} text-white px-3 py-1 rounded-full text-sm font-medium`}>
+          <span
+            className={`${getActionTypeColor(
+              actionType
+            )} text-white px-3 py-1 rounded-full text-sm font-medium`}
+          >
             {actionType}
           </span>
         </div>
-        {/* Favorite Button */}
+
+        {/* Like Button */}
         <button
-  onClick={(e) => {
-    e.stopPropagation(); // prevent card click
-    setLiked((prev) => !prev);
-  }}
-  className="top-4 right-4 absolute bg-white/80 p-2 rounded-full"
->
-  <img
-    src={liked ? "/images/heart__1_.png" : "/images/heart.jpeg"}
-    alt="Favorite"
-    className="w-5 h-5 object-contain"
-  />
-</button>
+          onClick={(e) => {
+            e.stopPropagation()
+            setLiked((prev) => !prev)
+          }}
+          className="top-4 right-4 absolute bg-white/80 p-2 rounded-full"
+        >
+          <img
+            src={liked ? "/images/heart__1_.png" : "/images/heart.jpeg"}
+            alt="Favorite"
+            className="w-5 h-5 object-contain"
+          />
+        </button>
       </div>
+
       {/* Property Details */}
       <div className="p-4">
         <div className="flex justify-between items-center mb-2">

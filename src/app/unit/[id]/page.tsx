@@ -38,7 +38,7 @@ export default function UnitDetailPage() {
       "https://kodinyumba.app/media/Stock/House/house${5}.jpg",
     ],
     description:
-      "Nestled in the heart of the enchanting coastal town of Ukunda in Mombasa, Kenya...",
+      "Nestled in the heart of the enchanting beautiful coastal town of Ukunda in Mombasa, Kenya.....",
   };
 
   return (

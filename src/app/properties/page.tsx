@@ -7,10 +7,11 @@ import { PropertyGrid } from "@/components/property/property-grid";
 import { FiltersModal } from "@/components/property/filters-modal";
 import { AmenitiesModal } from "@/components/amenities-modal";
 import { FacilitiesModal } from "@/components/facilities-modal";
-import { Grid3X3, ChevronLeft, ChevronRight } from "lucide-react";
+import { Grid3X3, ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
 import { PhotoGalleryModal } from "@/components/photo-gallery-modal";
 import { Footer } from "@/components/footer";
 import router from "next/router";
+import { useRouter } from 'next/navigation';
 
 export default function PropertiesPage() {
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
@@ -42,6 +43,7 @@ export default function PropertiesPage() {
   };
 
   const imageUrl = images[currentIndex];
+  const router = useRouter()
 
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -51,13 +53,10 @@ export default function PropertiesPage() {
         <div className="flex justify-between items-center">
           {/* Left side: Back button and Kodi logo */}
           <div className="flex items-center gap-6">
-            <button
-              onClick={() => router.push("/")}
-              className="flex items-center text-black hover:text-blue-700 font-medium"
-            >
-              <ChevronLeft className="w-5 h-5 mr-1" />
-              Back
-            </button>
+           <Button variant="ghost" size="sm" onClick={() => router.push("/property")}>
+                       <ArrowLeft className="mr-2 w-4 h-4" />
+                       Back
+                     </Button>
 
             <button
               onClick={() => router.push("/")}
@@ -83,7 +82,7 @@ export default function PropertiesPage() {
 
       {/* Hero Section */}
       <div className="container mx-auto px-4 mt-10 mb-9">
-  <div className="relative h-80 rounded-2xl overflow-hidden shadow-md">
+      <div className="relative h-60 rounded-2xl overflow-hidden shadow-md">
 
         <img
           src={imageUrl}
@@ -183,7 +182,7 @@ export default function PropertiesPage() {
             onClick={() => setIsFacilitiesOpen(true)}
             className="bg-blue-600 hover:bg-blue-700 text-white"
           >
-            Nearby Facilities
+            Nearby Facilitiess
           </Button>
         </div>
       </div>

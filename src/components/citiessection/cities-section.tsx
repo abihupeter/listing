@@ -36,7 +36,7 @@ const cities = [
 export function CitiesSection() {
   return (
     <section className="bg-white py-16">
-      <div className="mx-auto px-4 container">
+      <div className="mx-auto px-11 container">
         {/* Section Header */}
         <div className="mb-12 text-center">
           <h2 className="mb-4 font-bold text-gray-900 text-3xl md:text-4xl">
@@ -47,10 +47,13 @@ export function CitiesSection() {
           </p>
         </div>
 
-        {/* Cities Grid */}
-        <div className="h- 30 flex gap-4 justify-center overflow-x-auto scrollbar-hide pb-2 px-0">
+        {/* Scrollable Cities Row */}
+        <div className="flex gap-4 overflow-x-auto scrollbar-hide px-2 pb-4 snap-x snap-mandatory">
           {cities.map((city) => (
-            <div key={city.name} className=" w-[260px] md:w-[180px] lg:w-[200px] shrink-0">
+            <div
+              key={city.name}
+              className="w-[260px] md:w-[220px] lg:w-[240px] shrink-0 snap-start"
+            >
               <CityCard {...city} />
             </div>
           ))}

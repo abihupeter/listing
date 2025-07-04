@@ -32,6 +32,8 @@ export default function PropertyPage() {
     return () => clearInterval(interval);
   }, []);
 
+
+
   return (
     <div className="bg-[#f9fafb] min-h-screen">
       {/* Header */}
@@ -73,7 +75,7 @@ export default function PropertyPage() {
       {/* Main Layout Split */}
       <div className={`flex transition-all duration-300 ${isMapOpen ? "flex-row" : "flex-col"}`}>
         {/* Main Content */}
-        <div className={`${isMapOpen ? "w-full md:w-[70%]" : "w-full"}`}>
+        <div className={`${isMapOpen ? "w-full md:w-[60%]" : "w-full"}`}>
           {/* Hero Banner */}
           <div className="container mx-auto px-4 mt-10 mb-9">
             <div className="relative h-40 rounded-2xl overflow-hidden shadow-md">
@@ -97,7 +99,7 @@ export default function PropertyPage() {
 
         {/* Map Section */}
         {isMapOpen && (
-          <div className="hidden md:block w-full md:w-[30%] bg-white shadow-inner">
+          <div className="hidden md:block w-full md:w-[40%] bg-white shadow-inner">
             <div className="w-full h-full mt-10">
               <iframe
                 src="https://maps.google.com/maps?q=Ruaraka,%20Nairobi&t=&z=13&ie=UTF8&iwloc=&output=embed"
