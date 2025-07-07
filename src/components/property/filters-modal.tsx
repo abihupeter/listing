@@ -126,7 +126,7 @@ export function FiltersModal({ isOpen, onClose }: FiltersModalProps) {
                   type="number"
                   value={priceRange[0]}
                   onChange={(e) => setPriceRange([Number.parseInt(e.target.value), priceRange[1]])}
-                  className="px-3 py-2 border rounded w-24"
+                  className="px-3 py-2 border rounded w-40"
                 />
               </div>
               <span>-</span>
@@ -136,10 +136,10 @@ export function FiltersModal({ isOpen, onClose }: FiltersModalProps) {
                   type="number"
                   value={priceRange[1]}
                   onChange={(e) => setPriceRange([priceRange[0], Number.parseInt(e.target.value)])}
-                  className="px-3 py-2 border rounded w-24"
+                  className="px-3 py-2 border rounded w-40"
                 />
               </div>
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm"   onClick={() => setPriceRange([5000, 500000])}>
                 Reset
               </Button>
             </div>
