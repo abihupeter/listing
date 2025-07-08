@@ -42,7 +42,7 @@ export default function PropertyPage() {
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-6">
               <button
-                onClick={() => router.back()}
+                onClick={() => router.push("/")}
                 className="flex items-center text-black hover:text-blue-700 font-medium"
               >
                 <ChevronLeft className="w-5 h-5 mr-1" />
@@ -50,7 +50,7 @@ export default function PropertyPage() {
               </button>
               <button
                 onClick={() => router.push("/")}
-                className="text-blue-600 text-3xl font-bold font-[fonarto] hover:opacity-90"
+                className="text-blue-600 text-3xl font-bold hover:opacity-90 font-fonarto"
               >
                 Kodi
               </button>
