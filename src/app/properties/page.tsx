@@ -60,7 +60,7 @@ export default function PropertiesPage() {
 
             <button
               onClick={() => router.push("/")}
-              className="font-[fonarto] text-blue-600 text-3xl font-bold font- hover:opacity-90"
+              className="font-fonarto text-blue-600 text-3xl font-bold font- hover:opacity-90"
             >
               Kodi
             </button>
