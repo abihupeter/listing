@@ -16,7 +16,7 @@ export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
             }`}
           >
             <div
-              className="text-blue-600 text-3xl font-bold font-[fonarto]"
+              className="text-blue-600 text-3xl font-bold font-fonarto"
             >
               Kodi
             </div>
