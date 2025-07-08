@@ -58,7 +58,7 @@ export default function PropertyPage() {
             <Button
               variant="outline"
               onClick={() => setIsFiltersOpen(true)}
-              className="flex items-center gap-2 border rounded-md shadow-sm"
+              className="flex items-center gap-2 border rounded-md shadow-sm font-semibold"
             >
               <Grid3X3 className="w-4 h-4" />
               Filters
