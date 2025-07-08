@@ -26,12 +26,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/*<Head >
+        <head>
+        {/*  Fonarto  */}
         <link
-          href="https://fonts.cdnfonts.com/css/axiforma"
+          href="https://fonts.cdnfonts.com/css/fonarto-xt"
           rel="stylesheet"
         />
-      </Head>*/}
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
