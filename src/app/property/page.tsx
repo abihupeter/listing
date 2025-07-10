@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { PropertyTypeFilter } from "@/components/property/property-type-filter";
 import { AllPropertyGrid } from "@/components/propertylisting/all-properties-grid";
 import { FiltersModal } from "@/components/property/filters-modal";
-import { Grid3X3, ChevronLeft } from "lucide-react";
+import { Grid3X3, ChevronLeft, ArrowLeft } from "lucide-react";
 import { Footer } from "@/components/footer";
 import { useRouter } from "next/navigation";
 
@@ -41,13 +41,16 @@ export default function PropertyPage() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-6">
-              <button
-                onClick={() => router.push("/")}
-                className="flex items-center text-black hover:text-blue-700 font-medium"
-              >
-                <ChevronLeft className="w-5 h-5 mr-1" />
-                Back
-              </button>
+             <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => router.push("/")}
+                  className="hover:bg-gray-100 hover:text-black transition-colors"
+                >
+                  <ArrowLeft className="mr-2 w-4 h-4" />
+                  Back
+                </Button>
+
               <button
                 onClick={() => router.push("/")}
                 className="text-blue-600 text-3xl font-bold hover:opacity-90 font-fonarto"

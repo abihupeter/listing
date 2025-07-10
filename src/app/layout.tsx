@@ -29,7 +29,7 @@ export default function RootLayout({
         <head>
         {/*  Fonarto  */}
         <link
-          href="https://fonts.cdnfonts.com/css/fonarto-xt"
+          href="https://fonts.cdnfonts.com/css/Fonarto"
           rel="stylesheet"
         />
       </head>

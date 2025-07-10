@@ -53,10 +53,16 @@ export default function PropertiesPage() {
         <div className="flex justify-between items-center">
           {/* Left side: Back button and Kodi logo */}
           <div className="flex items-center gap-6">
-           <Button variant="ghost" size="sm" onClick={() => router.push("/property")}>
-                       <ArrowLeft className="mr-2 w-4 h-4" />
-                       Back
-                     </Button>
+           <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => router.push("/property")}
+            className="hover:bg-gray-100 hover:text-black transition-colors"
+          >
+            <ArrowLeft className="mr-2 w-4 h-4" />
+            Back
+          </Button>
+
 
             <button
               onClick={() => router.push("/")}

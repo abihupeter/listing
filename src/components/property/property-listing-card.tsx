@@ -69,63 +69,76 @@ export function PropertyListingCard({
     >
       {/* Property Image Carousel */}
       <div className="group relative h-48 overflow-hidden">
-        <img
-          src={images[currentImageIndex] || "/placeholder.svg"}
-          alt={propertyType}
-          className="w-full h-full object-cover transition-all duration-500"
-        />
+  <img
+    src={images[currentImageIndex] || "/placeholder.svg"}
+    alt={propertyType}
+    className="w-full h-full object-cover transition-all duration-500"
+  />
 
-        {/* Left Arrow */}
-        <button
-          onClick={handlePrev}
-          className="top-1/2 left-2 absolute bg-white/80 opacity-0 group-hover:opacity-100 p-1 rounded-full transition-opacity -translate-y-1/2 transform"
-        >
-          <ChevronLeft className="w-4 h-4" />
-        </button>
+  {/* Left Arrow */}
+  <button
+    onClick={handlePrev}
+    className="top-1/2 left-2 absolute bg-white/80 opacity-0 group-hover:opacity-100 p-1 rounded-full transition-opacity -translate-y-1/2 transform"
+  >
+    <ChevronLeft className="w-4 h-4" />
+  </button>
 
-        {/* Right Arrow */}
-        <button
-          onClick={handleNext}
-          className="top-1/2 right-2 absolute bg-white/80 opacity-0 group-hover:opacity-100 p-1 rounded-full transition-opacity -translate-y-1/2 transform"
-        >
-          <ChevronRight className="w-4 h-4" />
-        </button>
+  {/* Right Arrow */}
+  <button
+    onClick={handleNext}
+    className="top-1/2 right-2 absolute bg-white/80 opacity-0 group-hover:opacity-100 p-1 rounded-full transition-opacity -translate-y-1/2 transform"
+  >
+    <ChevronRight className="w-4 h-4" />
+  </button>
 
-        {/* Property Type Badge */}
-        {type && (
-          <div className="top-4 left-4 absolute">
-            <span className="bg-white/90 px-3 py-1 rounded-full font-medium text-gray-800 text-sm">
-              {type}
-            </span>
-          </div>
-        )}
+  {/* Property Type Badge */}
+  {type && (
+    <div className="top-4 left-4 absolute">
+      <span className="bg-white/90 px-3 py-1 rounded-full font-medium text-gray-800 text-sm">
+        {type}
+      </span>
+    </div>
+  )}
 
-        {/* Action Type Badge */}
-        <div className="bottom-4 left-4 absolute">
-          <span
-            className={`${getActionTypeColor(
-              actionType
-            )} text-white px-3 py-1 rounded-full text-sm font-medium`}
-          >
-            {actionType}
-          </span>
-        </div>
+  {/* Action Type Badge */}
+  <div className="bottom-4 left-4 absolute">
+    <span
+      className={`${getActionTypeColor(
+        actionType
+      )} text-white px-3 py-1 rounded-full text-sm font-medium`}
+    >
+      {actionType}
+    </span>
+  </div>
 
-        {/* Like Button */}
-        <button
-          onClick={(e) => {
-            e.stopPropagation()
-            setLiked((prev) => !prev)
-          }}
-          className="top-4 right-4 absolute bg-white/80 p-2 rounded-full"
-        >
-          <img
-            src={liked ? "/images/heart__1_.png" : "/images/heart.jpeg"}
-            alt="Favorite"
-            className="w-5 h-5 object-contain"
-          />
-        </button>
-      </div>
+  {/* Like Button */}
+  <button
+    onClick={(e) => {
+      e.stopPropagation()
+      setLiked((prev) => !prev)
+    }}
+    className="top-4 right-4 absolute bg-white/80 p-2 rounded-full"
+  >
+    <img
+      src={liked ? "/images/heart__1_.png" : "/images/heart.jpeg"}
+      alt="Favorite"
+      className="w-5 h-5 object-contain"
+    />
+  </button>
+
+  {/* Image Indicator Dots */}
+  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+    {images.map((_, index) => (
+      <span
+        key={index}
+        className={`h-[2px] w-6 rounded transition-colors duration-300 ${
+          index === currentImageIndex ? "bg-white" : "bg-white/30"
+        }`}
+      />
+    ))}
+  </div>
+</div>
+
 
       {/* Property Details */}
       <div className="p-4">
