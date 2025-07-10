@@ -166,5 +166,15 @@
   font-weight: normal;
   font-style: normal;
 }
+/* Hide the sidebar when the modal is open */
+body.modal-open .property-sidebar {
+  display: none !important;
+}
+
+/* Lock scroll on modal open (already handled by JS, but for safety) */
+body.modal-open {
+  overflow: hidden;
+}
+
 
 

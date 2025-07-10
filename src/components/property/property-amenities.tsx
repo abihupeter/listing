@@ -86,7 +86,7 @@ export function PropertyAmenities() {
 
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-opacity-100 z-50 flex items-center justify-center bg-black/80">
+        <div className="fixed inset-0 bg-opacity-100 z-51 flex items-center justify-center bg-black/80">
           <div className="bg-white rounded-lg shadow-lg w-full max-w-2xl max-h-[90vh] overflow-y-auto relative p-6">
             {/* Close X */}
             <button

@@ -18,12 +18,9 @@ export function PropertyInfo({
         </p>
       </div>
       
-      {/*image */}
-      <img 
-        src="/images/kodi-logo.png" 
-        alt="House Icon" 
-        className="w-15 h-15 object-contain" 
-      />
+      <div className="font-fonarto text-2xl text-[30px] text-blue-600 font-bold">
+      Kodi
     </div>
+  </div>
   );
 }

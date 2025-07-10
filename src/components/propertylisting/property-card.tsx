@@ -32,7 +32,7 @@ export function PropertyCard({
   const router = useRouter()
 
   const handleCardClick = () => {
-    router.push("/property/1")
+    router.push("/property")
   }
 
   return (

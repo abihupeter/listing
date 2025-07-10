@@ -1,12 +1,25 @@
+'use client'
+
+import { useRouter } from "next/navigation";
+
 interface CityCardProps {
-  name: string
-  propertyCount: number
-  image: string
+  name: string;
+  propertyCount: number;
+  image: string;
 }
 
 export function CityCard({ name, propertyCount, image }: CityCardProps) {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/cities-listing?city=${encodeURIComponent(name)}`);
+  };
+
   return (
-    <div className="group relative flex-shrink-0 rounded-2xl min-w-[200px] h-64 overflow-hidden cursor-pointer">
+    <div
+      onClick={handleClick}
+      className="group relative flex-shrink-0 rounded-2xl min-w-[200px] h-64 overflow-hidden cursor-pointer"
+    >
       <div className="relative h-full">
         <img
           src={image || "/placeholder.svg"}
@@ -23,5 +36,5 @@ export function CityCard({ name, propertyCount, image }: CityCardProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }
