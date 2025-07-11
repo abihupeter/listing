@@ -115,7 +115,7 @@ export default function PropertyPage() {
         {/* Map Section (Sticky, Rounded, Margin) */}
         {isMapOpen && (
           <div className="hidden md:block h-150 w-full md:w-[40%] sticky top-[100px] self-start mr-4">
-            <div className="bg-white rounded-xl overflow-hidden shadow-md h-[700px] mt-10 mb-200">
+            <div className="bg-white rounded-xl overflow-hidden shadow-md h-[550px] mt-10 mb-200">
               <iframe
                 src="https://maps.google.com/maps?q=Ruaraka,%20Nairobi&t=&z=13&ie=UTF8&iwloc=&output=embed"
                 width="100%"
