@@ -32,7 +32,7 @@ export function PropertyListingCard({
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   const handleCardClick = () => {
-    router.push(`/unit/${id}`)
+   window.open(`/unit/${id}`, '_blank');
   }
 
   const handlePrev = (e: React.MouseEvent) => {
