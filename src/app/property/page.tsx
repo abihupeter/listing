@@ -5,16 +5,16 @@ import { Button } from "@/components/ui/button";
 import { PropertyTypeFilter } from "@/components/property/property-type-filter";
 import { AllPropertyGrid } from "@/components/propertylisting/all-properties-grid";
 import { FiltersModal } from "@/components/property/filters-modal";
-import { Grid3X3, ChevronLeft, ArrowLeft, User } from "lucide-react";
+import { Grid3X3, ArrowLeft, User } from "lucide-react";
 import { Footer } from "@/components/footer";
 import { useRouter } from "next/navigation";
 import { ProfileSidebar } from "@/components/ui/profile-sidebar";
 
 export default function PropertyPage() {
   const router = useRouter();
-
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const [isMapOpen, setIsMapOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(0);
 
   const images = [
@@ -33,61 +33,59 @@ export default function PropertyPage() {
     return () => clearInterval(interval);
   }, []);
 
-const [isProfileOpen, setIsProfileOpen] = useState(false);
-
-
   return (
     <div className="bg-[#f9fafb] min-h-screen">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white shadow-sm">
-                  <div className="container mx-auto px-4 py-4">
-                    <div className="flex justify-between items-center">
-                      {/* Left side: Back button and Kodi logo */}
-                      <div className="flex items-center gap-6">
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => router.push("/")}
-                          className="hover:bg-gray-100 hover:text-black transition-colors"
-                        >
-                          <ArrowLeft className="mr-2 w-4 h-4" />
-                          Back
-                        </Button>
-      
-                        <button
-                          onClick={() => router.push("/")}
-                          className="font-fonarto font-bold text-[35px] text-blue-600 text-3xl hover:opacity-80 transition"
-                        >
-                          Kodi
-                        </button>
-                      </div>
-      
-                      {/* Right side: Filter Button + Profile Icon */}
-                      <div className="relative flex items-center gap-4">
-                        <Button
-                          variant="outline"
-                          onClick={() => setIsFiltersOpen(true)}
-                          className="flex items-center gap-2"
-                        >
-                          <Grid3X3 className="w-4 h-4" />
-                          Filters
-                        </Button>
-      
-                       <Button
-                          onClick={() => setIsProfileOpen((prev) => !prev)}
-                          className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-md"
-                        >
-                          <User className="w-5 h-5 text-white" />
-                        </Button>
-      
-                        {/* Profile Sidebar */}
-                        <ProfileSidebar isOpen={isProfileOpen} onClose={() => setIsProfileOpen(false)} />
-                      </div>
-                    </div>
-                  </div>
-      
-                  <PropertyTypeFilter />
-                </header>
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex justify-between items-center">
+            {/* Left side: Back button and Kodi logo */}
+            <div className="flex items-center gap-6">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => router.push("/")}
+                className="hover:bg-gray-100 hover:text-black transition-colors"
+              >
+                <ArrowLeft className="mr-2 w-4 h-4" />
+                Back
+              </Button>
+
+              <button
+                onClick={() => router.push("/")}
+                className="font-fonarto font-bold text-[35px] text-blue-600 text-3xl hover:opacity-80 transition"
+              >
+                Kodi
+              </button>
+            </div>
+
+            {/* Right side: Filter Button + Profile Icon */}
+            <div className="relative flex items-center gap-4">
+              <Button
+                variant="outline"
+                onClick={() => setIsFiltersOpen(true)}
+                className="flex items-center gap-2"
+              >
+                <Grid3X3 className="w-4 h-4" />
+                Filters
+              </Button>
+
+              <Button
+                onClick={() => setIsProfileOpen((prev) => !prev)}
+                className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-md"
+              >
+                <User className="w-5 h-5 text-white" />
+              </Button>
+
+              <ProfileSidebar
+                isOpen={isProfileOpen}
+                onClose={() => setIsProfileOpen(false)}
+              />
+            </div>
+          </div>
+        </div>
+        <PropertyTypeFilter />
+      </header>
 
       {/* Main Layout Split */}
       <div className={`flex transition-all duration-300 ${isMapOpen ? "flex-row" : "flex-col"}`}>
@@ -114,17 +112,17 @@ const [isProfileOpen, setIsProfileOpen] = useState(false);
           </div>
         </div>
 
-        {/* Map Section */}
+        {/* Map Section (Sticky, Rounded, Margin) */}
         {isMapOpen && (
-          <div className="hidden md:block w-full md:w-[40%] bg-white shadow-inner">
-            <div className="w-full h-full mt-10">
+          <div className="hidden md:block w-full md:w-[40%] sticky top-[100px] self-start mr-4">
+            <div className="bg-white rounded-xl overflow-hidden shadow-md h-[500px] mt-10">
               <iframe
                 src="https://maps.google.com/maps?q=Ruaraka,%20Nairobi&t=&z=13&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 allowFullScreen
                 loading="lazy"
-                className="rounded-none min-h-[500px] max-h-[800px]"
+                className="rounded-xl"
               ></iframe>
             </div>
           </div>
