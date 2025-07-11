@@ -95,19 +95,31 @@ export function PropertyImageGallery({ images: propImages, count = 5 }: Property
         </div>
 
         {/* Large Images */}
-        <div className="px-4 py-6 space-y-10">
-          {images.map((img, idx) => (
-            <div key={idx} className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <h3 className="text-base font-semibold sm:w-48">{img.label}</h3>
-              <img
-                src={img.url}
-                alt={img.label}
-                className="w-full sm:w-auto max-h-[500px] object-cover rounded-lg"
-              />
-            </div>
-          ))}
-        </div>
-
+         {/* Grouped Horizontal Scrollable Sections */}
+          <div className="px-4 py-6 space-y-10">
+            {images.map((img, idx) => (
+              <div key={idx} className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                <h3 className="text-base font-semibold text-gray-800 min-w-[120px] sm:min-w-[160px]">
+                  {img.label}
+                </h3>
+                <div className="flex overflow-x-auto gap-4 scroll-smooth scroll-snap-x w-full">
+                  {[1, 2, 3, 4, 5].map((n) => (
+                    <div
+                      key={n}
+                      className="min-w-[250px] flex-shrink-0 scroll-snap-align-start"
+                      style={{ scrollSnapAlign: "start" }}
+                    >
+                      <img
+                        src={img.url}
+                        alt={`${img.label} ${n}`}
+                        className="w-full h-48 object-cover rounded-lg"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         {/* Close Button */}
         <div className="text-center py-6 border-t">
           <Button
