@@ -69,8 +69,8 @@ export function AmenitiesFacilitiesTabs() {
               <Image
                 src={"icon" in item ? item.icon : item.image}
                 alt={item.name}
-                width={50}
-                height={50}
+                width={25}
+                height={25}
                 className="object-contain"
               />
               <p className="text-sm mt-2 text-gray-700 font-medium">{item.name}</p>

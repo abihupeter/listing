@@ -37,7 +37,7 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
     <div
       ref={sidebarRef}
       className={clsx(
-        "absolute top-12 right-1 bg-white shadow-lg rounded-lg w-64 p-4 border z-50 bg-black/50",
+        "absolute top-12 right-1 bg-white shadow-lg rounded-lg w-64 p-4 border z-50 ",
         !isOpen && "hidden"
       )}
     >
@@ -45,7 +45,7 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
         <>
           <Button
             variant="ghost"
-            className="w-full justify-start mb-2"
+            className="w-full justify-start mb-2 hover:bg-blue-300"
             onClick={() => {
               router.push("/not-found");
               onClose();
@@ -56,7 +56,7 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
           </Button>
           <Button
             variant="ghost"
-            className="w-full justify-start mb-2"
+            className="w-full justify-start mb-2 hover:bg-blue-300"
             onClick={() => {
               router.push("/not-found");
               onClose();
@@ -67,7 +67,7 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
           </Button>
           <Button
             variant="ghost"
-            className="w-full justify-start mb-4"
+            className="w-full justify-start mb-4 hover:bg-blue-300"
             onClick={() => {
               router.push("/not-found");
               onClose();
@@ -78,20 +78,20 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
           </Button>
           <Button
             variant="default"
-            className="w-full flex items-center gap-2 bg-blue-600 hover:bg-blue-700"
+            className="w-full flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white"
             onClick={() => setIsSignedIn(false)}
           >
-            <LogOut className="w-4 h-4" />
+            <LogOut className="w-4 h-4 text-white" />
             Sign Out
           </Button>
         </>
       ) : (
-        <Button
+       <Button
           variant="default"
-          className="w-full flex items-center gap-2 bg-blue-600 hover:bg-blue-700"
+          className="w-full flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white"
           onClick={() => setIsSignedIn(true)}
         >
-          <LogIn className="w-4 h-4" />
+          <LogIn className="w-4 h-4 text-white" />
           Sign In
         </Button>
       )}
