@@ -51,30 +51,36 @@ const propertyTypes = [
 ];
 
 export function PropertyTypeFilter() {
-  const [selectedType, setSelectedType] = useState<string | null>(null);
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+
+  const toggleType = (id: string) => {
+    setSelectedTypes((prev) =>
+      prev.includes(id) ? prev.filter((t) => t !== id) : [...prev, id]
+    );
+  };
 
   return (
-    <div className="bg-white border-">
-      <div className="mx-auto px-4 py-1 container">
+    <div className="bg-white border-b">
+      <div className="mx-auto px-4 py-2 container">
         <div className="flex gap-1 overflow-x-auto scrollbar-hide">
           {propertyTypes.map((type) => {
-            const isSelected = selectedType === type.id;
+            const isSelected = selectedTypes.includes(type.id);
             return (
               <button
                 key={type.id}
-                onClick={() => setSelectedType(type.id)}
-                className="group flex flex-col items-center min-w-[100px] p-3 rounded-lg transition-colors hover:bg-gray-50"
+                onClick={() => toggleType(type.id)}
+                className={`group flex flex-col items-center min-w-[100px] p-3 rounded-lg transition-colors ${
+                  isSelected ? "bg-blue-50" : "hover:bg-gray-50"
+                }`}
               >
                 <img
                   src={type.image}
                   alt={type.name}
-                  className="mb-0 w-7 h-7 object-contain"
+                  className="mb-1 w-7 h-7 object-contain"
                 />
                 <span
                   className={`font-medium text-sm text-center transition-all ${
-                    isSelected
-                      ? "underline text-blue-600"
-                      : "group-hover:underline"
+                    isSelected ? "underline text-blue-600" : "group-hover:underline"
                   }`}
                 >
                   {type.name}
