@@ -1,11 +1,11 @@
 import { FeatureCard } from "./feature-card"
-import { Rocket, Building2, CreditCard } from "lucide-react"
+import { Rocket, Building2, CreditCard, Banknote, Wallet } from "lucide-react"
 
 const features = [
   {
     icon: (
-      <div className="flex justify-center items-center bg-blue-600 rounded-full w-16 h-16">
-        <Rocket className="w-8 h-8 text-white" />
+      <div className="flex justify-center items-center bg-blue-200 rounded-full w-18 h-18 transition-transform duration-300 hover:scale-105 hover:bg-blue-300">
+        <Rocket className="w-10 h-10 text-blue-600" />
       </div>
     ),
     title: "Trusted By Thousands",
@@ -14,8 +14,8 @@ const features = [
   },
   {
     icon: (
-      <div className="flex justify-center items-center bg-blue-200 rounded-full w-16 h-16">
-        <Building2 className="w-8 h-8 text-blue-600" />
+      <div className="flex justify-center items-center bg-blue-200 rounded-full w-18 h-18 transition-transform duration-300 hover:scale-105 hover:bg-blue-300">
+        <Building2 className="w-10 h-10 text-blue-600" />
       </div>
     ),
     title: "Wide Range Of Properties",
@@ -24,15 +24,16 @@ const features = [
   },
   {
     icon: (
-      <div className="flex justify-center items-center bg-blue-200 rounded-full w-16 h-16">
-        <CreditCard className="w-8 h-8 text-blue-600" />
+      <div className="flex justify-center items-center bg-blue-200 rounded-full w-18 h-18 transition-transform duration-300 hover:scale-105 hover:bg-blue-300">
+        <Wallet className="w-10 h-10 text-blue-600" />
       </div>
     ),
     title: "Financing Made Easy",
     description:
       "Securing the right financing for your property just got simpler with Alliance Realtors. Our team of experts ensures a hassle-free experience, offering personalized guidance, competitive rates, and complete transparency. With fast approvals and diverse financing options, we're your trusted partner on the path to property ownership.",
   },
-]
+];
+
 
 export function WhyChooseUs() {
   return (

@@ -13,11 +13,15 @@ export function CTASection() {
 
           {/* CTA Button */}
           <div className="flex-shrink-0">
-            <Button
-              size="lg"
-              className="bg-slate-800 hover:bg-slate-700 px-8 py-3 rounded-lg font-semibold text-white text-lg"
-            >
-              Get Started
+            <Button asChild>
+              <a
+                href="https://www.kodinyumba.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-slate-800 hover:bg-slate-700 px-8 py-3 rounded-lg font-semibold text-white text-lg"
+              >
+                Get Started
+              </a>
             </Button>
           </div>
         </div>
