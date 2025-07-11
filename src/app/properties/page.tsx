@@ -182,13 +182,13 @@ export default function PropertiesPage() {
             onClick={() => setIsAmenitiesOpen(true)}
             className="bg-blue-600 hover:bg-blue-700 text-white"
           >
-            Amenitiess
+            Amenities
           </Button>
           <Button
             onClick={() => setIsFacilitiesOpen(true)}
             className="bg-blue-600 hover:bg-blue-700 text-white"
           >
-            Nearby Facilitiess
+            Nearby Facilities
           </Button>
         </div>
       </div>

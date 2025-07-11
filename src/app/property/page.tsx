@@ -96,7 +96,7 @@ export default function PropertyPage() {
 
           {/* Property Grid */}
           <div className="container mx-auto px-4">
-            <AllPropertyGrid />
+            <AllPropertyGrid limit={isMapOpen ? 6 : undefined} />
           </div>
         </div>
 

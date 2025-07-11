@@ -4,6 +4,9 @@ import { useState } from "react";
 import { AllPropertyListingCard } from "./all-properties-card";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+interface AllPropertyGridProps {
+  limit?: number;
+}
 const properties = [
     {
         id: "01",
@@ -102,16 +105,15 @@ const properties = [
   },
 ];
 
-export function AllPropertyGrid() {
+export function AllPropertyGrid({ limit }: AllPropertyGridProps) {
   const [page, setPage] = useState(1);
   const pageSize = 12;
   const total = properties.length;
   const totalPages = Math.ceil(total / pageSize);
 
-  const paginatedProperties = properties.slice(
-    (page - 1) * pageSize,
-    page * pageSize
-  );
+  const paginatedProperties = limit
+    ? properties.slice(0, limit)
+    : properties.slice((page - 1) * pageSize, page * pageSize);
 
   const getPageLabel = () => {
     const start = (page - 1) * pageSize + 1;
@@ -121,32 +123,36 @@ export function AllPropertyGrid() {
 
   return (
     <div className="mx-auto px-4 pb-12 container">
-      <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {paginatedProperties.map((property) => (
           <AllPropertyListingCard key={property.id} {...property} />
         ))}
       </div>
 
-      {/* Pagination Navigator */}
-      <div className="flex items-center justify-center gap-4 mt-8">
-        <button
-          onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-          disabled={page === 1}
-          className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-50"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
+      {/* Pagination only if no limit is applied */}
+      {!limit && (
+        <div className="flex items-center justify-center gap-4 mt-8">
+          <button
+            onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+            disabled={page === 1}
+            className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-50"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
 
-        <span className="font-medium text-sm text-gray-700">{getPageLabel()}</span>
+          <span className="font-medium text-sm text-gray-700">
+            {getPageLabel()}
+          </span>
 
-        <button
-          onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
-          disabled={page === totalPages}
-          className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-50"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
-      </div>
+          <button
+            onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
+            disabled={page === totalPages}
+            className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-50"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+      )}
     </div>
   );
 }

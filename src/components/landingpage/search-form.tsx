@@ -34,10 +34,10 @@ export default function SearchForm({ activeTab }: { activeTab: string }) {
 
             {/* Property Type */}
             <Select>
-              <SelectTrigger className={`${commonSelectTriggerClass} w-full h-12`}>
+              <SelectTrigger className={`${commonSelectTriggerClass} w-full h-12 text-gray-700`}>
                 <SelectValue placeholder="Property Type" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white text-black">
                 <SelectItem value="apartment">Apartment</SelectItem>
                 <SelectItem value="house">House</SelectItem>
                 <SelectItem value="villa">Villa</SelectItem>
@@ -48,10 +48,10 @@ export default function SearchForm({ activeTab }: { activeTab: string }) {
 
             {/* Budget Range */}
             <Select>
-              <SelectTrigger className={`${commonSelectTriggerClass} w-full h-12`}>
+              <SelectTrigger className={`${commonSelectTriggerClass} w-full h-12 text-gray-700`}>
                 <SelectValue placeholder="Budget Range" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white text-black">
                 <SelectItem value="0-1m">Ksh 0 - 1M</SelectItem>
                 <SelectItem value="1m-5m">Ksh 1M - 5M</SelectItem>
                 <SelectItem value="5m-10m">Ksh 5M - 10M</SelectItem>
@@ -62,10 +62,10 @@ export default function SearchForm({ activeTab }: { activeTab: string }) {
 
             {/* Bedrooms */}
             <Select>
-              <SelectTrigger className={`${commonSelectTriggerClass} w-full h-16`}>
+              <SelectTrigger className={`${commonSelectTriggerClass} w-full h-16 text-gray-700`}>
                 <SelectValue placeholder="Bedrooms" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white text-black">
                 <SelectItem value="1">1 Bedroom</SelectItem>
                 <SelectItem value="2">2 Bedrooms</SelectItem>
                 <SelectItem value="3">3 Bedrooms</SelectItem>
@@ -111,7 +111,7 @@ export default function SearchForm({ activeTab }: { activeTab: string }) {
             <SelectTrigger className={`${commonSelectTriggerClass} w-full`}>
               <SelectValue placeholder="Property Type" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-white text-black">
               <SelectItem value="apartment">Apartment</SelectItem>
               <SelectItem value="house">House</SelectItem>
               <SelectItem value="villa">Villa</SelectItem>
@@ -124,7 +124,7 @@ export default function SearchForm({ activeTab }: { activeTab: string }) {
             <SelectTrigger className={`${commonSelectTriggerClass} w-full`}>
               <SelectValue placeholder="Location" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-white text-black">
               <SelectItem value="nairobi">Nairobi</SelectItem>
               <SelectItem value="mombasa">Mombasa</SelectItem>
               <SelectItem value="kisumu">Kisumu</SelectItem>
@@ -137,7 +137,7 @@ export default function SearchForm({ activeTab }: { activeTab: string }) {
             <SelectTrigger className={`${commonSelectTriggerClass} w-full`}>
               <SelectValue placeholder="Price" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-white text-black">
               <SelectItem value="0-10000">Ksh 0 - 10,000</SelectItem>
               <SelectItem value="10000-25000">Ksh 10,000 - 25,000</SelectItem>
               <SelectItem value="25000-50000">Ksh 25,000 - 50,000</SelectItem>
