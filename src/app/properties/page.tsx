@@ -125,9 +125,9 @@ export default function PropertiesPage() {
           {/* Show/Hide Map Button */}
           <Button
             onClick={() => setShowMap((prev) => !prev)}
-            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 mb-4"
+            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 mb-4 text-white"
           >
-            {showMap ? "Hide Map" : "Show Map"}
+            {showMap ? "Hide Map" : "Show Maps"}
             <img src="/images/map.png" alt="Map Icon" className="w-8 h-8" />
           </Button>
 
