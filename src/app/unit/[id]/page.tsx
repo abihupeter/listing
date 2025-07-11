@@ -22,7 +22,7 @@ export default function UnitDetailPage() {
     price: "Ksh.20,000",
     period: "/month",
     type: "Mansionette",
-    bedrooms: 2,
+    bedrooms: 3,
     bathrooms: 3,
     rating: 3.6,
     reviewCount: 2,
