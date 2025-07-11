@@ -12,6 +12,7 @@ import { PhotoGalleryModal } from "@/components/photo-gallery-modal";
 import { Footer } from "@/components/footer";
 import router from "next/router";
 import { useRouter } from 'next/navigation';
+import { AmenitiesFacilitiesTabs } from "@/components/property/amenities-facilities-tabs";
 
 export default function PropertiesPage() {
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
@@ -176,22 +177,7 @@ export default function PropertiesPage() {
       )}
 
       {/* Tabs */}
-      <div className="mx-auto mb-8 px-4 container">
-        <div className="flex gap-4">
-          <Button
-            onClick={() => setIsAmenitiesOpen(true)}
-            className="bg-blue-600 hover:bg-blue-700 text-white"
-          >
-            Amenities
-          </Button>
-          <Button
-            onClick={() => setIsFacilitiesOpen(true)}
-            className="bg-blue-600 hover:bg-blue-700 text-white"
-          >
-            Nearby Facilities
-          </Button>
-        </div>
-      </div>
+     <AmenitiesFacilitiesTabs /> 
 
       {/* Property Grid */}
       <PropertyGrid />
