@@ -27,26 +27,28 @@ export function PropertyImageModal({ images, onClose }: PropertyImageModalProps)
         {/* Thumbnail Row */}
         <div className="flex overflow-x-auto space-x-4 px-4 py-4 border-b">
           {images.map((img, idx) => (
-            <div key={idx} className="flex-shrink-0 text-center w-28">
+            <button
+              key={idx}
+              onClick={() => {
+                const section = sectionRefs.current[idx];
+                if (section) {
+                  section.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+              }}
+              className="flex-shrink-0 w-28 focus:outline-none text-center"
+            >
               <img
                 src={img.url}
                 alt={`Thumbnail ${idx + 1}`}
-                className="w-28 h-20 object-cover rounded-md border hover:scale-105 hover:shadow-lg transition-transform duration-200 cursor-pointer"
+                className="w-28 h-20 object-cover rounded-md border hover:scale-105 hover:shadow-lg transition-transform duration-200"
               />
-              <button
-                onClick={() => {
-                  const section = sectionRefs.current[idx]
-                  if (section) {
-                    section.scrollIntoView({ behavior: "smooth", block: "start" })
-                  }
-                }}
-                className="text-xs mt-1 text-gray-600 hover:underline font-medium focus:outline-none"
-              >
+              <span className="block text-xs mt-1 text-gray-600 hover:underline font-medium">
                 {img.label}
-              </button>
-            </div>
+              </span>
+            </button>
           ))}
         </div>
+
 
         {/* Grouped Scrollable Sections */}
         <div className="px-4 py-6 space-y-10">

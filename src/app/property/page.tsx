@@ -53,7 +53,7 @@ export default function PropertyPage() {
 
               <button
                 onClick={() => router.push("/")}
-                className="text-blue-600 text-3xl font-bold hover:opacity-90 font-fonarto"
+                className="font-fonarto font-bold text-[35px] text-blue-600 text-3xl hover:opacity-80 transition"
               >
                 Kodi
               </button>
@@ -78,7 +78,7 @@ export default function PropertyPage() {
       {/* Main Layout Split */}
       <div className={`flex transition-all duration-300 ${isMapOpen ? "flex-row" : "flex-col"}`}>
         {/* Main Content */}
-        <div className={`${isMapOpen ? "w-full md:w-[60%]" : "w-full"}`}>
+        <div className={`${isMapOpen ? "w-full md:w-[70%]" : "w-full"}`}>
           {/* Hero Banner */}
           <div className="container mx-auto px-4 mt-10 mb-9">
             <div className="relative h-40 rounded-2xl overflow-hidden shadow-md">

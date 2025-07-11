@@ -9,11 +9,17 @@ export function PropertyHeader({ router }: { router: any }) {
     <header className="bg-white border-b">
       <div className="mx-auto px-4 py-4 container">
         <div className="flex items-center gap-4">
-          <Button variant="ghost" size="sm" onClick={() => router.back()}>
+          <Button variant="ghost" size="sm" onClick={() => router.back()}
+          className="hover:bg-gray-100 hover:text-black transition-colors">
             <ArrowLeft className="mr-2 w-4 h-4" />
             Back
           </Button>
-          <div className="font-fonarto font-bold text-[35px] text-blue-600 text-3xl">Kodi</div>
+            <button
+            onClick={() => router.push("/")}
+            className="font-fonarto font-bold text-[35px] text-blue-600 text-3xl hover:opacity-80 transition"
+          >
+            Kodi
+          </button>
         </div>
       </div>
     </header>
