@@ -39,7 +39,7 @@ export default function PropertyPage() {
       <header className="sticky top-0 z-50 bg-white shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
-            {/* Left side: Back button and Kodi logo */}
+            {/* Back button and Kodi logo */}
             <div className="flex items-center gap-6">
               <Button
                 variant="ghost"
@@ -59,7 +59,7 @@ export default function PropertyPage() {
               </button>
             </div>
 
-            {/* Right side: Filter Button + Profile Icon */}
+            {/* Filter Button + Profile Icon */}
             <div className="relative flex items-center gap-4">
               <Button
                 variant="outline"
@@ -112,7 +112,7 @@ export default function PropertyPage() {
           </div>
         </div>
 
-        {/* Map Section (Sticky, Rounded, Margin) */}
+        {/* Map Section*/}
         {isMapOpen && (
           <div className="hidden md:block h-150 w-full md:w-[40%] sticky top-[100px] self-start mr-4">
             <div className="bg-white rounded-xl overflow-hidden shadow-md h-[550px] mt-10 mb-200">

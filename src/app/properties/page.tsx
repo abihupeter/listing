@@ -56,7 +56,7 @@ export default function PropertiesPage() {
          <header className="sticky top-0 z-50 bg-white shadow-sm">
             <div className="container mx-auto px-4 py-4">
               <div className="flex justify-between items-center">
-                {/* Left side: Back button and Kodi logo */}
+                {/*Back button and Kodi logo */}
                 <div className="flex items-center gap-6">
                   <Button
                     variant="ghost"
@@ -76,7 +76,7 @@ export default function PropertiesPage() {
                   </button>
                 </div>
 
-                {/* Right side: Filter Button + Profile Icon */}
+                {/*Filter Button + Profile Icon */}
                 <div className="relative flex items-center gap-4">
                   <Button
                     variant="outline"

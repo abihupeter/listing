@@ -126,6 +126,10 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+  body {
+  cursor: url("/images/custom-cursor.jpg"), auto;
+}
+  
 }
 * {
   font-family: 'Axiforma', sans-serif;
@@ -175,6 +179,8 @@ body.modal-open .property-sidebar {
 body.modal-open {
   overflow: hidden;
 }
+
+
 
 
 
