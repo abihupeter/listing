@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 import { useRouter } from "next/navigation"
 import { Star, ChevronLeft, ChevronRight } from "lucide-react"
@@ -16,7 +17,6 @@ interface AllPropertyListingCardProps {
 }
 
 export function AllPropertyListingCard({
-  id,
   image,
   type,
   price,
@@ -24,7 +24,6 @@ export function AllPropertyListingCard({
   balcony,
   stairs,
   rating,
-  actionType,
 }: AllPropertyListingCardProps) {
   const router = useRouter()
   const [liked, setLiked] = useState(false)
@@ -50,9 +49,9 @@ export function AllPropertyListingCard({
   return (
     <div
       onClick={handleCardClick}
-      className="bg-white rounded-xl border overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer max-w-sm"
+      className="bg-white shadow-sm hover:shadow-md border rounded-xl max-w-sm overflow-hidden transition-all duration-300 cursor-pointer"
     >
-      <div className="relative h-48 w-full group overflow-hidden">
+      <div className="group relative w-full h-48 overflow-hidden">
   <img
     src={images[currentIndex] || "/placeholder.svg"}
     alt={propertyType}
@@ -61,7 +60,7 @@ export function AllPropertyListingCard({
 
   {/* Unit badge */}
   {type && (
-    <span className="absolute top-2 left-2 bg-white text-blue-600 text-xs font-semibold px-2 py-1 rounded-full shadow-sm">
+    <span className="top-2 left-2 absolute bg-white shadow-sm px-2 py-1 rounded-full font-semibold text-blue-600 text-xs">
       {type}
     </span>
   )}
@@ -72,7 +71,7 @@ export function AllPropertyListingCard({
       e.stopPropagation()
       setLiked((prev) => !prev)
     }}
-    className="absolute top-2 right-2 bg-white p-1.5 rounded-full shadow-md"
+    className="top-2 right-2 absolute bg-white shadow-md p-1.5 rounded-full"
   >
     <img
       src={liked ? "/images/heart__1_.png" : "/images/heart.jpeg"}
@@ -86,13 +85,13 @@ export function AllPropertyListingCard({
     <>
       <button
         onClick={handlePrev}
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 p-1 rounded-full opacity-0 group-hover:opacity-100 transition"
+        className="top-1/2 left-2 absolute bg-white/80 opacity-0 group-hover:opacity-100 p-1 rounded-full transition -translate-y-1/2 transform"
       >
         <ChevronLeft className="w-4 h-4" />
       </button>
       <button
         onClick={handleNext}
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 p-1 rounded-full opacity-0 group-hover:opacity-100 transition"
+        className="top-1/2 right-2 absolute bg-white/80 opacity-0 group-hover:opacity-100 p-1 rounded-full transition -translate-y-1/2 transform"
       >
         <ChevronRight className="w-4 h-4" />
       </button>
@@ -101,7 +100,7 @@ export function AllPropertyListingCard({
 
   {/* Image Indicator Dots */}
   {images.length > 1 && (
-    <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+    <div className="bottom-2 left-1/2 absolute flex gap-1 -translate-x-1/2">
       {images.map((_, index) => (
         <span
           key={index}
@@ -116,15 +115,15 @@ export function AllPropertyListingCard({
 
 
       <div className="px-4 pt-2 pb-4">
-        <p className="text-xs text-gray-500 mb-1">Umoja III, Nairobi</p>
-        <h3 className="font-semibold text-lg text-gray-900 mb-1">{propertyType}</h3>
-        <p className="text-sm text-gray-700 mb-2">{price}</p>
-        <div className="flex items-center justify-between">
-          <div className="text-sm text-gray-500">
+        <p className="mb-1 text-gray-500 text-xs">Umoja III, Nairobi</p>
+        <h3 className="mb-1 font-semibold text-gray-900 text-lg">{propertyType}</h3>
+        <p className="mb-2 text-gray-700 text-sm">{price}</p>
+        <div className="flex justify-between items-center">
+          <div className="text-gray-500 text-sm">
             {balcony} Balcony • {stairs}
           </div>
-          <div className="flex items-center gap-1 text-sm text-gray-600">
-            <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+          <div className="flex items-center gap-1 text-gray-600 text-sm">
+            <Star className="fill-yellow-400 w-4 h-4 text-yellow-400" />
             <span>{rating}</span>
           </div>
         </div>

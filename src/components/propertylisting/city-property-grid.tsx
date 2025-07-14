@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { useState } from "react";
@@ -79,12 +80,12 @@ export function CityPropertyGrid({ selectedCity }: CityPropertyGridProps) {
         );
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
       {filteredProperties.length > 0 ? (
         filteredProperties.map((property) => (
           <div
             key={property.id}
-            className="bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-lg"
+            className="bg-white shadow-md hover:shadow-lg rounded-lg overflow-hidden transition"
           >
             <img
               src={property.image}
@@ -92,14 +93,14 @@ export function CityPropertyGrid({ selectedCity }: CityPropertyGridProps) {
               className="w-full h-48 object-cover"
             />
             <div className="p-4">
-              <h3 className="text-lg font-semibold">{property.title}</h3>
+              <h3 className="font-semibold text-lg">{property.title}</h3>
               <p className="text-gray-500">{property.city}</p>
-              <p className="text-blue-600 font-bold mt-2">{property.price}</p>
+              <p className="mt-2 font-bold text-blue-600">{property.price}</p>
             </div>
           </div>
         ))
       ) : (
-        <p className="text-center col-span-full text-gray-600">
+        <p className="col-span-full text-gray-600 text-center">
           No properties found for {selectedCity}.
         </p>
       )}
@@ -112,14 +113,14 @@ export function CityPropertyGridWrapper() {
   const [selectedCity, setSelectedCity] = useState('All');
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h2 className="text-2xl font-bold mb-6">Properties in {selectedCity}</h2>
+    <div className="mx-auto px-4 py-8 container">
+      <h2 className="mb-6 font-bold text-2xl">Properties in {selectedCity}</h2>
 
       <div className="mb-6">
         <select
           value={selectedCity}
           onChange={(e) => setSelectedCity(e.target.value)}
-          className="p-2 border rounded-md shadow-sm"
+          className="shadow-sm p-2 border rounded-md"
         >
           <option value="All">All Cities</option>
           <option value="Nairobi">Nairobi</option>
