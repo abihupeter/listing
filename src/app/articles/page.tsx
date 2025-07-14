@@ -15,21 +15,21 @@ export default function WideRangePage() {
       {/* Left vertical social media icons */}
       <div className="flex flex-col gap-4 pt-2 sticky top-90 h-fit">
         <Link href="https://facebook.com" target="_blank">
-          <Image src="/images/facebook.png" alt="Facebook" width={20} height={20} />
+            <Image className="grayscale" src="/images/facebook.png" alt="Facebook" width={20} height={20} />
         </Link>
         <Link href="https://twitter.com" target="_blank">
-          <Image src="/images/twitter.png" alt="Twitter" width={20} height={20} />
+            <Image className="grayscale" src="/images/twitter.png" alt="Twitter" width={20} height={20} />
         </Link>
         <Link href="https://linkedin.com" target="_blank">
-          <Image src="/images/linkedin.jpg" alt="LinkedIn" width={20} height={20} />
+            <Image className="grayscale" src="/images/linkedin.jpg" alt="LinkedIn" width={20} height={20} />
         </Link>
         <Link href="https://pinterest.com" target="_blank">
-          <Image src="/images/pinterest.jpg" alt="Pinterest" width={20} height={20} />
+            <Image className="grayscale" src="/images/pinterest.jpg" alt="Pinterest" width={20} height={20} />
         </Link>
         <Link href="#" target="_blank">
-          <Image src="/images/share.jpg" alt="Share" width={20} height={20} />
+            <Image className="grayscale" src="/images/share.jpg" alt="Share" width={20} height={20} />
         </Link>
-      </div>
+        </div>
 
       {/* Right main content */}
       <div className="flex-1">
@@ -44,21 +44,21 @@ export default function WideRangePage() {
 
         {/* Horizontal social icons (top) */}
         <div className="flex gap-4 mb-6 text-muted-foreground">
-          <Link href="https://facebook.com" target="_blank">
-            <Image src="/images/facebook.png" alt="Facebook" width={20} height={20} />
-          </Link>
-          <Link href="https://twitter.com" target="_blank">
-            <Image src="/images/twitter.png" alt="Twitter" width={20} height={20} />
-          </Link>
-          <Link href="https://linkedin.com" target="_blank">
-            <Image src="/images/linkedin.jpg" alt="LinkedIn" width={20} height={20} />
-          </Link>
-          <Link href="https://pinterest.com" target="_blank">
-            <Image src="/images/pinterest.jpg" alt="Pinterest" width={20} height={20} />
-          </Link>
-          <Link href="#" target="_blank">
-            <Image src="/images/share.jpg" alt="Share" width={20} height={20} />
-          </Link>
+        <Link href="https://facebook.com" target="_blank">
+            <Image className="grayscale" src="/images/facebook.png" alt="Facebook" width={20} height={20} />
+        </Link>
+        <Link href="https://twitter.com" target="_blank">
+            <Image className="grayscale" src="/images/twitter.png" alt="Twitter" width={20} height={20} />
+        </Link>
+        <Link href="https://linkedin.com" target="_blank">
+            <Image className="grayscale" src="/images/linkedin.jpg" alt="LinkedIn" width={20} height={20} />
+        </Link>
+        <Link href="https://pinterest.com" target="_blank">
+            <Image className="grayscale" src="/images/pinterest.jpg" alt="Pinterest" width={20} height={20} />
+        </Link>
+        <Link href="#" target="_blank">
+            <Image className="grayscale" src="/images/share.jpg" alt="Share" width={20} height={20} />
+        </Link>
         </div>
 
         <p className="text-xl text-muted-foreground mb-6">
