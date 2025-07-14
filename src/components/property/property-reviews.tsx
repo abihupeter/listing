@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState } from "react";
@@ -57,22 +58,22 @@ export function PropertyReviews() {
   );
 
   return (
-    <div className="border-b border-gray-300 py-0 relative w-full">
+    <div className="relative py-0 border-gray-300 border-b w-full">
       <h3 className="mb-6 font-bold text-xl text-left">Reviews</h3>
 
       <div className="flex flex-wrap w-full">
         {paginated.map((review) => (
           <div
             key={review.id}
-            className="w-full md:w-1/2 px-4 mb-6"
+            className="mb-6 px-4 w-full md:w-1/2"
           >
-            <div className="border rounded-lg p-6 shadow-sm bg-white h-full flex flex-col justify-between">
+            <div className="flex flex-col justify-between bg-white shadow-sm p-6 border rounded-lg h-full">
               <div className="flex justify-between items-start mb-4">
                 <div className="flex items-center gap-3">
                   <img
                     src={review.avatar}
                     alt={review.name}
-                    className="w-12 h-12 rounded-full object-cover"
+                    className="rounded-full w-12 h-12 object-cover"
                   />
                   <div>
                     <h4 className="font-semibold">{review.name}</h4>
@@ -81,12 +82,12 @@ export function PropertyReviews() {
                 <span className="text-gray-500 text-sm">{review.date}</span>
               </div>
 
-              <div className="flex items-center gap-1 text-gray-600 text-sm mb-3">
+              <div className="flex items-center gap-1 mb-3 text-gray-600 text-sm">
                 <Star className="fill-yellow-400 w-4 h-4 text-yellow-400" />
                 <span>{review.rating}</span>
               </div>
 
-              <p className="text-gray-700 text-sm whitespace-normal break-words">
+              <p className="text-gray-700 text-sm break-words whitespace-normal">
                 {review.comment}
               </p>
             </div>
@@ -95,11 +96,11 @@ export function PropertyReviews() {
       </div>
 
       {/* Arrows & Dots */}
-      <div className="mt-4 flex items-center justify-center gap-4">
+      <div className="flex justify-center items-center gap-4 mt-4">
         <button
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 0))}
           disabled={currentPage === 0}
-          className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-30"
+          className="bg-gray-100 hover:bg-gray-200 disabled:opacity-30 p-2 rounded-full"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
@@ -118,7 +119,7 @@ export function PropertyReviews() {
         <button
           onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages - 1))}
           disabled={currentPage === totalPages - 1}
-          className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-30"
+          className="bg-gray-100 hover:bg-gray-200 disabled:opacity-30 p-2 rounded-full"
         >
           <ChevronRight className="w-5 h-5" />
         </button>

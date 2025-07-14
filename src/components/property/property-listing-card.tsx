@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 
 import { useRouter } from "next/navigation"
@@ -127,7 +129,7 @@ export function PropertyListingCard({
   </button>
 
   {/* Image Indicator Dots */}
-  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+  <div className="bottom-2 left-1/2 absolute flex gap-1 -translate-x-1/2">
     {images.map((_, index) => (
       <span
         key={index}

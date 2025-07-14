@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import { useState } from "react"
@@ -53,12 +54,12 @@ export function PropertyRoomImages() {
             <div
               key={index}
               onClick={() => setShowModal(true)}
-              className="cursor-pointer group"
+              className="group cursor-pointer"
             >
               <img
                 src={item.url}
                 alt={item.label}
-                className="rounded-xl w-full h-48 object-cover transition-transform duration-200 group-hover:scale-105"
+                className="rounded-xl w-full h-48 object-cover group-hover:scale-105 transition-transform duration-200"
               />
               <p className="mt-2 font-medium text-gray-700 group-hover:underline">
                 {item.label}
