@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { X } from "lucide-react";
@@ -50,35 +51,35 @@ export function FacilitiesModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
-      <div className="relative bg-white w-full max-w-2xl rounded-lg p-6 shadow-xl">
+    <div className="z-50 fixed inset-0 flex justify-center items-center bg-black/80">
+      <div className="relative bg-white shadow-xl p-6 rounded-lg w-full max-w-2xl">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-500 hover:text-gray-800"
+          className="top-4 right-4 absolute text-gray-500 hover:text-gray-800"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Modal Title */}
-        <h2 className="text-xl font-semibold mb-6 text-center">
+        <h2 className="mb-6 font-semibold text-xl text-center">
           All Nearby Facilities
         </h2>
 
         {/* Amenity Grid */}
-        <div className="border-y grid grid-cols-2 sm:grid-cols-3 gap-6">
+        <div className="gap-6 grid grid-cols-2 sm:grid-cols-3 border-y">
           {facilitiesList.map((item, idx) => (
             <div
               key={idx}
-              className="flex flex-col items-center text-center space-y-2"
+              className="flex flex-col items-center space-y-2 text-center"
             >
               <img
                 src={item.image}
                 alt={item.name}
                 className="w-12 h-12 object-contain"
               />
-              <span className="text-sm text-gray-800">{item.name}</span>
+              <span className="text-gray-800 text-sm">{item.name}</span>
               
             </div>
           ))}
@@ -88,7 +89,7 @@ export function FacilitiesModal({
         <div className="mt-8 text-right">
           <button
             onClick={onClose}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2 rounded-lg"
+            className="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-lg font-medium text-white"
           >
             Close
           </button>

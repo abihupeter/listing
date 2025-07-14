@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
 import { useState, useEffect } from "react";
@@ -38,8 +39,8 @@ export default function PropertyPage() {
   return (
     <div className="bg-[#f9fafb] min-h-screen">
       {/* Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-4">
+      <header className="top-0 z-40 sticky bg-white shadow-sm">
+        <div className="mx-auto px-4 py-4 container">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-6">
               <Button
@@ -54,7 +55,7 @@ export default function PropertyPage() {
 
               <button
                 onClick={() => router.push("/")}
-                className="text-blue-600 text-3xl font-bold hover:opacity-90 font-fonarto"
+                className="hover:opacity-90 font-fonarto font-bold text-blue-600 text-3xl"
               >
                 Kodi
               </button>
@@ -62,7 +63,7 @@ export default function PropertyPage() {
             <Button
               variant="outline"
               onClick={() => setIsFiltersOpen(true)}
-              className="flex items-center gap-2 border rounded-md shadow-sm font-semibold"
+              className="flex items-center gap-2 shadow-sm border rounded-md font-semibold"
             >
               <Grid3X3 className="w-4 h-4" />
               Filters
@@ -81,8 +82,8 @@ export default function PropertyPage() {
         {/* Main Content */}
         <div className={`${isMapOpen ? "w-full md:w-[60%]" : "w-full"}`}>
           {/* Hero Banner */}
-          <div className="container mx-auto px-4 mt-10 mb-9">
-            <div className="relative h-44 rounded-2xl overflow-hidden shadow-md">
+          <div className="mx-auto mt-10 mb-9 px-4 container">
+            <div className="relative shadow-md rounded-2xl h-44 overflow-hidden">
               <img
                 src={images[currentImage]}
                 alt="Banner"
@@ -90,9 +91,9 @@ export default function PropertyPage() {
               />
               <div className="absolute inset-0 bg-black/50" />
               <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center">
-                <h1 className="text-3xl md:text-5xl font-bold">ALL PROPERTIES</h1>
+                <h1 className="font-bold text-3xl md:text-5xl">ALL PROPERTIES</h1>
                 {selectedCity && selectedCity !== "All" && (
-                  <p className="mt-2 text-xl font-medium">
+                  <p className="mt-2 font-medium text-xl">
                     in <span className="capitalize">{selectedCity}</span>
                   </p>
                 )}
@@ -101,19 +102,19 @@ export default function PropertyPage() {
           </div>
 
          
-           <div className="container mx-auto px-4">
+           <div className="mx-auto px-4 container">
                       <AllPropertyGrid />
                     </div>
                      {/* Property Grid 
-          <div className="container mx-auto px-4">
+          <div className="mx-auto px-4 container">
             <CityPropertyGrid selectedCity={selectedCity} />
           </div>*/}
         </div>
 
         {/* Map Section */}
         {isMapOpen && (
-          <div className="hidden md:block w-full md:w-[40%] bg-white shadow-inner">
-            <div className="w-full h-full mt-10">
+          <div className="hidden md:block bg-white shadow-inner w-full md:w-[40%]">
+            <div className="mt-10 w-full h-full">
               <iframe
                 src={`https://maps.google.com/maps?q=${encodeURIComponent(selectedCity)},%20Kenya&t=&z=13&ie=UTF8&iwloc=&output=embed`}
                 width="100%"
@@ -128,10 +129,10 @@ export default function PropertyPage() {
       </div>
 
       {/* Toggle Map Button */}
-      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
+      <div className="bottom-6 left-1/2 z-50 fixed -translate-x-1/2 transform">
         <Button
           onClick={() => setIsMapOpen(!isMapOpen)}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-11 py-8 rounded-full shadow-lg text-sm flex items-center gap-2"
+          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 shadow-lg px-11 py-8 rounded-full text-white text-sm"
         >
           <img src="/images/map.png" alt="Map Icon" className="w-8 h-8" />
           {isMapOpen ? "Hide Map" : "Show Map"}

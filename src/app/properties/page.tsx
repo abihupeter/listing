@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useEffect, useState } from "react";
@@ -53,8 +54,8 @@ export default function PropertiesPage() {
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Header */}
-         <header className="sticky top-0 z-50 bg-white shadow-sm">
-            <div className="container mx-auto px-4 py-4">
+         <header className="top-0 z-50 sticky bg-white shadow-sm">
+            <div className="mx-auto px-4 py-4 container">
               <div className="flex justify-between items-center">
                 {/*Back button and Kodi logo */}
                 <div className="flex items-center gap-6">
@@ -70,7 +71,7 @@ export default function PropertiesPage() {
 
                   <button
                     onClick={() => router.push("/")}
-                    className="font-fonarto font-bold text-[35px] text-blue-600 text-3xl hover:opacity-80 transition"
+                    className="hover:opacity-80 font-fonarto font-bold text-[35px] text-blue-600 text-3xl transition"
                   >
                     Kodi
                   </button>
@@ -89,7 +90,7 @@ export default function PropertiesPage() {
 
                  <Button
                     onClick={() => setIsProfileOpen((prev) => !prev)}
-                    className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-md"
+                    className="bg-blue-600 hover:bg-blue-700 p-2 rounded-md text-white"
                   >
                     <User className="w-5 h-5 text-white" />
                   </Button>
@@ -105,8 +106,8 @@ export default function PropertiesPage() {
 
 
       {/* Hero Section */}
-      <div className="container mx-auto px-4 mt-10 mb-9">
-      <div className="relative h-60 rounded-2xl overflow-hidden shadow-md">
+      <div className="mx-auto mt-10 mb-9 px-4 container">
+      <div className="relative shadow-md rounded-2xl h-60 overflow-hidden">
 
         <img
           src={imageUrl}
@@ -145,7 +146,7 @@ export default function PropertiesPage() {
         </div>
 
         {/* Show all photos button - bottom right */}
-        <div className="absolute bottom-4 right-4">
+        <div className="right-4 bottom-4 absolute">
           <Button
             onClick={() => setIsGalleryOpen(true)}
             className="bg-blue-600 hover:bg-blue-700 text-white"
@@ -158,13 +159,13 @@ export default function PropertiesPage() {
         {/* Arrows */}
         <button
           onClick={goPrev}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 text-white p-2 rounded-full hover:bg-white/30"
+          className="top-1/2 left-4 absolute bg-white/20 hover:bg-white/30 p-2 rounded-full text-white -translate-y-1/2 transform"
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
         <button
           onClick={goNext}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 text-white p-2 rounded-full hover:bg-white/30"
+          className="top-1/2 right-4 absolute bg-white/20 hover:bg-white/30 p-2 rounded-full text-white -translate-y-1/2 transform"
         >
           <ChevronRight className="w-6 h-6" />
         </button>
@@ -173,20 +174,20 @@ export default function PropertiesPage() {
 
       {/* Embedded Google Map */}
       {showMap && (
-        <div className="mx-4 mb-8 rounded-2xl overflow-hidden shadow-lg relative">
+        <div className="relative shadow-lg mx-4 mb-8 rounded-2xl overflow-hidden">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.856135156826!2d36.82194641531724!3d-1.2920651359951745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d5ed5a27cd%3A0xe5a18760ea2237b2!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2ske!4v1719240600000!5m2!1sen!2ske"
             width="100%"
             height="300"
             allowFullScreen
             loading="lazy"
-            className="w-full h-[300px] rounded-2xl border-none"
+            className="border-none rounded-2xl w-full h-[300px]"
           ></iframe>
 
           {/* Close Map Button */}
           <button
             onClick={() => setShowMap(false)}
-            className="absolute top-4 right-4 bg-blue-600 hover:bg-blue-700 text-sm text-white px-3 py-1 rounded-full shadow"
+            className="top-4 right-4 absolute bg-blue-600 hover:bg-blue-700 shadow px-3 py-1 rounded-full text-white text-sm"
           >
             X
           </button>
