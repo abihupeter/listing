@@ -137,8 +137,8 @@ export default function WideRangePage() {
           </ul>
         </div>
 
-        <div className="mt-12">
-          <h2 className="text-3xl font-bold mb-6">Relates Stories</h2>
+        <div className="mt-12 border-t pt-8">
+          <h2 className="text-4xl font-bold mb-6">Relates Stories:</h2>
           <ArticlesSection />
         </div>
       </div>

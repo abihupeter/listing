@@ -42,14 +42,8 @@ const articles = [
 export function ArticlesSection() {
   return (
     <section className="bg-white py-16">
-      <div className="mx-auto px-4 container">
+      <div className="mx-auto px-4 container mt-0">
         {/* Section Header */}
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 font-bold text-gray-900 text-4xl">Articles & Tips</h2>
-          <p className="mx-auto max-w-3xl text-gray-600 text-lg">
-            Explore our curated collection of insightful articles and expert tips for all things real estate.
-          </p>
-        </div>
 
         {/* Articles Grid */}
         <div className="gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">

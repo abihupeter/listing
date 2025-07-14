@@ -52,7 +52,11 @@ export default function HomePage() {
       <WhatWeOffer />
       <CitiesSection />
       <WhyChooseUs />
-      <ArticlesSection />
+     <div className="mt-12">
+          <h2 className="mb-4 font-bold text-gray-900 text-4xl text-center">Articles & Tips</h2>
+          <h2 className="mx-auto max-w-3xl text-gray-600 text-lg text-center">Explore our curated collection of insightful articles and expert tips for all things real estate.</h2>
+          <ArticlesSection />
+        </div>
       <PartnersSection />
       <CTASection />
       <Footer />
