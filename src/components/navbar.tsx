@@ -19,12 +19,12 @@ export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
         {/* Centered Logo */}
         <div className="absolute inset-0 flex justify-center items-center">
           <div
-            className={`bg-white px-6 py-2 rounded-b-3xl ${
-              isScrolled ? "shadow-md" : ""
+            className={` px-6 py-2 rounded-b-3xl ${
+              isScrolled ? " bg-transparent " : "shadow-md bg-white"
             }`}
           >
          <Link href="/">
-          <div className="font-fonarto font-normal text-blue-600 hover:text-blue-800 text-4xl cursor-pointer">
+          <div className="font-fonarto font-normal text-blue-600 hover:text-blue-800 text-3xl cursor-pointer">
             Kodi
           </div>
         </Link>
