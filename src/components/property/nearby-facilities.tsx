@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 export function NearbyFacilities() {
@@ -40,7 +41,7 @@ export function NearbyFacilities() {
   ];
 
   return (
-    <div className="border-t border-gray-300 py-6 relative">
+    <div className="relative py-6 border-gray-300 border-t">
       <h3 className="mb-4 font-bold text-xl">Nearby Facilities</h3>
       <div className="gap-4 grid grid-cols-2 md:grid-cols-3">
         {facilities.map((facility, index) => (
@@ -48,7 +49,7 @@ export function NearbyFacilities() {
             <img
               src={facility.image}
               alt={facility.name}
-              className="w-13 h-13 object-contain rounded-lg"
+              className="rounded-lg w-13 h-13 object-contain"
             />
             <div>
               <h4 className="font-medium">{facility.name}</h4>

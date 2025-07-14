@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState } from "react";
@@ -56,7 +57,7 @@ export function PropertyAmenities() {
   ];
 
   return (
-    <div className="border-y border-gray-300 py-6 relative">
+    <div className="relative py-6 border-gray-300 border-y">
       <h3 className="mb-3 text-xl">What this unit offers</h3>
       <h3 className="mb-4 font-bold text-xl">Amenities</h3>
 
@@ -64,7 +65,7 @@ export function PropertyAmenities() {
       <div className="gap-4 grid grid-cols-2 md:grid-cols-4 mb-6">
         {amenities.map((amenity, index) => (
           <div key={index} className="flex items-center gap-3">
-            <div className="flex justify-center items-center rounded-lg bg-gray-100 w-8 h-8">
+            <div className="flex justify-center items-center bg-gray-100 rounded-lg w-8 h-8">
               <img
                 src={amenity.icon}
                 alt={amenity.name}
@@ -79,28 +80,28 @@ export function PropertyAmenities() {
       {/* Show all button */}
       <button
         onClick={() => setShowModal(true)}
-        className="border border-blue-600 text-blue-600 px-4 py-2 rounded-md hover:bg-blue-50 transition"
+        className="hover:bg-blue-50 px-4 py-2 border border-blue-600 rounded-md text-blue-600 transition"
       >
         Show all 34 amenities
       </button>
 
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-opacity-100 z-51 flex items-center justify-center bg-black/80">
-          <div className="bg-white rounded-lg shadow-lg w-full max-w-2xl max-h-[90vh] overflow-y-auto relative p-6">
+        <div className="z-51 fixed inset-0 flex justify-center items-center bg-black/80 bg-opacity-100">
+          <div className="relative bg-white shadow-lg p-6 rounded-lg w-full max-w-2xl max-h-[90vh] overflow-y-auto">
             {/* Close X */}
             <button
               onClick={() => setShowModal(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-black"
+              className="top-4 right-4 absolute text-gray-500 hover:text-black"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <h2 className="text-xl font-semibold mb-4 text-center">All Amenities</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <h2 className="mb-4 font-semibold text-xl text-center">All Amenities</h2>
+            <div className="gap-4 grid grid-cols-2 md:grid-cols-3">
               {amenities.map((amenity, index) => (
                 <div key={index} className="flex items-center gap-3">
-                  <div className="w-8 h-8 flex justify-center items-center bg-gray-100 rounded">
+                  <div className="flex justify-center items-center bg-gray-100 rounded w-8 h-8">
                     <img
                       src={amenity.icon}
                       alt={amenity.name}

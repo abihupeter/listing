@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { X } from "lucide-react";
@@ -16,22 +17,22 @@ export function PhotoGalleryModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center">
-      <div className="bg-gray-800 rounded-xl max-w-5xl w-full max-h-[90vh] overflow-y-auto p-6 relative">
+    <div className="z-50 fixed inset-0 flex justify-center items-center bg-black/80">
+      <div className="relative bg-gray-800 p-6 rounded-xl w-full max-w-5xl max-h-[90vh] overflow-y-auto">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
+          className="top-4 right-4 absolute text-gray-600 hover:text-gray-900"
         >
           <X className="w-6 h-6" />
         </button>
-        <h2 className="text-white text-2xl font-semibold mb-4">Photo Gallery</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        <h2 className="mb-4 font-semibold text-white text-2xl">Photo Gallery</h2>
+        <div className="gap-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
           {images.map((url, idx) => (
             <img
               key={idx}
               src={url}
               alt={`Apartment ${idx + 1}`}
-              className="w-full h-40 object-cover rounded-lg"
+              className="rounded-lg w-full h-40 object-cover"
             />
           ))}
         </div>
@@ -39,7 +40,7 @@ export function PhotoGalleryModal({
          <div className="mt-8 text-right">
           <button
             onClick={onClose}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2 rounded-lg"
+            className="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-lg font-medium text-white"
           >
             Close
           </button>

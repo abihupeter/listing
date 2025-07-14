@@ -1,10 +1,10 @@
 import { FeatureCard } from "./feature-card"
-import { Rocket, Building2, CreditCard, Banknote, Wallet } from "lucide-react"
+import { Rocket, Building2, Wallet } from "lucide-react"
 
 const features = [
   {
     icon: (
-      <div className="flex justify-center items-center bg-blue-200 rounded-full w-18 h-18 transition-transform duration-300 hover:scale-105 hover:bg-blue-300">
+      <div className="flex justify-center items-center bg-blue-200 hover:bg-blue-300 rounded-full w-18 h-18 hover:scale-105 transition-transform duration-300">
         <Rocket className="w-10 h-10 text-blue-600" />
       </div>
     ),
@@ -14,7 +14,7 @@ const features = [
   },
   {
     icon: (
-      <div className="flex justify-center items-center bg-blue-200 rounded-full w-18 h-18 transition-transform duration-300 hover:scale-105 hover:bg-blue-300">
+      <div className="flex justify-center items-center bg-blue-200 hover:bg-blue-300 rounded-full w-18 h-18 hover:scale-105 transition-transform duration-300">
         <Building2 className="w-10 h-10 text-blue-600" />
       </div>
     ),
@@ -24,7 +24,7 @@ const features = [
   },
   {
     icon: (
-      <div className="flex justify-center items-center bg-blue-200 rounded-full w-18 h-18 transition-transform duration-300 hover:scale-105 hover:bg-blue-300">
+      <div className="flex justify-center items-center bg-blue-200 hover:bg-blue-300 rounded-full w-18 h-18 hover:scale-105 transition-transform duration-300">
         <Wallet className="w-10 h-10 text-blue-600" />
       </div>
     ),

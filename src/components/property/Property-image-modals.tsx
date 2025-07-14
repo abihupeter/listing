@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useState, useEffect, useMemo } from "react"
+import { useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { X } from "lucide-react"
 
@@ -15,17 +15,17 @@ export function PropertyImageModal({ images, onClose }: PropertyImageModalProps)
 
   return (
     <>
-      <div className="fixed inset-0 z-[100] bg-white overflow-y-auto">
+      <div className="z-[100] fixed inset-0 bg-white overflow-y-auto">
         {/* Modal Header */}
-        <div className="flex justify-between items-center px-4 py-4 border-b sticky top-0 bg-white z-10">
-          <h2 className="text-lg font-bold">Photo tour</h2>
+        <div className="top-0 z-10 sticky flex justify-between items-center bg-white px-4 py-4 border-b">
+          <h2 className="font-bold text-lg">Photo tour</h2>
           <button onClick={onClose} className="text-gray-600 hover:text-black">
             <X className="w-6 h-6" />
           </button>
         </div>
 
         {/* Thumbnail Row */}
-        <div className="flex overflow-x-auto space-x-4 px-4 py-4 border-b">
+        <div className="flex space-x-4 px-4 py-4 border-b overflow-x-auto">
           {images.map((img, idx) => (
             <button
               key={idx}
@@ -35,14 +35,14 @@ export function PropertyImageModal({ images, onClose }: PropertyImageModalProps)
                   section.scrollIntoView({ behavior: "smooth", block: "start" });
                 }
               }}
-              className="flex-shrink-0 w-28 focus:outline-none text-center"
+              className="flex-shrink-0 focus:outline-none w-28 text-center"
             >
               <img
                 src={img.url}
                 alt={`Thumbnail ${idx + 1}`}
-                className="w-28 h-20 object-cover rounded-md border hover:scale-105 hover:shadow-lg transition-transform duration-200"
+                className="hover:shadow-lg border rounded-md w-28 h-20 object-cover hover:scale-105 transition-transform duration-200"
               />
-              <span className="block text-xs mt-1 text-gray-600 hover:underline font-medium">
+              <span className="block mt-1 font-medium text-gray-600 text-xs hover:underline">
                 {img.label}
               </span>
             </button>
@@ -51,29 +51,29 @@ export function PropertyImageModal({ images, onClose }: PropertyImageModalProps)
 
 
         {/* Grouped Scrollable Sections */}
-        <div className="px-4 py-6 space-y-10">
+        <div className="space-y-10 px-4 py-6">
           {images.map((img, idx) => (
             <div
               key={idx}
               ref={(el) => {
                 sectionRefs.current[idx] = el
               }}
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-6 scroll-mt-20"
+              className="flex sm:flex-row flex-col items-start sm:items-center gap-6 scroll-mt-20"
             >
-              <h3 className="text-base font-semibold text-gray-800 min-w-[120px] sm:min-w-[160px]">
+              <h3 className="min-w-[120px] sm:min-w-[160px] font-semibold text-gray-800 text-base">
                 {img.label}
               </h3>
-              <div className="flex overflow-x-auto gap-4 scroll-smooth scroll-snap-x w-full">
+              <div className="flex gap-4 w-full overflow-x-auto scroll-smooth scroll-snap-x">
                 {[1, 2, 3, 4, 5].map((n) => (
                   <div
                     key={n}
-                    className="min-w-[250px] flex-shrink-0 scroll-snap-align-start"
+                    className="flex-shrink-0 min-w-[250px] scroll-snap-align-start"
                     style={{ scrollSnapAlign: "start" }}
                   >
                     <img
                       src={img.url}
                       alt={`${img.label} ${n}`}
-                      className="w-full h-48 object-cover rounded-lg cursor-zoom-in"
+                      className="rounded-lg w-full h-48 object-cover cursor-zoom-in"
                       onClick={() => setZoomedImage(img.url)}
                     />
                   </div>
@@ -84,7 +84,7 @@ export function PropertyImageModal({ images, onClose }: PropertyImageModalProps)
         </div>
 
         {/* Close Button */}
-        <div className="text-center py-6 border-t">
+        <div className="py-6 border-t text-center">
           <Button onClick={onClose} className="bg-gray-800 hover:bg-gray-700 text-white">
             Close
           </Button>
@@ -94,19 +94,19 @@ export function PropertyImageModal({ images, onClose }: PropertyImageModalProps)
       {/* Zoomed Image Viewer */}
       {zoomedImage && (
         <div
-          className="fixed inset-0 bg-black/90 z-[150] flex items-center justify-center"
+          className="z-[150] fixed inset-0 flex justify-center items-center bg-black/90"
           onClick={() => setZoomedImage(null)}
         >
           <button
             onClick={() => setZoomedImage(null)}
-            className="absolute top-4 right-4 text-white bg-black/60 hover:bg-black/80 p-2 rounded-full"
+            className="top-4 right-4 absolute bg-black/60 hover:bg-black/80 p-2 rounded-full text-white"
           >
             <X className="w-6 h-6" />
           </button>
           <img
             src={zoomedImage}
             alt="Zoomed"
-            className="max-w-full max-h-full rounded-lg shadow-lg"
+            className="shadow-lg rounded-lg max-w-full max-h-full"
             onClick={(e) => e.stopPropagation()}
           />
         </div>
