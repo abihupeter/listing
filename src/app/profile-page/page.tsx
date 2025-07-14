@@ -7,6 +7,7 @@ import {FavoritesGrid} from "@/components/property/favorites-grid";
 import { BookingGrid } from "@/components/property/booking-grid";
 import { Mail, Phone, ShieldCheck } from "lucide-react";
 import Link from "next/link";
+import { Footer } from "@/components/footer";
 
 
 export default function ProfilePage() {
@@ -133,81 +134,72 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black px-4 md:px-16 py-8">
-     <div className="flex items-center justify-between mb-10">
-        {/* Kodi Logo */}
-        <Link href="/">
-            <h1 className="font-fonarto text-4xl font-bold text-[#0056ff] cursor-pointer hover:bg-gray-100 px-2 py-1 rounded-lg transition">
-            Kodi
-            </h1>
-        </Link>
+    <><div className="min-h-screen bg-white text-black px-4 md:px-16 py-8">
+          <div className="flex items-center justify-between mb-10">
+              {/* Kodi Logo */}
+              <Link href="/">
+                  <h1 className="font-fonarto text-4xl font-bold text-[#0056ff] cursor-pointer hover:bg-gray-100 px-2 py-1 rounded-lg transition">
+                      Kodi
+                  </h1>
+              </Link>
 
-        {/* Profile Icon */}
-        <Link href="/">
-            <Image
-            src="/images/profile.jpg"
-            alt="Profile"
-            width={40}
-            height={40}
-            className="rounded-full cursor-pointer hover:opacity-80 transition"
-            />
-        </Link>
-        </div>
+              {/* Profile Icon */}
+              <Link href="/">
+                  <Image
+                      src="/images/profile.jpg"
+                      alt="Profile"
+                      width={40}
+                      height={40}
+                      className="rounded-full cursor-pointer hover:opacity-80 transition" />
+              </Link>
+          </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-        {/* Sidebar */}
-        <div className="col-span-1">
-          <h2 className="text-xl font-semibold mb-4">Profile</h2>
-          <ul className="space-y-4">
-            <li
-              className={`flex items-center space-x-3 p-3 rounded-lg cursor-pointer ${
-                activeTab === "about" ? "bg-gray-100" : ""
-              }`}
-              onClick={() => setActiveTab("about")}
-            >
-              <Image
-                src="/images/profile.jpg"
-                alt="Profile"
-                width={40}
-                height={40}
-                className="rounded-full"
-              />
-              <span className="font-medium">About me</span>
-            </li>
-            <li
-              className={`flex items-center space-x-3 p-3 rounded-lg cursor-pointer ${
-                activeTab === "favorites" ? "bg-gray-100" : ""
-              }`}
-              onClick={() => setActiveTab("favorites")}
-            >
-              <Image
-                src="/images/favorites.jpg"
-                alt="Favorites"
-                width={30}
-                height={30}
-              />
-              <span className="font-medium">My Favorites</span>
-            </li>
-            <li
-              className={`flex items-center space-x-3 p-3 rounded-lg cursor-pointer ${
-                activeTab === "bookings" ? "bg-gray-100" : ""
-              }`}
-              onClick={() => setActiveTab("bookings")}
-            >
-              <Image
-                src="/images/bookings.jpg"
-                alt="Bookings"
-                width={30}
-                height={30}
-              />
-              <span className="font-medium">My Bookings</span>
-            </li>
-          </ul>
-        </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+              {/* Sidebar */}
+              <div className="col-span-1">
+                  <h2 className="text-xl font-semibold mb-4">Profile</h2>
+                  <ul className="space-y-4">
+                      <li
+                          className={`flex items-center space-x-3 p-3 rounded-lg cursor-pointer ${activeTab === "about" ? "bg-gray-100" : ""}`}
+                          onClick={() => setActiveTab("about")}
+                      >
+                          <Image
+                              src="/images/profile.jpg"
+                              alt="Profile"
+                              width={40}
+                              height={40}
+                              className="rounded-full" />
+                          <span className="font-medium">About me</span>
+                      </li>
+                      <li
+                          className={`flex items-center space-x-3 p-3 rounded-lg cursor-pointer ${activeTab === "favorites" ? "bg-gray-100" : ""}`}
+                          onClick={() => setActiveTab("favorites")}
+                      >
+                          <Image
+                              src="/images/favorites.jpg"
+                              alt="Favorites"
+                              width={30}
+                              height={30} />
+                          <span className="font-medium">My Favorites</span>
+                      </li>
+                      <li
+                          className={`flex items-center space-x-3 p-3 rounded-lg cursor-pointer ${activeTab === "bookings" ? "bg-gray-100" : ""}`}
+                          onClick={() => setActiveTab("bookings")}
+                      >
+                          <Image
+                              src="/images/bookings.jpg"
+                              alt="Bookings"
+                              width={30}
+                              height={30} />
+                          <span className="font-medium">My Bookings</span>
+                      </li>
+                  </ul>
+              </div>
 
-        {/* Dynamic Content */}
-        <div className="col-span-3">{renderMainContent()}</div>
-      </div>
-    </div>
+              {/* Dynamic Content */}
+              <div className="col-span-3">{renderMainContent()}</div>
+          </div>
+
+      </div><Footer /></>
   );
 }
