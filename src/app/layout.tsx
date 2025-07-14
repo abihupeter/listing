@@ -32,6 +32,10 @@ export default function RootLayout({
           href="https://fonts.cdnfonts.com/css/Fonarto"
           rel="stylesheet"
         />
+          <link
+          href="https://fonts.cdnfonts.com/css/axiforma"
+          rel="stylesheet"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
