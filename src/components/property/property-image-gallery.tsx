@@ -64,7 +64,7 @@ export function PropertyImageGallery({ images: propImages, count = 5 }: Property
 
       {/* Desktop Grid */}
       <div className="relative">
-        <div className="hidden sm:grid gap-2 grid-cols-4 h-96">
+        <div className="hidden gap-2 sm:grid grid-cols-4 h-96">
           <div className="col-span-2 row-span-2">
             <img
               src={images[0]?.url}
@@ -91,42 +91,42 @@ export function PropertyImageGallery({ images: propImages, count = 5 }: Property
         <div className="sm:hidden relative">
           <div
             ref={scrollRef}
-            className="flex overflow-x-auto scroll-snap-x scroll-smooth scrollbar-hide"
+            className="flex overflow-x-auto scroll-smooth scroll-snap-x scrollbar-hide"
             style={{ scrollSnapType: "x mandatory" }}
           >
             {images.map((img, index) => (
               <div
                 key={index}
-                className="min-w-full h-64 scroll-snap-align-start relative"
+                className="relative min-w-full h-64 scroll-snap-align-start"
                 style={{ scrollSnapAlign: "start" }}
               >
-                <img src={img.url} alt={`Slide ${index + 1}`} className="w-full h-full object-cover rounded-xl" />
+                <img src={img.url} alt={`Slide ${index + 1}`} className="rounded-xl w-full h-full object-cover" />
               </div>
             ))}
           </div>
 
           {currentIndex > 0 && (
-            <button onClick={handlePrev} className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/70 rounded-full p-1">
+            <button onClick={handlePrev} className="top-1/2 left-2 absolute bg-white/70 p-1 rounded-full -translate-y-1/2 transform">
               <ChevronLeft className="w-6 h-6" />
             </button>
           )}
           {currentIndex < images.length - 1 && (
-            <button onClick={handleNext} className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/70 rounded-full p-1">
+            <button onClick={handleNext} className="top-1/2 right-2 absolute bg-white/70 p-1 rounded-full -translate-y-1/2 transform">
               <ChevronRight className="w-6 h-6" />
             </button>
           )}
 
-          <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded-md">
+          <div className="right-2 bottom-2 absolute bg-black/70 px-2 py-1 rounded-md text-white text-xs">
             {currentIndex + 1} / {images.length}
           </div>
         </div>
 
         {/* Show all button */}
-        <div className="absolute bottom-3 right-3 z-10 hidden sm:block">
+        <div className="hidden sm:block right-3 bottom-3 z-10 absolute">
           <Button
             onClick={() => setShowModal(true)}
             variant="outline"
-            className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow"
+            className="bg-blue-600 hover:bg-blue-700 shadow rounded-lg text-white"
           >
             <Grid3X3 className="mr-2 w-4 h-4" />
             Show all photos

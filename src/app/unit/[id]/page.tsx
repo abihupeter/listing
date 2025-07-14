@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { PropertyHeader } from "@/components/property/property-header";
 import { PropertyImageGallery } from "@/components/property/property-image-gallery";
 import { PropertyContent } from "@/components/property/property-content";
@@ -9,15 +9,22 @@ import { PropertyTitleSection } from "@/components/property/property-title-secti
 import { PropertyActionButtons } from "@/components/property/property-action-buttons";
 import { Footer } from "@/components/footer";
 
-export default function UnitDetailPage() {
-  const params = useParams();
+export async function generateStaticParams() {
+  return [
+    { id: "1" },
+    { id: "2" },
+    { id: "3" },
+  ];
+}
+
+export default function UnitDetailPage({ params }: { params: { id: string } }) {
   const router = useRouter();
   const propertyId = params.id;
 
-  // Mock property data
+  // Static mock data based on ID
   const property = {
     id: propertyId,
-    title: `${propertyId}, Johari apartments`,
+    title: `${propertyId}, Johari Apartments`,
     location: "Ukunda, Kwale County, Kenya",
     price: "Ksh.20,000",
     period: "/month",
@@ -30,12 +37,12 @@ export default function UnitDetailPage() {
     listingType: "FOR RENT",
     pastTenants: 2,
     images: [
-      "https://kodinyumba.app/media/Stock/House/house${0}.jpg",
-      "https://kodinyumba.app/media/Stock/House/house${1}.jpg",
-      "https://kodinyumba.app/media/Stock/House/house${2}.jpg",
-      "https://kodinyumba.app/media/Stock/House/house${3}.jpg",
-      "https://kodinyumba.app/media/Stock/House/house${4}.jpg",
-      "https://kodinyumba.app/media/Stock/House/house${5}.jpg",
+      `https://kodinyumba.app/media/Stock/House/house0.jpg`,
+      `https://kodinyumba.app/media/Stock/House/house1.jpg`,
+      `https://kodinyumba.app/media/Stock/House/house2.jpg`,
+      `https://kodinyumba.app/media/Stock/House/house3.jpg`,
+      `https://kodinyumba.app/media/Stock/House/house4.jpg`,
+      `https://kodinyumba.app/media/Stock/House/house5.jpg`,
     ],
     description:
       "Nestled in the heart of the enchanting beautiful coastal town of Ukunda in Mombasa, Kenya.....",
@@ -44,7 +51,7 @@ export default function UnitDetailPage() {
   return (
     <div className="bg-white min-h-screen">
       <PropertyHeader router={router} />
-      
+
       <div className="mx-auto px-4 py-6 container">
         <div className="flex justify-between items-start mb-6">
           <PropertyTitleSection 

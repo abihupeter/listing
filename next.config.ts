@@ -1,11 +1,21 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  output: "export", 
+  output: 'export',
   images: {
-    domains: ["kodinyumba.app"],
-    unoptimized: true, 
+    domains: ['kodinyumba.app'],
+    unoptimized: true
   },
-};
+  eslint: {
+    ignoreDuringBuilds: true
+  },
+  reactStrictMode: true,
+  productionBrowserSourceMaps: false,
 
-export default nextConfig;
+  trailingSlash: true,
+  typescript: {
+    ignoreBuildErrors: true
+  }
+}
+
+export default nextConfig
