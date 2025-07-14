@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { User } from "lucide-react";
 import { ProfileSidebar } from "@/components/ui/profile-sidebar";
+import Link from "next/link";
 
 export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -22,9 +23,12 @@ export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
               isScrolled ? "shadow-md" : ""
             }`}
           >
-            <div className="text-blue-600 text-4xl text-45px font-bold font-fonarto">
-              Kodi
-            </div>
+         <Link href="/">
+          <div className="text-blue-600 text-4xl font-bold font-fonarto cursor-pointer hover:text-blue-800">
+            Kodi
+          </div>
+        </Link>
+
           </div>
         </div>
 

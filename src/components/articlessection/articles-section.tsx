@@ -9,6 +9,7 @@ const articles = [
     title: "Trusted By Thousands",
     description:
       "We've earned the confidence of countless individuals and families on their journey to finding their homes",
+    tag: "Validation",
     author: {
       name: "Peter Mwangi",
       avatar: "/images/person_1.png",
@@ -20,6 +21,7 @@ const articles = [
     title: "Wide Range Of Properties",
     description:
       "We showcases a diverse selection of properties that cater to every tenant's taste and preference.",
+    tag: "House Hunting",
     author: {
       name: "Faith Mwende",
       avatar: "/images/person_2.png",
@@ -31,6 +33,7 @@ const articles = [
     title: "Financing Made Easy",
     description:
       "Securing the right financing for your property just got simpler with Alliance Realtors.",
+    tag: "Valuation",
     author: {
       name: "Phylis Nyokabi",
       avatar: "/images/person_3.png",
@@ -38,6 +41,7 @@ const articles = [
     date: "19 August 2023",
   },
 ];
+
 
 export function ArticlesSection() {
   return (
@@ -51,7 +55,7 @@ export function ArticlesSection() {
             <Link
               href="/articles"
               key={index}
-              className="transform transition duration-300 hover:scale-105"
+              className="transform transition duration-300 hover:scale-105 hover:shadow-lg"
             >
               <ArticleCard {...article} />
             </Link>
