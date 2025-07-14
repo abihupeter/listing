@@ -145,7 +145,7 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
               variant="ghost"
               className="w-full justify-start mb-2 hover:bg-blue-300"
               onClick={() => {
-                router.push("/not-found");
+                router.push("/profile-page");
                 onClose();
               }}
             >
@@ -156,7 +156,7 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
               variant="ghost"
               className="w-full justify-start mb-2 hover:bg-blue-300"
               onClick={() => {
-                router.push("/not-found");
+                router.push("/profile-page?tab=bookings");
                 onClose();
               }}
             >
@@ -167,7 +167,7 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
               variant="ghost"
               className="w-full justify-start mb-4 hover:bg-blue-300"
               onClick={() => {
-                router.push("/not-found");
+                router.push("/profile-page?tab=favorites");
                 onClose();
               }}
             >
