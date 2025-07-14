@@ -126,9 +126,6 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
-  body {
-  cursor: url("/images/custom-cursor.jpg"), auto;
-}
   
 }
 * {
