@@ -63,7 +63,7 @@ const bookingProperties = [
 
 export function BookingGrid() {
   return (
-    <div className="container mx-auto px-4 py-10">
+    <div className="container mx-auto px-2 py-10">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {bookingProperties.map((property) => (
           <BookingCard key={property.id} {...property} />
