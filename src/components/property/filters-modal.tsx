@@ -217,7 +217,7 @@ export function FiltersModal({ isOpen, onClose }: FiltersModalProps) {
           <Button variant="outline" onClick={() => {}}>
             Clear all
           </Button>
-          <Button onClick={onClose} className="bg-blue-600 hover:bg-blue-700">
+          <Button onClick={onClose} className="text-white bg-blue-600 hover:bg-blue-700">
             Show 26 Units
           </Button>
         </div>
