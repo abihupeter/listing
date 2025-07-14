@@ -26,13 +26,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-        <head>
+      <head>
         {/*  Fonarto  */}
         <link
-          href="https://fonts.cdnfonts.com/css/Fonarto"
+          href="https://fonts.cdnfonts.com/css/fonarto-xt"
           rel="stylesheet"
         />
-          <link
+        <link
           href="https://fonts.cdnfonts.com/css/axiforma"
           rel="stylesheet"
         />

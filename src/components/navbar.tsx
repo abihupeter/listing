@@ -15,7 +15,7 @@ export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
         isScrolled ? "bg-white shadow-md" : "bg-transparent"
       }`}
     >
-      <div className="relative h-14 flex items-center justify-between container mx-auto px-4">
+      <div className="relative flex justify-between items-center mx-auto px-4 h-14 container">
         {/* Centered Logo */}
         <div className="absolute inset-0 flex justify-center items-center">
           <div
@@ -24,7 +24,7 @@ export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
             }`}
           >
          <Link href="/">
-          <div className="text-blue-600 text-4xl font-bold font-fonarto cursor-pointer hover:text-blue-800">
+          <div className="font-fonarto font-normal text-blue-600 hover:text-blue-800 text-4xl cursor-pointer">
             Kodi
           </div>
         </Link>
@@ -34,10 +34,10 @@ export default function Navbar({ isScrolled }: { isScrolled: boolean }) {
 
         {/* Profile Button on Right */}
         {isScrolled && (
-          <div className="absolute top-2 right-4 flex items-center">
+          <div className="top-2 right-4 absolute flex items-center">
             <Button
               onClick={() => setIsProfileOpen((prev) => !prev)}
-              className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-md"
+              className="bg-blue-600 hover:bg-blue-700 p-2 rounded-md text-white"
             >
               <User className="w-5 h-5 text-white" />
             </Button>

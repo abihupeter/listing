@@ -1,9 +1,10 @@
-@import url('https://fonts.cdnfonts.com/css/fonarto');
+/* @import url('https://fonts.cdnfonts.com/css/fonarto'); */
 @import "tailwindcss";
 @import "tw-animate-css";
 
 .font-fonarto {
   font-family: 'Fonarto', sans-serif;
+  font-weight: 700 !important;
 }
 
 :root {
@@ -164,12 +165,9 @@
   font-style: normal;
   font-display: swap;
 }
-@font-face {
-  font-family: 'Fonarto';
-  src: url('/font/fonarto/Fonarto.ttf') format('truetype'); 
-  font-weight: normal;
-  font-style: normal;
-}
+
+
+
 /* Hide the sidebar when the modal is open */
 body.modal-open .property-sidebar {
   display: none !important;
