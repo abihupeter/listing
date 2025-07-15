@@ -64,28 +64,32 @@ export function PropertyImageGallery({ images: propImages, count = 5 }: Property
 
       {/* Desktop Grid */}
       <div className="relative">
-        <div className="hidden gap-2 sm:grid grid-cols-4 h-96">
-          <div className="col-span-2 row-span-2">
-            <img
-              src={images[0]?.url}
-              alt="Main view"
-              className="bg-black/50 rounded-l-xl w-full h-96 object-cover"
-            />
-          </div>
-          <div className="gap-2 grid grid-cols-2 col-span-2 h-10">
-            {images.slice(1, 5).map((image, index) => (
-              <div key={index}>
-                <img
-                  src={image.url}
-                  alt={`Property view ${index + 2}`}
-                  className={`w-full h-47 object-cover bg-black/50 ${
-                    index === 1 ? "rounded-tr-xl" : index === 3 ? "rounded-br-xl" : "rounded-md"
-                  }`}
-                />
-              </div>
-            ))}
-          </div>
+       <div className="hidden gap-2 sm:grid grid-cols-4 h-96"> 
+        {/* Large Image on the Left */}
+        <div className="col-span-2 row-span-2">
+          <img
+            src={images[0]?.url}
+            alt="Main view"
+            className="bg-black/50 rounded-l-xl w-full h-96 object-cover"
+          />
         </div>
+
+        {/* 4 Small Images on the Right */}
+        <div className="gap-2 grid grid-cols-2 col-span-2 h-10">
+          {images.slice(1, 5).map((image, index) => (
+            <div key={index}>
+              <img
+                src={image.url}
+                alt={`Property view ${index + 2}`}
+                className={`w-full h-47 object-cover bg-black/50 ${
+                  index === 1 ? "rounded-tr-xl" : index === 3 ? "rounded-br-xl" : ""
+                }`}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
 
         {/* Mobile Carousel */}
         <div className="sm:hidden relative">

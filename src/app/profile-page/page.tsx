@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Dialog } from "@headlessui/react";
 import {FavoritesGrid} from "@/components/property/favorites-grid";
 import { BookingGrid } from "@/components/property/booking-grid";
-import { Mail, Phone, ShieldCheck, Smartphone } from "lucide-react";
+import { ArrowLeft, Mail, Phone, ShieldCheck, Smartphone } from "lucide-react";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
 
@@ -133,23 +133,34 @@ default:
   return (
     <><div className="min-h-screen bg-white text-black px-4 md:px-16 py-8">
           <div className="flex items-center justify-between mb-6">
-              {/* Kodi Logo */}
-              <Link href="/">
-                  <h1 className="pl-5 font-fonarto text-5xl font-bold text-[#0056ff] cursor-pointer hover:bg-gray-100 px-2 py-1 rounded-lg transition">
-                      Kodi
+              {/* Back Button + Kodi Logo */}
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => window.history.back()}
+                  className="flex items-center gap-1 text-gray-700 hover:bg-gray-100 hover:text-black transition-colors px-2 py-1 rounded-lg transition"
+                >
+                  <ArrowLeft className="w-5 h-5" />
+                  <span className="text-sm font-medium">Back</span>
+                </button>
+
+                <Link href="/">
+                  <h1 className="pl-3 font-fonarto text-5xl font-bold text-[#0056ff] cursor-pointer hover:bg-gray-100 px-2 py-1 rounded-lg transition">
+                    Kodi
                   </h1>
-              </Link>
+                </Link>
+              </div>
 
               {/* Profile Icon */}
               <Link href="/">
-                  <Image
-                      src="/images/person_1.png"
-                      alt="Profile"
-                      width={40}
-                      height={40}
-                      className=" rounded-full cursor-pointer hover:opacity-80 transition" />
+                <Image
+                  src="/images/person_1.png"
+                  alt="Profile"
+                  width={40}
+                  height={40}
+                  className="rounded-full cursor-pointer hover:opacity-80 transition"
+                />
               </Link>
-          </div>
+            </div>
 
           <div className="flex flex-col md:flex-row gap-8 border-t pt-6 mt-1">
               {/* Sidebar */}
