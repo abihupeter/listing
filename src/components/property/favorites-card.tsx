@@ -4,7 +4,6 @@ import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import React from "react";
 
 interface FavoritesCardProps {
-  Id: string;
   id: string;
   image: string[];
   price: string;
@@ -16,7 +15,6 @@ interface FavoritesCardProps {
 }
 
 export function FavoritesCard({
-  Id,
   id,
   image,
   price,
@@ -57,9 +55,7 @@ export function FavoritesCard({
   };
 
   const handleCardClick = () => {
-    const numericId = id.replace(/[^\d]/g, ""); // Extract digits only (e.g., "A01" → "01")
-    const finalId = String(Number(numericId));
-      window.open(`/unit/${numericId}`, "_blank");
+    window.open(`/unit/${id}`, "_blank"); // Open the actual static route like A01, A02...
 
   };
 
@@ -145,7 +141,7 @@ export function FavoritesCard({
       {/* Property Details */}
       <div className="p-4">
         <div className="flex justify-between items-center mb-2">
-          <span className="font-bold text-gray-900 text-lg">{Id}</span>
+          <span className="font-bold text-gray-900 text-lg">{id}</span>
           <div className="flex items-center gap-1">
             <Star className="fill-yellow-400 w-4 h-4 text-yellow-400" />
             <span className="text-gray-600 text-sm">{rating}</span>

@@ -4,8 +4,8 @@ import { BookingCard } from "./booking-card";
 
 const bookingProperties = [
   {
-    id: "1",
-    Id: "A01",
+  
+    id: "A01",
     image: [
       "https://kodinyumba.app/media/Stock/House/house13.jpg",
       "https://kodinyumba.app/media/Stock/House/house14.jpg",
@@ -19,8 +19,7 @@ const bookingProperties = [
     date: "10AM 6th July 2025",
   },
   {
-    id: "2",
-    Id: "A02",
+    id: "A02",
     image: [
       "https://kodinyumba.app/media/Stock/House/house18.jpg",
       "https://kodinyumba.app/media/Stock/House/house2.jpg",
@@ -34,8 +33,8 @@ const bookingProperties = [
     date: "10AM 6th July 2025",
   },
   {
-    id: "3",
-    Id: "A03",
+    
+    id: "A03",
     image: [
       "https://kodinyumba.app/media/Stock/House/house19.jpg",
       "https://kodinyumba.app/media/Stock/House/house7.jpg",
@@ -49,8 +48,8 @@ const bookingProperties = [
     date: "10AM 6th July 2025",
   },
   {
-    id: "4",
-    Id: "A04",
+  
+    id: "A04",
     image: [
       "https://kodinyumba.app/media/Stock/House/house13.jpg",
       "https://kodinyumba.app/media/Stock/House/house12.jpg",

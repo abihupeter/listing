@@ -4,8 +4,7 @@ import { FavoritesCard } from "./favorites-card"
 
 const favoriteProperties = [
   {
-    id: "1",
-    Id: "A01",
+    id: "A01",
     image: ["https://kodinyumba.app/media/Stock/House/house10.jpg", "https://kodinyumba.app/media/Stock/House/house16.jpg", "https://kodinyumba.app/media/Stock/House/house20.jpg"],
     price: "Ksh 15,500/month",
     propertyType: "Studio",
@@ -15,8 +14,7 @@ const favoriteProperties = [
     actionType: "Rent To Own",
   },
   {
-    id: "2",
-    Id: "A02",
+    id: "A02",
     image: ["https://kodinyumba.app/media/Stock/House/house2.jpg", "https://kodinyumba.app/media/Stock/House/house18.jpg", "https://kodinyumba.app/media/Stock/House/house17.jpg"],
     price: "Ksh 18,000/month",
     propertyType: "Apartment",
@@ -26,8 +24,8 @@ const favoriteProperties = [
     actionType: "Purchase",
   },
   {
-    id: "3",
-    Id: "A03",
+    id: "A03",
+
     image: ["https://kodinyumba.app/media/Stock/House/house3.jpg", "https://kodinyumba.app/media/Stock/House/house11.jpg", "https://kodinyumba.app/media/Stock/House/house10.jpg"],
     price: "Ksh 10,000/month",
     propertyType: "Bedsitter",
@@ -37,8 +35,7 @@ const favoriteProperties = [
     actionType: "Rent",
   },
   {
-    id: "4",
-    Id: "A04",
+    id: "A04",
     image: ["https://kodinyumba.app/media/Stock/House/house4.jpg", "https://kodinyumba.app/media/Stock/House/house9.jpg", "https://kodinyumba.app/media/Stock/House/house8.jpg"],
     price: "Ksh 22,000/month",
     propertyType: "Bungalow",

@@ -5,7 +5,6 @@ import React from "react";
 
 interface BookingCardProps {
   id: string;
-  Id: string;
   image: string[];
   price: string;
   propertyType: string;
@@ -18,7 +17,6 @@ interface BookingCardProps {
 
 export function BookingCard({
   id,
-  Id,
   image,
   price,
   propertyType,
@@ -59,10 +57,7 @@ export function BookingCard({
   };
 
   const handleCardClick = () => {
-    const numericId = id.replace(/[^\d]/g, ""); // Extract digits only (e.g., "A01" → "01")
-    const finalId = String(Number(numericId));
-    window.open(`/unit/${numericId}`, "_blank");
-
+   window.open(`/unit/${id}`, "_blank"); // Open the actual static route like A01, A02...
   };
 
   return (
@@ -139,7 +134,7 @@ export function BookingCard({
       <div className="p-4">
         <div className="flex justify-between items-center mb-2">
           <div className="flex gap-2 items-center">
-            <span className="font-bold text-gray-900 text-lg">{Id}</span>
+            <span className="font-bold text-gray-900 text-lg">{id}</span>
             <span className="text-black">·</span>
             <span className="text-white text-xs font-medium bg-green-600 px-2 py-[2px] rounded">
               {date}
