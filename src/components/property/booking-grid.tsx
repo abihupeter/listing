@@ -4,13 +4,14 @@ import { BookingCard } from "./booking-card";
 
 const bookingProperties = [
   {
-    id: "A01",
+    id: "1",
+    Id: "A01",
     image: [
       "https://kodinyumba.app/media/Stock/House/house13.jpg",
       "https://kodinyumba.app/media/Stock/House/house14.jpg",
     ],
     price: "Ksh 20,000/month",
-    propertyType: "Studio",
+    propertyType: "commercial",
     bedrooms: 1,
     bathrooms: 1,
     rating: 4.2,
@@ -18,13 +19,14 @@ const bookingProperties = [
     date: "10AM 6th July 2025",
   },
   {
-    id: "A02",
+    id: "2",
+    Id: "A02",
     image: [
       "https://kodinyumba.app/media/Stock/House/house18.jpg",
       "https://kodinyumba.app/media/Stock/House/house2.jpg",
     ],
     price: "Ksh 28,500/month",
-    propertyType: "Apartment",
+    propertyType: "commercial",
     bedrooms: 2,
     bathrooms: 2,
     rating: 4.6,
@@ -32,7 +34,8 @@ const bookingProperties = [
     date: "10AM 6th July 2025",
   },
   {
-    id: "A03",
+    id: "3",
+    Id: "A03",
     image: [
       "https://kodinyumba.app/media/Stock/House/house19.jpg",
       "https://kodinyumba.app/media/Stock/House/house7.jpg",
@@ -46,7 +49,8 @@ const bookingProperties = [
     date: "10AM 6th July 2025",
   },
   {
-    id: "A04",
+    id: "4",
+    Id: "A04",
     image: [
       "https://kodinyumba.app/media/Stock/House/house13.jpg",
       "https://kodinyumba.app/media/Stock/House/house12.jpg",

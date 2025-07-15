@@ -5,6 +5,7 @@ import React from "react";
 
 interface BookingCardProps {
   id: string;
+  Id: string;
   image: string[];
   price: string;
   propertyType: string;
@@ -17,6 +18,7 @@ interface BookingCardProps {
 
 export function BookingCard({
   id,
+  Id,
   image,
   price,
   propertyType,
@@ -56,8 +58,18 @@ export function BookingCard({
     );
   };
 
+  const handleCardClick = () => {
+    const numericId = id.replace(/[^\d]/g, ""); // Extract digits only (e.g., "A01" → "01")
+    const finalId = String(Number(numericId));
+    window.open(`/unit/${numericId}`, "_blank");
+
+  };
+
   return (
-    <div className="bg-white shadow-lg hover:shadow-xl rounded-2xl overflow-hidden transition-shadow duration-300 cursor-pointer">
+    <div
+      onClick={handleCardClick}
+      className="bg-white shadow-lg hover:shadow-xl rounded-2xl overflow-hidden transition-shadow duration-300 cursor-pointer"
+    >
       <div className="group relative h-48 overflow-hidden">
         <img
           src={image[currentImageIndex] || "/placeholder.svg"}
@@ -127,9 +139,9 @@ export function BookingCard({
       <div className="p-4">
         <div className="flex justify-between items-center mb-2">
           <div className="flex gap-2 items-center">
-            <span className="font-bold text-gray-900 text-lg">{id}</span>
-             <span className="text-black">·</span>
-            <span className="text-white text-sm font-medium bg-green-600 px-2 py-[2px] rounded">
+            <span className="font-bold text-gray-900 text-lg">{Id}</span>
+            <span className="text-black">·</span>
+            <span className="text-white text-xs font-medium bg-green-600 px-2 py-[2px] rounded">
               {date}
             </span>
           </div>
