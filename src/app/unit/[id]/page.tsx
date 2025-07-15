@@ -1,12 +1,11 @@
 import UnitClient from "./_unitClient";
 
 export async function generateStaticParams() {
-  return [
-    { id: "1" },
-    { id: "2" },
-    { id: "3" },
-  ];
+  return Array.from({ length: 30 }, (_, i) => ({
+    id: `A${String(i + 1).padStart(2, "0")}`,
+  }));
 }
+
 
 export default function UnitDetailPage({ params }: { params: { id: string } }) {
   const propertyId = params.id;
