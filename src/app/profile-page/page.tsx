@@ -153,7 +153,7 @@ default:
 
           <div className="flex flex-col md:flex-row gap-8 border-t pt-6 mt-1">
               {/* Sidebar */}
-              <div className="col-span-1 w-full md:w-[35%] border-r pr-6 pl-15">
+              <div className="col-span-1 w-full md:w-[30%] border-r pr-6 pl-15">
                   <h2 className="text-3xl font-semibold mb-4">Profile</h2>
                   <ul className="space-y-4">
                       <li
@@ -194,7 +194,7 @@ default:
               </div>
 
               {/* Dynamic Content */}
-              <div className="col-span-3 w-full md:w-[65%] pl-20">{renderMainContent()}</div>
+              <div className="col-span-3 w-full md:w-[70%] pl-20">{renderMainContent()}</div>
           </div>
 
       </div><Footer /></>

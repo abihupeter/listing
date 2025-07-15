@@ -57,7 +57,7 @@ export function BookingCard({
   };
 
   const handleCardClick = () => {
-   window.open(`/unit/${id}`, "_blank"); // Open the actual static route like A01, A02...
+   window.open(`/unit/${id}`, "_blank");
   };
 
   return (
@@ -136,7 +136,7 @@ export function BookingCard({
           <div className="flex gap-2 items-center">
             <span className="font-bold text-gray-900 text-lg">{id}</span>
             <span className="text-black">·</span>
-            <span className="text-white text-xs font-medium bg-green-600 px-2 py-[2px] rounded">
+            <span className="text-white text-[10px]  font-medium bg-green-600 px-2 py-[2px] rounded">
               {date}
             </span>
           </div>
