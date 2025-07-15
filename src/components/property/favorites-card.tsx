@@ -55,7 +55,7 @@ export function FavoritesCard({
   };
 
   const handleCardClick = () => {
-    window.open(`/unit/${id}`, "_blank"); // Open the actual static route like A01, A02...
+    window.open(`/unit/${id}`, "_blank"); 
 
   };
 
