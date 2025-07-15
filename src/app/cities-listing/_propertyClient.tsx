@@ -103,19 +103,21 @@ export default function PropertyClient() {
         </div>
 
         {isMapOpen && (
-          <div className="hidden md:block bg-white shadow-inner w-full md:w-[40%]">
-            <div className="mt-10 w-full h-full">
-              <iframe
-                src={`https://maps.google.com/maps?q=${encodeURIComponent(
-                  selectedCity
-                )},%20Kenya&t=&z=13&ie=UTF8&iwloc=&output=embed`}
-                width="100%"
-                height="100%"
-                allowFullScreen
-                loading="lazy"
-                className="rounded-none min-h-[500px] max-h-[800px]"
-              ></iframe>
-            </div>
+          <div className="p-4 md:p-6 lg:p-8">
+           
+            <div className="sticky-top-10 z-20 relative shadow-lg mb-8 mt-3 rounded-2xl overflow-hidden h-[900px] w-[600px]">
+                        <iframe
+                          src={`https://maps.google.com/maps?q=${encodeURIComponent(
+                            selectedCity
+                          )},%20Kenya&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                          width="100%"
+                          height="100%"
+                          allowFullScreen
+                          loading="lazy"
+                          className="rounded-none min-h-[500px] max-h-[900px]"
+                        ></iframe>
+                      </div>
+            
           </div>
         )}
       </div>
