@@ -63,7 +63,7 @@ export function FiltersModal({ isOpen, onClose }: FiltersModalProps) {
     <div className="z-50 fixed inset-0 flex justify-center items-center bg-black/50 p-4">
       <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex justify-between items-center p-6 border-b">
+         <div className="sticky top-0 bg-white z-10 flex justify-between items-center p-6 border-b shadow-sm">
           <h2 className="font-bold text-2xl">Filters</h2>
           <button onClick={onClose} className="hover:bg-gray-100 p-2 rounded-full">
             <X className="w-6 h-6" />
@@ -213,7 +213,7 @@ export function FiltersModal({ isOpen, onClose }: FiltersModalProps) {
         </div>
 
         {/* Footer */}
-        <div className="flex justify-between items-center p-6 border-t">
+        <div className="sticky bottom-0 bg-white z-10 p-6 border-t shadow-md flex justify-between items-center">
           <Button variant="outline" onClick={() => {}}>
             Clear all
           </Button>
