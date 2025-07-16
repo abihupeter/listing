@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ReduxProvider } from "./lib/reduxprovider"; 
 import "./globals.css";
-//import Head from "next/head";
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/*  Fonarto  */}
+        {/* Fonarto and Axiforma fonts */}
         <link
           href="https://fonts.cdnfonts.com/css/fonarto-xt"
           rel="stylesheet"
@@ -40,7 +39,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ReduxProvider>
+          {children}
+        </ReduxProvider>
       </body>
     </html>
   );
