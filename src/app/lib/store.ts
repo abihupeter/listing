@@ -1,11 +1,18 @@
-import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from '@/features/counter/counter-slice' // replace with your actual slice
+import { configureStore } from '@reduxjs/toolkit';
+import { authSlice } from './apiSlice/auth/authSlice';
 
-export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-  },
-})
+export const makeStore = () => {
+  return configureStore({
+    reducer: {
+      [authSlice.reducerPath]: authSlice.reducer,
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+    },
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware()
+        .concat(authSlice.middleware)
+  });
+};
+
+export type AppStore = ReturnType<typeof makeStore>;
+export type RootState = ReturnType<AppStore['getState']>;
+export type AppDispatch = AppStore['dispatch'];
