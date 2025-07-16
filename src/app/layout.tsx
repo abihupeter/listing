@@ -1,6 +1,9 @@
-import type { Metadata } from "next";
+"use client";
+// import type { Metadata } from "next";
+
 import { Geist, Geist_Mono } from "next/font/google";
-import { ReduxProvider } from "./lib/reduxprovider"; 
+import { Provider } from "react-redux";
+import { makeStore } from "./lib/store";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,10 +16,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Kodi Nyumba Listing",
-  description: "Listing properties by Kodinyumba",
-};
+// export const metadata: Metadata = {
+//   title: "Kodi Nyumba Listing",
+//   description: "Listing properties by Kodinyumba",
+// };
+
+const store = makeStore();
+
 
 export default function RootLayout({
   children,
@@ -39,9 +45,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ReduxProvider>
+          <Provider store={store}>
           {children}
-        </ReduxProvider>
+          </Provider>
       </body>
     </html>
   );
