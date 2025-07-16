@@ -1,4 +1,3 @@
-// components/profile/ProfileSidebar.tsx
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -15,18 +14,21 @@ interface ProfileSidebarProps {
 
 export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
   const sidebarRef = useRef<HTMLDivElement>(null);
-  const [isSignedIn, setIsSignedIn] = useState(true);
-  const [showLoginModal, setShowLoginModal] = useState(false);
-  const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
   const router = useRouter();
+
+  const [isSignedIn, setIsSignedIn] = useState(false);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const [loginStep, setLoginStep] = useState<"none" | "email" | "password">("none");
+  const [showSignupModal, setShowSignupModal] = useState(false);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (
-        sidebarRef.current &&
-        !sidebarRef.current.contains(e.target as Node)
-      ) {
+      if (sidebarRef.current && !sidebarRef.current.contains(e.target as Node)) {
         onClose();
       }
     };
@@ -40,95 +42,222 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
     };
   }, [isOpen, onClose]);
 
-  const handleLogin = () => {
+  const handleEmailContinue = () => {
     if (!email || !email.includes("@")) {
       setError("Please enter a valid email address.");
       return;
     }
+    setError("");
+    setLoginStep("password");
+  };
+
+  const handlePasswordContinue = () => {
+    if (!password || password.length < 4) {
+      setError("Password must be at least 4 characters.");
+      return;
+    }
+    setIsSignedIn(true);
+    resetAuthState();
+  };
+
+  const handleSignup = () => {
+    if (!email || !email.includes("@")) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+    if (password.length < 4) {
+      setError("Password must be at least 4 characters.");
+      return;
+    }
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
 
     setIsSignedIn(true);
-    setShowLoginModal(false);
+    resetAuthState();
+  };
+
+  const resetAuthState = () => {
+    setLoginStep("none");
+    setShowSignupModal(false);
     setEmail("");
+    setPassword("");
+    setConfirmPassword("");
     setError("");
   };
 
+  const AuthButtons = () => (
+    <>
+      <div className="my-4 flex items-center gap-4">
+        <div className="flex-1 h-px bg-gray-300" />
+        <span className="text-gray-500 text-sm">OR</span>
+        <div className="flex-1 h-px bg-gray-300" />
+      </div>
+
+      <button className="w-full flex items-center justify-center border py-2 rounded-md mb-3 hover:bg-gray-100">
+        <Image src="/images/google.jpg" alt="Google Icon" width={20} height={20} className="mr-2" />
+        Continue with Google
+      </button>
+
+      <button className="w-full flex items-center justify-center border py-2 rounded-md hover:bg-gray-100">
+        <Image src="/images/apple.jpg" alt="Apple Icon" width={20} height={20} className="mr-2" />
+        Continue with Apple
+      </button>
+    </>
+  );
+
   const LoginModal = () => (
-    <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center" role="dialog" aria-modal="true">
       <div className="bg-white w-full max-w-sm p-6 rounded-xl shadow-xl relative">
-        <button
-          className="absolute top-3 right-3 text-gray-500 hover:text-black"
-          onClick={() => setShowLoginModal(false)}
-        >
+        <button className="absolute top-3 right-3 text-gray-500 hover:text-black" onClick={resetAuthState}>
           <X size={20} />
         </button>
 
         <h1 className="text-3xl font-bold text-[#0056ff] font-fonarto">Kodi</h1>
         <p className="text-sm text-gray-600 mt-1">Welcome to Kodi</p>
 
-        <h2 className="text-lg font-semibold mt-6">Log In/ Sign Up</h2>
+        {loginStep === "email" && (
+          <>
+            <h2 className="text-lg font-semibold mt-6">Log In / Sign Up</h2>
+            <div className="mt-3">
+              <label htmlFor="email" className="text-sm text-gray-700 font-medium block mb-1">
+                Email Address <span className="text-red-500">*</span>
+              </label>
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="you@example.com"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+              />
+              {error && <p className="text-sm text-red-500 mt-1">{error}</p>}
+            </div>
 
-       <div className="mt-3">
-          <label htmlFor="email" className="text-sm text-gray-700 font-medium block mb-1">
-            Email Address <span className="text-red-500">*</span>
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="you@example.com"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-          />
-          {error && <p className="text-sm text-red-500 mt-1">{error}</p>}
-        </div>
+            <button
+              onClick={handleEmailContinue}
+              className="w-full mt-4 bg-[#0056ff] text-white py-2 rounded-md font-semibold"
+            >
+              Continue
+            </button>
 
+            <p className="text-sm mt-3 text-center">
+              New to Kodi?{" "}
+              <span
+                onClick={() => {
+                  resetAuthState();
+                  setShowSignupModal(true);
+                }}
+                className="text-blue-600 font-medium cursor-pointer"
+              >
+                Create account
+              </span>
+            </p>
 
-        {error && <p className="text-sm text-red-500 mt-1">{error}</p>}
+            <AuthButtons />
+          </>
+        )}
 
-        <button
-          onClick={handleLogin}
-          className="w-full mt-4 bg-[#0056ff] text-white py-2 rounded-md font-semibold"
-        >
-          Continue
-        </button>
+        {loginStep === "password" && (
+          <>
+            <h2 className="text-lg font-semibold mt-6">Enter your password</h2>
+            <div className="mt-3">
+              <label htmlFor="password" className="text-sm text-gray-700 font-medium block mb-1">
+                Password <span className="text-red-500">*</span>
+              </label>
+              <input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Your password"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+              />
+              {error && <p className="text-sm text-red-500 mt-1">{error}</p>}
+            </div>
 
-        <p className="text-sm mt-3 text-center">
-          New to Kodi?{" "}
-          <span className="text-blue-600 font-medium cursor-pointer">Create account</span>
-        </p>
-
-        <div className="my-4 flex items-center gap-4">
-          <div className="flex-1 h-px bg-gray-300" />
-          <span className="text-gray-500 text-sm">OR</span>
-          <div className="flex-1 h-px bg-gray-300" />
-        </div>
-
-        <button className="w-full flex items-center justify-center border py-2 rounded-md mb-3 hover:bg-gray-100">
-          <Image
-            src="/images/google.jpg"
-            alt="Google Icon"
-            width={20}
-            height={20}
-            className="mr-2"
-          />
-          Continue with Google
-        </button>
-
-        <button className="w-full flex items-center justify-center border py-2 rounded-md hover:bg-gray-100">
-          <Image
-            src="/images/apple.jpg"
-            alt="Apple Icon"
-            width={20}
-            height={20}
-            className="mr-2"
-          />
-          Continue with Apple
-        </button>
+            <button
+              onClick={handlePasswordContinue}
+              className="w-full mt-4 bg-[#0056ff] text-white py-2 rounded-md font-semibold"
+            >
+              Continue
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
+
+  const SignupModal = () => (
+  <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center" role="dialog" aria-modal="true">
+    <div className="bg-white w-full max-w-sm p-6 rounded-xl shadow-xl relative">
+      <button className="absolute top-3 right-3 text-gray-500 hover:text-black" onClick={resetAuthState}>
+        <X size={20} />
+      </button>
+
+      <h1 className="text-3xl font-bold text-[#0056ff] font-fonarto">Kodi</h1>
+      <p className="text-sm text-gray-600 mt-1">Create a Kodi Account</p>
+
+      <div className="mt-4">
+        <label htmlFor="signupEmail" className="text-sm text-gray-700 font-medium block mb-1">
+          Email Address <span className="text-red-500">*</span>
+        </label>
+        <input
+          id="signupEmail"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="you@example.com"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+        />
+      </div>
+
+      <div className="mt-4">
+        <label htmlFor="signupPassword" className="text-sm text-gray-700 font-medium block mb-1">
+          Password <span className="text-red-500">*</span>
+        </label>
+        <input
+          id="signupPassword"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+        />
+      </div>
+
+      <div className="mt-4">
+        <label htmlFor="confirmPassword" className="text-sm text-gray-700 font-medium block mb-1">
+          Confirm Password <span className="text-red-500">*</span>
+        </label>
+        <input
+          id="confirmPassword"
+          type="password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          placeholder="Repeat password"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+        />
+      </div>
+
+      {error && <p className="text-sm text-red-500 mt-2">{error}</p>}
+
+      <button
+        onClick={() => {
+          resetAuthState();
+          setLoginStep("email");
+        }}
+        className="w-full mt-4 bg-[#0056ff] text-white py-2 rounded-md font-semibold"
+      >
+        Create Account and Log In
+      </button>
+
+      <AuthButtons />
+    </div>
+  </div>
+);
+
 
   return (
     <>
@@ -187,7 +316,7 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
           <Button
             variant="default"
             className="w-full flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white"
-            onClick={() => setShowLoginModal(true)}
+            onClick={() => setLoginStep("email")}
           >
             <LogIn className="w-4 h-4 text-white" />
             Sign In
@@ -195,7 +324,8 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
         )}
       </div>
 
-      {showLoginModal && <LoginModal />}
+      {loginStep !== "none" && <LoginModal />}
+      {showSignupModal && <SignupModal />}
     </>
   );
 }
