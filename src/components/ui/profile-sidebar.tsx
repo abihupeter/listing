@@ -6,6 +6,7 @@ import { User, LogOut, LogIn, Heart, Star, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
 import Image from "next/image";
+import { useLoginUserMutation } from "@/app/lib/apiSlice/auth/authSlice";
 
 interface ProfileSidebarProps {
   isOpen: boolean;
@@ -15,9 +16,9 @@ interface ProfileSidebarProps {
 export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
   const sidebarRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const [loginUser, { isLoading, error: loginError }] = useLoginUserMutation();
 
   const [isSignedIn, setIsSignedIn] = useState(false);
-
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -42,31 +43,68 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
     };
   }, [isOpen, onClose]);
 
+  const normalizePhoneNumber = (phone: string): string | null => {
+    // Remove all non-digit characters
+    const cleaned = phone.replace(/\D/g, '');
+    
+    // Check if the number is a valid Kenyan number
+    if (cleaned.length === 9 && cleaned.startsWith('7')) {
+      return `+254${cleaned}`;
+    } else if (cleaned.length === 10 && cleaned.startsWith('07')) {
+      return `+254${cleaned.substring(1)}`;
+    } else if (cleaned.length === 12 && cleaned.startsWith('254')) {
+      return `+${cleaned}`;
+    } else if (cleaned.length === 13 && cleaned.startsWith('+254')) {
+      return cleaned;
+    }
+    
+    return null;
+  };
+
   const validatePhone = (phone: string) => {
-    return /^\+254\d{9}$/.test(phone);
+    const normalized = normalizePhoneNumber(phone);
+    return normalized !== null;
   };
 
   const handlePhoneContinue = () => {
     if (!validatePhone(phone)) {
-      setError("Please enter a valid phone number in the format +254XXXXXXXXX.");
+      setError("Please enter a valid Kenyan phone number (e.g., 0712345678, 712345678, 254712345678, or +254712345678)");
       return;
     }
     setError("");
     setLoginStep("password");
   };
 
-  const handlePasswordContinue = () => {
+  const handlePasswordContinue = async () => {
     if (!password || password.length < 4) {
       setError("Password must be at least 4 characters.");
       return;
     }
-    setIsSignedIn(true);
-    resetAuthState();
+
+    try {
+      const normalizedPhone = normalizePhoneNumber(phone);
+      if (!normalizedPhone) {
+        setError("Invalid phone number format");
+        return;
+      }
+
+      const response = await loginUser({
+        phone_number: phone,
+        password: password
+      }).unwrap();
+
+      // If login is successful
+      setIsSignedIn(true);
+      resetAuthState();
+    } catch (err: any) {
+      // Handle error from the API
+      setError(err.data?.message || "Login failed. Please check your credentials and try again.");
+    }
   };
 
-  const handleSignup = () => {
+  const handleSignup = async () => {
     if (!validatePhone(phone)) {
-      setError("Please enter a valid phone number in the format +254XXXXXXXXX.");
+      setError("Please enter a valid Kenyan phone number (e.g., 0712345678, 712345678, 254712345678, or +254712345678)");
       return;
     }
     if (password.length < 4) {
@@ -78,8 +116,25 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
       return;
     }
 
-    setIsSignedIn(true);
-    resetAuthState();
+    try {
+      const normalizedPhone = normalizePhoneNumber(phone);
+      if (!normalizedPhone) {
+        setError("Invalid phone number format");
+        return;
+      }
+
+      const response = await loginUser({
+        phone_number: normalizedPhone,
+        password: password
+      }).unwrap();
+
+      // If login is successful
+      setIsSignedIn(true);
+      resetAuthState();
+    } catch (err: any) {
+      // Handle error from the API
+      setError(err.data?.message || "Registration failed. Please try again.");
+    }
   };
 
   const resetAuthState = () => {
@@ -133,7 +188,7 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
                 type="text"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                placeholder="+254712345678"
+                placeholder="0712345678 or 254712345678"
                 className="shadow-sm px-4 py-2 border border-gray-300 focus:border-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full transition"
               />
               {error && <p className="mt-1 text-red-500 text-sm">{error}</p>}
@@ -141,9 +196,10 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
 
             <button
               onClick={handlePhoneContinue}
-              className="bg-[#0056ff] mt-4 py-2 rounded-md w-full font-semibold text-white"
+              disabled={isLoading}
+              className="bg-[#0056ff] disabled:opacity-50 mt-4 py-2 rounded-md w-full font-semibold text-white"
             >
-              Continue
+              {isLoading ? "Loading..." : "Continue"}
             </button>
 
             <p className="mt-3 text-sm text-center">
@@ -183,9 +239,10 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
 
             <button
               onClick={handlePasswordContinue}
-              className="bg-[#0056ff] mt-4 py-2 rounded-md w-full font-semibold text-white"
+              disabled={isLoading}
+              className="bg-[#0056ff] disabled:opacity-50 mt-4 py-2 rounded-md w-full font-semibold text-white"
             >
-              Continue
+              {isLoading ? "Logging in..." : "Continue"}
             </button>
           </>
         )}
@@ -212,7 +269,7 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
             type="text"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            placeholder="+254712345678"
+            placeholder="0712345678 or 254712345678"
             className="shadow-sm px-4 py-2 border border-gray-300 focus:border-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full transition"
           />
         </div>
@@ -249,9 +306,10 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
 
         <button
           onClick={handleSignup}
-          className="bg-[#0056ff] mt-4 py-2 rounded-md w-full font-semibold text-white"
+          disabled={isLoading}
+          className="bg-[#0056ff] disabled:opacity-50 mt-4 py-2 rounded-md w-full font-semibold text-white"
         >
-          Create Account and Log In
+          {isLoading ? "Creating account..." : "Create Account and Log In"}
         </button>
 
         <AuthButtons />

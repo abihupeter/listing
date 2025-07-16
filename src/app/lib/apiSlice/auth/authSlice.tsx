@@ -8,7 +8,7 @@ export const authSlice = createApi({
   endpoints: (builder) => ({
     loginUser: builder.mutation({
       query: (clientData) => ({
-        url: "/user/login/",
+        url: "/users/login/",
         method: "POST",
         body: clientData,
       }),
@@ -16,7 +16,7 @@ export const authSlice = createApi({
     }),
     registerUser: builder.mutation({
       query: (clientData) => ({
-        url: "/user/register/",
+        url: "/users/register/",
         method: "POST",
         body: clientData,
       }),
