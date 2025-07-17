@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -6,7 +6,8 @@ import { User, LogOut, LogIn, Heart, Star, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
 import Image from "next/image";
-import { useLoginUserMutation } from "@/app/lib/apiSlice/auth/authSlice";
+import { useLoginUserMutation,useRegisterUserMutation } from "@/app/lib/apiSlice/auth/authSlice";//import
+// import { useRegisterUserMutation } from "@/app/lib/apiSlice/auth/authSlice";
 
 interface ProfileSidebarProps {
   isOpen: boolean;
@@ -16,13 +17,15 @@ interface ProfileSidebarProps {
 export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
   const sidebarRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-  const [loginUser, { isLoading, error: loginError }] = useLoginUserMutation();
-
+  const [loginUser, { isLoading, error: loginError }] = useLoginUserMutation();//imported loginUser mutation
+  const [registerUser, { isLoading: isRegistering }] = useRegisterUserMutation();//imported registerUser mutation
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [fullName, setFullName] = useState("");
+const [email, setEmail] = useState("");
 
   const [loginStep, setLoginStep] = useState<"none" | "phone" | "password">("none");
   const [showSignupModal, setShowSignupModal] = useState(false);
@@ -43,23 +46,21 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
     };
   }, [isOpen, onClose]);
 
-  const normalizePhoneNumber = (phone: string): string | null => {
-    // Remove all non-digit characters
-    const cleaned = phone.replace(/\D/g, '');
-    
-    // Check if the number is a valid Kenyan number
-    if (cleaned.length === 9 && cleaned.startsWith('7')) {
-      return `+254${cleaned}`;
-    } else if (cleaned.length === 10 && cleaned.startsWith('07')) {
-      return `+254${cleaned.substring(1)}`;
-    } else if (cleaned.length === 12 && cleaned.startsWith('254')) {
-      return `+${cleaned}`;
-    } else if (cleaned.length === 13 && cleaned.startsWith('+254')) {
-      return cleaned;
-    }
-    
-    return null;
-  };
+ const normalizePhoneNumber = (phone: string): string | null => {
+  const cleaned = phone.replace(/\D/g, '');
+
+  if (cleaned.length === 9 && cleaned.startsWith('7')) {
+    return `+254${cleaned}`;
+  } else if (cleaned.length === 10 && cleaned.startsWith('07')) {
+    return `+254${cleaned.substring(1)}`;
+  } else if (cleaned.length === 12 && cleaned.startsWith('254')) {
+    return `+${cleaned}`;
+  } else if (cleaned.length === 13 && cleaned.startsWith('+254')) {
+    return cleaned;
+  }
+
+  return null;
+};
 
   const validatePhone = (phone: string) => {
     const normalized = normalizePhoneNumber(phone);
@@ -102,40 +103,48 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
     }
   };
 
-  const handleSignup = async () => {
-    if (!validatePhone(phone)) {
-      setError("Please enter a valid Kenyan phone number (e.g., 0712345678, 712345678, 254712345678, or +254712345678)");
-      return;
-    }
-    if (password.length < 4) {
-      setError("Password must be at least 4 characters.");
-      return;
-    }
-    if (password !== confirmPassword) {
-      setError("Passwords do not match.");
+ const handleSignup = async () => {
+  if (!validatePhone(phone)) {
+    setError("Please enter a valid Kenyan phone number (e.g., 0712345678, 254712345678, etc.)");
+    return;
+  }
+
+  if (!fullName || !email) {
+    setError("Please enter your full name and email.");
+    return;
+  }
+
+  if (password.length < 4) {
+    setError("Password must be at least 4 characters.");
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    setError("Passwords do not match.");
+    return;
+  }
+
+  try {
+    const normalizedPhone = normalizePhoneNumber(phone);
+    if (!normalizedPhone) {
+      setError("Invalid phone number format");
       return;
     }
 
-    try {
-      const normalizedPhone = normalizePhoneNumber(phone);
-      if (!normalizedPhone) {
-        setError("Invalid phone number format");
-        return;
-      }
+    const response = await registerUser({
+      phone_number: normalizedPhone,
+      full_name: fullName,
+      email,
+      password
+    }).unwrap();
 
-      const response = await loginUser({
-        phone_number: normalizedPhone,
-        password: password
-      }).unwrap();
-
-      // If login is successful
-      setIsSignedIn(true);
-      resetAuthState();
-    } catch (err: any) {
-      // Handle error from the API
-      setError(err.data?.message || "Registration failed. Please try again.");
-    }
-  };
+    // If successful
+    setIsSignedIn(true);
+    resetAuthState();
+  } catch (err: any) {
+    setError(err.data?.message || "Registration failed. Please try again.");
+  }
+};
 
   const resetAuthState = () => {
     setLoginStep("none");
@@ -209,7 +218,7 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
                   resetAuthState();
                   setShowSignupModal(true);
                 }}
-                className="font-medium text-blue-600 cursor-pointer"
+                className="font-medium text-blue-600 cursor-pointer hover:underline hover:text-blue-900"
               >
                 Create account
               </span>
@@ -251,7 +260,7 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
   );
 
   const SignupModal = () => (
-    <div className="z-50 fixed inset-0 flex justify-center items-center bg-black/50" role="dialog" aria-modal="true">
+    <div className="z-50 fixed inset-0 flex justify-center items-center bg-black/80" role="dialog" aria-modal="true">
       <div className="relative bg-white shadow-xl p-6 rounded-xl w-full max-w-sm">
         <button className="top-3 right-3 absolute text-gray-500 hover:text-black" onClick={resetAuthState}>
           <X size={20} />
@@ -273,6 +282,34 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
             className="shadow-sm px-4 py-2 border border-gray-300 focus:border-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full transition"
           />
         </div>
+        <div className="mt-4">
+  <label htmlFor="fullName" className="block mb-1 font-medium text-gray-700 text-sm">
+    Full Name <span className="text-red-500">*</span>
+  </label>
+  <input
+    id="fullName"
+    type="text"
+    value={fullName}
+    onChange={(e) => setFullName(e.target.value)}
+    placeholder="Full Name"
+    className="shadow-sm px-4 py-2 border border-gray-300 focus:border-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full transition"
+  />
+</div>
+
+<div className="mt-4">
+  <label htmlFor="email" className="block mb-1 font-medium text-gray-700 text-sm">
+    Email Address <span className="text-red-500">*</span>
+  </label>
+  <input
+    id="email"
+    type="email"
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+    placeholder="Email Address"
+    className="shadow-sm px-4 py-2 border border-gray-300 focus:border-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full transition"
+  />
+</div>
+
 
         <div className="mt-4">
           <label htmlFor="signupPassword" className="block mb-1 font-medium text-gray-700 text-sm">
