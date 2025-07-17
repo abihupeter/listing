@@ -3,23 +3,17 @@ import { endpointUrl } from "../../../../../serverUrl";
 
 export const propertySlice = createApi({
   reducerPath: "propertyApi",
- baseQuery: fetchBaseQuery({ baseUrl: endpointUrl }),
-  tagTypes: ["Property"],
+  baseQuery: fetchBaseQuery({ baseUrl: endpointUrl }),
+  tagTypes: ["Properties"],
   endpoints: (builder) => ({
-    loginUser: builder.mutation({
-      query: (clientData) => ({
-        url: "/users/login/",
-        method: "POST",
-        body: clientData,
-      }),
-      invalidatesTags: ["Property"],
-    }),
     getAllProperties: builder.query({
-      query: () => `/landlord/apartment`,
-      providesTags: ["Property"],
+      query: () => ({
+        url: "/landlord/all-landlords/",
+        method: "GET",
+      }),
+      providesTags: ["Properties"],
     }),
   }),
 });
-export const { useLoginUserMutation, useGetAllPropertiesQuery } =
-  propertySlice;
+export const { useGetAllPropertiesQuery } = propertySlice;
 export default propertySlice;
