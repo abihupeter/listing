@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { User, LogOut, LogIn, Heart, Star, X } from "lucide-react";
+import { User, LogOut, LogIn, Heart, Star, X, Eye, EyeOff } from "lucide-react";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
 import Image from "next/image";
@@ -26,6 +26,9 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
   const [error, setError] = useState("");
   const [fullName, setFullName] = useState("");
 const [email, setEmail] = useState("");
+const [showPassword, setShowPassword] = useState(false);
+const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
 
   const [loginStep, setLoginStep] = useState<"none" | "phone" | "password">("none");
   const [showSignupModal, setShowSignupModal] = useState(false);
@@ -154,6 +157,33 @@ const [email, setEmail] = useState("");
     setConfirmPassword("");
     setError("");
   };
+  //just added this function to handle focus
+
+const [focusedInput, setFocusedInput] = useState<HTMLInputElement | null>(null);
+const shouldIgnoreBlurRef = useRef(false);
+
+useEffect(() => {
+  const handleBlur = (e: FocusEvent) => {
+    if (shouldIgnoreBlurRef.current) return;
+
+    requestAnimationFrame(() => {
+      if (
+        document.activeElement instanceof HTMLInputElement &&
+        document.activeElement !== focusedInput
+      ) {
+        setFocusedInput(document.activeElement);
+      } else if (focusedInput) {
+        focusedInput.focus();
+      }
+    });
+  };
+
+  document.addEventListener("blur", handleBlur, true);
+  return () => {
+    document.removeEventListener("blur", handleBlur, true);
+  };
+}, [focusedInput]);
+//till here
 
   const AuthButtons = () => (
     <>
@@ -174,6 +204,13 @@ const [email, setEmail] = useState("");
       </button>
     </>
   );
+  const phoneInputRef = useRef<HTMLInputElement | null>(null);
+
+useEffect(() => {
+  if (phone.length > 0 && phone.length < 10) {
+    phoneInputRef.current?.focus();
+  }
+}, [phone]);
 
   const LoginModal = () => (
     <div className="z-50 fixed inset-0 flex justify-center items-center bg-black/50" role="dialog" aria-modal="true">
@@ -193,13 +230,23 @@ const [email, setEmail] = useState("");
                 Phone Number <span className="text-red-500">*</span>
               </label>
               <input
-                id="phone"
-                type="text"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder="0712345678 or 254712345678"
-                className="shadow-sm px-4 py-2 border border-gray-300 focus:border-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full transition"
-              />
+                  id="phone"
+                  type="tel"
+                  ref={phoneInputRef}
+                  value={phone}
+                  onChange={(e) => {
+                    const input = e.target.value.replace(/\D/g, ""); // only digits
+                    if (input.length <= 13) setPhone(input);
+                  }}
+                  //onFocus={(e) => setFocusedInput(e.target)}
+                  placeholder="0712345678 or 254712345678"
+                  className={clsx(
+                    "shadow-sm px-4 py-2 border rounded-md w-full transition",
+                    phone.length < 10
+                      ? "border-red-400 focus:border-red-500 focus:ring-red-500"
+                      : "border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                  )}
+                />
               {error && <p className="mt-1 text-red-500 text-sm">{error}</p>}
             </div>
 
@@ -231,20 +278,31 @@ const [email, setEmail] = useState("");
         {loginStep === "password" && (
           <>
             <h2 className="mt-6 font-semibold text-lg">Enter your password</h2>
-            <div className="mt-3">
+           <div className="mt-3 relative">
               <label htmlFor="password" className="block mb-1 font-medium text-gray-700 text-sm">
                 Password <span className="text-red-500">*</span>
               </label>
               <input
                 id="password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                //onFocus={(e) => setFocusedInput(e.target)}
                 placeholder="Your password"
-                className="shadow-sm px-4 py-2 border border-gray-300 focus:border-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full transition"
+                
+                className="shadow-sm px-4 py-2 pr-10 border border-gray-300 focus:border-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full transition"
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-[42px] text-gray-500 hover:text-gray-700"
+                tabIndex={-1}
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
               {error && <p className="mt-1 text-red-500 text-sm">{error}</p>}
             </div>
+
 
             <button
               onClick={handlePasswordContinue}
@@ -278,7 +336,10 @@ const [email, setEmail] = useState("");
             type="text"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
+            autoFocus
+            //onFocus={(e) => setFocusedInput(e.target)}
             placeholder="0712345678 or 254712345678"
+            
             className="shadow-sm px-4 py-2 border border-gray-300 focus:border-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full transition"
           />
         </div>
@@ -291,7 +352,10 @@ const [email, setEmail] = useState("");
     type="text"
     value={fullName}
     onChange={(e) => setFullName(e.target.value)}
+    autoFocus
+    // onFocus={(e) => setFocusedInput(e.target)}
     placeholder="Full Name"
+    
     className="shadow-sm px-4 py-2 border border-gray-300 focus:border-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full transition"
   />
 </div>
@@ -305,39 +369,60 @@ const [email, setEmail] = useState("");
     type="email"
     value={email}
     onChange={(e) => setEmail(e.target.value)}
+    //onFocus={(e) => setFocusedInput(e.target)}
     placeholder="Email Address"
+    
     className="shadow-sm px-4 py-2 border border-gray-300 focus:border-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full transition"
   />
 </div>
 
 
-        <div className="mt-4">
-          <label htmlFor="signupPassword" className="block mb-1 font-medium text-gray-700 text-sm">
-            Password <span className="text-red-500">*</span>
-          </label>
-          <input
-            id="signupPassword"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            className="shadow-sm px-4 py-2 border border-gray-300 focus:border-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full transition"
-          />
-        </div>
+        <div className="mt-4 relative">
+  <label htmlFor="signupPassword" className="block mb-1 font-medium text-gray-700 text-sm">
+    Password <span className="text-red-500">*</span>
+  </label>
+  <input
+    id="signupPassword"
+    type={showPassword ? "text" : "password"}
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+    //onFocus={(e) => setFocusedInput(e.target)}
+    placeholder="Password"
+    className="shadow-sm px-4 py-2 pr-10 border border-gray-300 focus:border-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full transition"
+  />
+  <button
+    type="button"
+    onClick={() => setShowPassword(!showPassword)}
+    className="absolute right-3 top-[42px] text-gray-500 hover:text-gray-700"
+    tabIndex={-1}
+  >
+    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+  </button>
+</div>
 
-        <div className="mt-4">
-          <label htmlFor="confirmPassword" className="block mb-1 font-medium text-gray-700 text-sm">
-            Confirm Password <span className="text-red-500">*</span>
-          </label>
-          <input
-            id="confirmPassword"
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            placeholder="Repeat password"
-            className="shadow-sm px-4 py-2 border border-gray-300 focus:border-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full transition"
-          />
-        </div>
+
+       <div className="mt-4 relative">
+  <label htmlFor="confirmPassword" className="block mb-1 font-medium text-gray-700 text-sm">
+    Confirm Password <span className="text-red-500">*</span>
+  </label>
+  <input
+    id="confirmPassword"
+    type={showConfirmPassword ? "text" : "password"}
+    value={confirmPassword}
+    onChange={(e) => setConfirmPassword(e.target.value)}
+    // //onFocus={(e) => setFocusedInput(e.target)}
+    placeholder="Repeat password"
+    className="shadow-sm px-4 py-2 pr-10 border border-gray-300 focus:border-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full transition"
+  />
+  <button
+    type="button"
+    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+    className="absolute right-3 top-[42px] text-gray-500 hover:text-gray-700"
+    tabIndex={-1}
+  >
+    {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+  </button>
+</div>
 
         {error && <p className="mt-2 text-red-500 text-sm">{error}</p>}
 
