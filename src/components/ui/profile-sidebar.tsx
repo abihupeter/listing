@@ -6,11 +6,12 @@ import { User, LogOut, LogIn, Heart, Star, X, Eye, EyeOff } from "lucide-react";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
 import Image from "next/image";
+import Input from "@/components/ui/Input1";
+
 import {
   useLoginUserMutation,
   useRegisterUserMutation,
-} from "@/app/lib/apiSlice/auth/authSlice"; //import
-// import { useRegisterUserMutation } from "@/app/lib/apiSlice/auth/authSlice";
+} from "@/app/lib/apiSlice/auth/authSlice";
 
 interface ProfileSidebarProps {
   isOpen: boolean;
@@ -20,9 +21,10 @@ interface ProfileSidebarProps {
 export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
   const sidebarRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-  const [loginUser, { isLoading, error: loginError }] = useLoginUserMutation(); //imported loginUser mutation
+  const [loginUser, { isLoading, error: loginError }] = useLoginUserMutation();
   const [registerUser, { isLoading: isRegistering }] =
-    useRegisterUserMutation(); //imported registerUser mutation
+    useRegisterUserMutation();
+
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
@@ -32,57 +34,28 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
   const [email, setEmail] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
   const [loginStep, setLoginStep] = useState<"none" | "phone" | "password">(
     "none"
   );
   const [showSignupModal, setShowSignupModal] = useState(false);
 
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (
-        sidebarRef.current &&
-        !sidebarRef.current.contains(e.target as Node)
-      ) {
-        onClose();
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isOpen, onClose]);
-
   const normalizePhoneNumber = (phone: string): string | null => {
     const cleaned = phone.replace(/\D/g, "");
-
-    if (cleaned.length === 9 && cleaned.startsWith("7")) {
+    if (cleaned.length === 9 && cleaned.startsWith("7"))
       return `+254${cleaned}`;
-    } else if (cleaned.length === 10 && cleaned.startsWith("07")) {
+    if (cleaned.length === 10 && cleaned.startsWith("07"))
       return `+254${cleaned.substring(1)}`;
-    } else if (cleaned.length === 12 && cleaned.startsWith("254")) {
+    if (cleaned.length === 12 && cleaned.startsWith("254"))
       return `+${cleaned}`;
-    } else if (cleaned.length === 13 && cleaned.startsWith("+254")) {
-      return cleaned;
-    }
-
+    if (cleaned.length === 13 && cleaned.startsWith("+254")) return cleaned;
     return null;
   };
 
-  const validatePhone = (phone: string) => {
-    const normalized = normalizePhoneNumber(phone);
-    return normalized !== null;
-  };
+  const validatePhone = (phone: string) => normalizePhoneNumber(phone) !== null;
 
   const handlePhoneContinue = () => {
     if (!validatePhone(phone)) {
-      setError(
-        "Please enter a valid Kenyan phone number (e.g., 0712345678, 712345678, 254712345678, or +254712345678)"
-      );
+      setError("Please enter a valid Kenyan phone number.");
       return;
     }
     setError("");
@@ -104,39 +77,28 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
 
       const response = await loginUser({
         phone_number: phone,
-        password: password,
+        password,
       }).unwrap();
-
-      // If login is successful
       setIsSignedIn(true);
       resetAuthState();
     } catch (err: any) {
-      // Handle error from the API
-      setError(
-        err.data?.message ||
-          "Login failed. Please check your credentials and try again."
-      );
+      setError(err.data?.message || "Login failed. Please try again.");
     }
   };
 
   const handleSignup = async () => {
     if (!validatePhone(phone)) {
-      setError(
-        "Please enter a valid Kenyan phone number (e.g., 0712345678, 254712345678, etc.)"
-      );
+      setError("Please enter a valid Kenyan phone number.");
       return;
     }
-
     if (!fullName || !email) {
       setError("Please enter your full name and email.");
       return;
     }
-
     if (password.length < 4) {
       setError("Password must be at least 4 characters.");
       return;
     }
-
     if (password !== confirmPassword) {
       setError("Passwords do not match.");
       return;
@@ -156,7 +118,6 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
         password,
       }).unwrap();
 
-      // If successful
       setIsSignedIn(true);
       resetAuthState();
     } catch (err: any) {
@@ -172,35 +133,6 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
     setConfirmPassword("");
     setError("");
   };
-  //just added this function to handle focus
-
-  const [focusedInput, setFocusedInput] = useState<HTMLInputElement | null>(
-    null
-  );
-  const shouldIgnoreBlurRef = useRef(false);
-
-  useEffect(() => {
-    const handleBlur = (e: FocusEvent) => {
-      if (shouldIgnoreBlurRef.current) return;
-
-      requestAnimationFrame(() => {
-        if (
-          document.activeElement instanceof HTMLInputElement &&
-          document.activeElement !== focusedInput
-        ) {
-          setFocusedInput(document.activeElement);
-        } else if (focusedInput) {
-          focusedInput.focus();
-        }
-      });
-    };
-
-    document.addEventListener("blur", handleBlur, true);
-    return () => {
-      document.removeEventListener("blur", handleBlur, true);
-    };
-  }, [focusedInput]);
-  //till here
 
   const AuthButtons = () => (
     <>
@@ -233,13 +165,6 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
       </button>
     </>
   );
-  const phoneInputRef = useRef<HTMLInputElement | null>(null);
-
-  useEffect(() => {
-    if (phone.length > 0 && phone.length < 10) {
-      phoneInputRef.current?.focus();
-    }
-  }, [phone]);
 
   const LoginModal = () => (
     <div
@@ -260,35 +185,18 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
 
         {loginStep === "phone" && (
           <>
-            <h2 className="mt-6 font-semibold text-lg">Log In </h2>
-            <div className="mt-3">
-              <label
-                htmlFor="phone"
-                className="block mb-1 font-medium text-gray-700 text-sm"
-              >
-                Phone Number <span className="text-red-500">*</span>
-              </label>
-              <input
-                id="phone"
-                type="tel"
-                ref={phoneInputRef}
-                value={phone}
-                autoFocus
-                onChange={(e) => {
-                  const input = e.target.value.replace(/\D/g, ""); // only digits
-                  if (input.length <= 13) setPhone(input);
-                }}
-                //onFocus={(e) => setFocusedInput(e.target)}
-                placeholder="0712345678 or 254712345678"
-                className={clsx(
-                  "shadow-sm px-4 py-2 border rounded-md w-full transition",
-                  phone.length < 10
-                    ? "border-red-400 focus:border-red-500 focus:ring-red-500"
-                    : "border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
-                )}
-              />
-              {error && <p className="mt-1 text-red-500 text-sm">{error}</p>}
-            </div>
+            <h2 className="mt-6 font-semibold text-lg">Log In</h2>
+            <Input
+              id="phone"
+              label="Phone Number"
+              placeholder="0712345678 or 254712345678"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
+              type="tel"
+            />
+            {error && (
+              <p className="text-red-500 text-sm -mt-2 mb-2">{error}</p>
+            )}
 
             <button
               onClick={handlePhoneContinue}
@@ -319,21 +227,13 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
           <>
             <h2 className="mt-6 font-semibold text-lg">Enter your password</h2>
             <div className="mt-3 relative">
-              <label
-                htmlFor="password"
-                className="block mb-1 font-medium text-gray-700 text-sm"
-              >
-                Password <span className="text-red-500">*</span>
-              </label>
-              <input
+              <Input
                 id="password"
+                label="Password"
                 type={showPassword ? "text" : "password"}
-                value={password}
-                autoFocus
-                onChange={(e) => setPassword(e.target.value)}
-                //onFocus={(e) => setFocusedInput(e.target)}
                 placeholder="Your password"
-                className="shadow-sm px-4 py-2 pr-10 border border-gray-300 focus:border-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full transition"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button
                 type="button"
@@ -376,76 +276,38 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
         <h1 className="font-fonarto font-bold text-[#0056ff] text-3xl">Kodi</h1>
         <p className="mt-1 text-gray-600 text-sm">Create a Kodi Account</p>
 
-        <div className="mt-4">
-          <label
-            htmlFor="signupPhone"
-            className="block mb-1 font-medium text-gray-700 text-sm"
-          >
-            Phone Number <span className="text-red-500">*</span>
-          </label>
-          <input
-            id="signupPhone"
-            type="text"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            //autoFocus
-            //onFocus={(e) => setFocusedInput(e.target)}
-            placeholder="0712345678 or 254712345678"
-            className="shadow-sm px-4 py-2 border border-gray-300 focus:border-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full transition"
-          />
-        </div>
-        <div className="mt-4">
-          <label
-            htmlFor="fullName"
-            className="block mb-1 font-medium text-gray-700 text-sm"
-          >
-            Full Name <span className="text-red-500">*</span>
-          </label>
-          <input
-            id="fullName"
-            type="text"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-            //autoFocus
-            // onFocus={(e) => setFocusedInput(e.target)}
-            placeholder="Full Name"
-            className="shadow-sm px-4 py-2 border border-gray-300 focus:border-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full transition"
-          />
-        </div>
+        <Input
+          id="signupPhone"
+          label="Phone Number"
+          type="tel"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          placeholder="0712345678 or 254712345678"
+        />
+        <Input
+          id="fullName"
+          label="Full Name"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
+          placeholder="Full Name"
+        />
+        <Input
+          id="email"
+          label="Email Address"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email Address"
+        />
 
-        <div className="mt-4">
-          <label
-            htmlFor="email"
-            className="block mb-1 font-medium text-gray-700 text-sm"
-          >
-            Email Address <span className="text-red-500">*</span>
-          </label>
-          <input
-            id="email"
-            type="email"
-            value={email}
-            placeholder="Email Address"
-            onChange={(e) => setEmail(e.target.value)}
-            //onFocus={(e) => setFocusedInput(e.target)}
-            className="shadow-sm px-4 py-2 border border-gray-300 focus:border-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full transition"
-          />
-        </div>
-
-        <div className="mt-4 relative">
-          <label
-            htmlFor="signupPassword"
-            className="block mb-1 font-medium text-gray-700 text-sm"
-          >
-            Password <span className="text-red-500">*</span>
-          </label>
-          <input
+        <div className="relative">
+          <Input
             id="signupPassword"
+            label="Password"
             type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            //onFocus={(e) => setFocusedInput(e.target)}
             placeholder="Password"
-            className="shadow-sm px-4 py-2 pr-10 border border-gray-300 focus:border-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full transition"
           />
           <button
             type="button"
@@ -457,21 +319,14 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
           </button>
         </div>
 
-        <div className="mt-4 relative">
-          <label
-            htmlFor="confirmPassword"
-            className="block mb-1 font-medium text-gray-700 text-sm"
-          >
-            Confirm Password <span className="text-red-500">*</span>
-          </label>
-          <input
+        <div className="relative">
+          <Input
             id="confirmPassword"
+            label="Confirm Password"
             type={showConfirmPassword ? "text" : "password"}
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            // //onFocus={(e) => setFocusedInput(e.target)}
             placeholder="Repeat password"
-            className="shadow-sm px-4 py-2 pr-10 border border-gray-300 focus:border-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full transition"
           />
           <button
             type="button"
@@ -487,10 +342,10 @@ export function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps) {
 
         <button
           onClick={handleSignup}
-          disabled={isLoading}
+          disabled={isRegistering}
           className="bg-[#0056ff] disabled:opacity-50 mt-4 py-2 rounded-md w-full font-semibold text-white"
         >
-          {isLoading ? "Creating account..." : "Create Account and Log In"}
+          {isRegistering ? "Creating account..." : "Create Account and Log In"}
         </button>
 
         <AuthButtons />

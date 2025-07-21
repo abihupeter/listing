@@ -16,10 +16,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// export const metadata: Metadata = {
-//   title: "Kodi Nyumba Listing",
-//   description: "Listing properties by Kodinyumba",
-// };
+//  export const metadata: Metadata = {
+//    title: "Kodi Nyumba Listing",
+//    description: "Listing properties by Kodinyumba",
+//  };
 
 const store = makeStore();
 
