@@ -195,7 +195,7 @@ export default function PropertiesPage() {
       )}
 
       {/* Tabs */}
-     <AmenitiesFacilitiesTabs /> 
+     <AmenitiesFacilitiesTabs apartmentId={undefined} /> 
 
       {/* Property Grid */}
       <PropertyGrid />
@@ -211,8 +211,7 @@ export default function PropertiesPage() {
       />
       <FacilitiesModal
         isOpen={isFacilitiesOpen}
-        onClose={() => setIsFacilitiesOpen(false)}
-      />
+        onClose={() => setIsFacilitiesOpen(false)} apartmentId={undefined}      />
       <PhotoGalleryModal
         isOpen={isGalleryOpen}
         onClose={() => setIsGalleryOpen(false)}

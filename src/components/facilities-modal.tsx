@@ -2,53 +2,31 @@
 "use client";
 
 import { X } from "lucide-react";
+import { useGetPropertyNearbyFacilitiesQuery } from "@/app/lib/apiSlice/property/near-by-facilitiesSlice"; // Import the hook
 
-const facilitiesList = [
-  {
-    name: "Church",
-    distance: "120m",
-    image: "https://kodinyumba.app/media/church.png"
-},
-{
-    name: "Hospital",
-    distance: "500m",
-    image: "https://kodinyumba.app/media/hospital.png"
-},
-{
-    name: "Mall",
-    distance: "640m",
-    image: "https://kodinyumba.app/media/shopping-center.png"
-},
-{
-    name: "School",
-    distance: "20m",
-    image: "https://kodinyumba.app/media/school.png"
-},
-{
-    name: "Mosque",
-    distance: "120m",
-    image: "https://kodinyumba.app/media/mosque.png"
-},
-{
-    name: "Tarmac Road",
-    distance: "50m",
-    image: "https://kodinyumba.app/media/road.png"
-},
-{
-    name: "Police Station",
-    distance: "400m",
-    image: "https://kodinyumba.app/media/police-station.png"
+interface FacilitiesModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  apartmentId: string | undefined; // Add apartmentId prop
 }
-];
 
 export function FacilitiesModal({
   isOpen,
   onClose,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-}) {
+  apartmentId,
+}: FacilitiesModalProps) {
+  // Fetch nearby facilities using the hook
+  const { data, isLoading, error } = useGetPropertyNearbyFacilitiesQuery(
+    apartmentId!,
+    {
+      skip: !apartmentId, // Skip the query if apartmentId is not provided
+    }
+  );
+
   if (!isOpen) return null;
+
+  // Access the facilities list from the API response
+  const facilities = data?.data || []; // Assuming data contains a 'data' field with the facilities array
 
   return (
     <div className="z-50 fixed inset-0 flex justify-center items-center bg-black/80">
@@ -67,23 +45,44 @@ export function FacilitiesModal({
           All Nearby Facilities
         </h2>
 
-        {/* Amenity Grid */}
-        <div className="gap-6 grid grid-cols-2 sm:grid-cols-3 border-y">
-          {facilitiesList.map((item, idx) => (
-            <div
-              key={idx}
-              className="flex flex-col items-center space-y-2 text-center"
-            >
-              <img
-                src={item.image}
-                alt={item.name}
-                className="w-12 h-12 object-contain"
-              />
-              <span className="text-gray-800 text-sm">{item.name}</span>
-              
-            </div>
-          ))}
-        </div>
+        {/* Loading, Error, or Amenity Grid */}
+        {isLoading && <p className="text-center">Loading facilities...</p>}
+        {error && (
+          <p className="text-center text-red-500">Error loading facilities.</p>
+        )}
+        {!isLoading && !error && facilities.length === 0 && (
+          <p className="text-center text-gray-500">
+            No nearby facilities found for this apartment.
+          </p>
+        )}
+        {!isLoading && !error && facilities.length > 0 && (
+          <div className="gap-6 grid grid-cols-2 sm:grid-cols-3 border-y py-4">
+            {facilities.map(
+              (
+                item: any,
+                idx: number // Adjust 'any' to specific Facility type if available
+              ) => (
+                <div
+                  key={idx}
+                  className="flex flex-col items-center space-y-2 text-center"
+                >
+                  <img
+                    src={item.image} // Assuming API returns 'image' property
+                    alt={item.name} // Assuming API returns 'name' property
+                    className="w-12 h-12 object-contain"
+                  />
+                  <span className="text-gray-800 text-sm">{item.name}</span>
+                  {item.distance && (
+                    <span className="text-gray-600 text-xs">
+                      {item.distance} away
+                    </span>
+                  )}{" "}
+                  {/* Optional: Display distance if available */}
+                </div>
+              )
+            )}
+          </div>
+        )}
 
         {/* Footer */}
         <div className="mt-8 text-right">
